@@ -1,8 +1,15 @@
+/*------------------------------------*\ PERFUNDO
+\*------------------------------------*/
+/** CONTENTS OVERLAY............. CONTROLS............ ANIMATIONS.......... */
+/*------------------------------------*\ $OVERLAY
+\*------------------------------------*/
 .perfundo__overlay { position: fixed; top: 0; left: 0; visibility: hidden; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); opacity: 0; -webkit-transition: opacity 0.4s, visibility 0.8s; transition: opacity 0.4s, visibility 0.8s; }
 .perfundo__overlay:before { position: absolute; top: 5em; right: 3.5em; bottom: 5em; left: 3.5em; background-position: center center; background-size: contain; background-repeat: no-repeat; content: ''; -webkit-animation-duration: 0.4s; animation-duration: 0.4s; -webkit-animation-delay: 0.2s; animation-delay: 0.2s; -webkit-animation-fill-mode: both; animation-fill-mode: both; }
 .perfundo__overlay:target { visibility: visible; opacity: 1; }
 .perfundo__overlay:target:before { -webkit-animation-name: fade-in-zoom; animation-name: fade-in-zoom; }
 
+/*------------------------------------*\ $CONTROLS
+\*------------------------------------*/
 .perfundo__control { position: absolute; width: 3em; height: 3em; background-position: center center; background-size: cover; text-indent: -999em; }
 
 .perfundo__close { top: 1em; right: 1em; background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDMyIDMyIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjEuNyAxMC4zYy0wLjQtMC40LTEtMC40LTEuNCAwbC00LjMgNC4zLTQuMi00LjJjLTAuNC0wLjQtMS0wLjQtMS40IDAtMC40IDAuNC0wLjQgMSAwIDEuNGw0LjIgNC4yLTQuMyA0LjNjLTAuNCAwLjQtMC40IDEgMCAxLjQgMC40IDAuNCAxIDAuNCAxLjQgMGw0LjMtNC4zIDQuMiA0LjJjMC40IDAuNCAxIDAuNCAxLjQgMCAwLjQtMC40IDAuNC0xIDAtMS40bC00LjItNC4yIDQuMy00LjNDMjIuMSAxMS4zIDIyLjEgMTAuNyAyMS43IDEwLjN6TTE2IDBDNy4yIDAgMCA3LjIgMCAxNnM3LjIgMTYgMTYgMTZjOC44IDAgMTYtNy4yIDE2LTE2UzI0LjggMCAxNiAwek0xNiAzMEM4LjMgMzAgMiAyMy43IDIgMTZTOC4zIDIgMTYgMnMxNCA2LjMgMTQgMTRTMjMuNyAzMCAxNiAzMHoiLz48L3N2Zz4=); }
@@ -14,9 +21,13 @@
 
 .perfundo__next { right: 1em; }
 
+/*------------------------------------*\ $ANIMATIONS
+\*------------------------------------*/
 @-webkit-keyframes fade-in-zoom { 0% { opacity: 0; -webkit-transform: scale(0.2); transform: scale(0.2); }
   100% { opacity: 1; -webkit-transform: none; transform: none; } }
 
+/*------------------------------------*\ $ANIMATIONS
+\*------------------------------------*/
 @keyframes fade-in-zoom { 0% { opacity: 0; -webkit-transform: scale(0.2); transform: scale(0.2); }
   100% { opacity: 1; -webkit-transform: none; transform: none; } }
 
