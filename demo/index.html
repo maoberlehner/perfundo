@@ -1,0 +1,24 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Perfundo pure CSS Lightbox - Demo</title>
+    <meta name="description" content="Proof of concept CSS only Lightbox">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="../dist/perfundo.css">
+  </head>
+  <body>
+    <!--[if lt IE 9]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <a class="perfundo" href="#perfundo-img1">
+      <style>#perfundo-img1:target:before{content: url(http://placehold.it/800x600);}</style>
+      <img src="http://placehold.it/200x200">
+      <div id="perfundo-img1" class="perfundo__overlay"></div>
+    </a>
+  </body>
+</html>
