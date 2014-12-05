@@ -20,7 +20,7 @@ gulp.task('styles', function () {
 
 // Minify
 gulp.task('minify', ['styles'], function () {
-  return gulp.src('dist/**/*.css')
+  return gulp.src('dist/perfundo.css')
     .pipe(minifyCSS())
     .pipe(cssshrink())
     .pipe(rename(function (path) {

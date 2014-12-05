@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Perfundo pure CSS Lightbox - Demo</title>
+    <title>Perfundo - A pure CSS Lightbox</title>
     <meta name="description" content="Proof of concept CSS only Lightbox">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,9 +16,38 @@
     <![endif]-->
 
     <a class="perfundo" href="#perfundo-img1">
-      <style>#perfundo-img1:target:before{content: url(http://placehold.it/800x600);}</style>
-      <img src="http://placehold.it/200x200">
-      <div id="perfundo-img1" class="perfundo__overlay"></div>
+      <style>#perfundo-img1:target:before{background-image:url(dummy1.jpg);}</style>
+      <img src="dummy1_s.jpg">
+      <div id="perfundo-img1" class="perfundo__overlay">
+        <a href="#" class="perfundo__close perfundo__control">Close</a>
+        <a class="perfundo__next perfundo__control" href="#perfundo-img2">Next</a>
+      </div>
+    </a>
+    <a class="perfundo" href="#perfundo-img2">
+      <style>#perfundo-img2:target:before{background-image:url(dummy2.jpg);}</style>
+      <img src="dummy2_s.jpg">
+      <div id="perfundo-img2" class="perfundo__overlay">
+        <a href="#" class="perfundo__close perfundo__control">Close</a>
+        <a class="perfundo__next perfundo__control" href="#perfundo-img3">Next</a>
+        <a class="perfundo__prev perfundo__control" href="#perfundo-img1">Previous</a>
+      </div>
+    </a>
+    <a class="perfundo" href="#perfundo-img3">
+      <style>#perfundo-img3:target:before{background-image:url(dummy3.jpg);}</style>
+      <img src="dummy3_s.jpg">
+      <div id="perfundo-img3" class="perfundo__overlay">
+        <a href="#" class="perfundo__close perfundo__control">Close</a>
+        <a class="perfundo__next perfundo__control" href="#perfundo-img4">Next</a>
+        <a class="perfundo__prev perfundo__control" href="#perfundo-img2">Previous</a>
+      </div>
+    </a>
+    <a class="perfundo" href="#perfundo-img4">
+      <style>#perfundo-img4:target:before{background-image:url(dummy4.jpg);}</style>
+      <img src="dummy4_s.jpg">
+      <div id="perfundo-img4" class="perfundo__overlay">
+        <a href="#" class="perfundo__close perfundo__control">Close</a>
+        <a class="perfundo__prev perfundo__control" href="#perfundo-img3">Previous</a>
+      </div>
     </a>
   </body>
 </html>
