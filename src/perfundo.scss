@@ -29,12 +29,10 @@ $perfundo-svg-buttons: false !default;
   position: fixed;
   top: 0;
   left: 0;
-  visibility: hidden;
+  display: none;
   width: 100%;
   height: 100%;
   background: rgba($perfundo-color, $perfundo-opacity);
-  opacity: 0;
-  transition: opacity 0.4s, visibility 0.8s;
   &:before {
     position: absolute;
     top: 5em;
@@ -45,13 +43,10 @@ $perfundo-svg-buttons: false !default;
     background-size: contain;
     background-repeat: no-repeat;
     content: '';
-    animation-duration: 0.4s;
-    animation-delay: 0.2s;
-    animation-fill-mode: both;
+    animation: 0.4s ease-out both;
   }
   &:target {
-    visibility: visible;
-    opacity: 1;
+    display: block;
   }
   &:target:before {
     animation-name: fade-in-zoom;
@@ -129,7 +124,7 @@ $perfundo-svg-buttons: false !default;
 @keyframes fade-in-zoom {
   0% {
     opacity: 0;
-    transform: scale(0.2);
+    transform: scale(0);
   }
   100% {
     opacity: 1;
