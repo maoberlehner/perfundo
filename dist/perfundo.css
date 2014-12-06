@@ -8,7 +8,7 @@
 .perfundo__overlay { position: fixed; top: 0; left: 0; display: none; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); }
 .perfundo__overlay:before { position: absolute; top: 5em; right: 3.5em; bottom: 5em; left: 3.5em; background-position: center center; background-size: contain; background-repeat: no-repeat; content: ''; -webkit-animation: 0.4s ease-out both; animation: 0.4s ease-out both; }
 .perfundo__overlay:target { display: block; }
-.perfundo__overlay:target:before { -webkit-animation-name: fade-in-zoom; animation-name: fade-in-zoom; }
+.perfundo__overlay:target:before { -webkit-animation-name: perfundo-fade-in-zoom; animation-name: perfundo-fade-in-zoom; }
 
 /*------------------------------------*\ $CONTROLS
 \*------------------------------------*/
@@ -27,12 +27,12 @@
 
 /*------------------------------------*\ $ANIMATIONS
 \*------------------------------------*/
-@-webkit-keyframes fade-in-zoom { 0% { opacity: 0; -webkit-transform: scale(0); transform: scale(0); }
+@-webkit-keyframes perfundo-fade-in-zoom { 0% { opacity: 0; -webkit-transform: scale(0); transform: scale(0); }
   100% { opacity: 1; -webkit-transform: none; transform: none; } }
 
 /*------------------------------------*\ $ANIMATIONS
 \*------------------------------------*/
-@keyframes fade-in-zoom { 0% { opacity: 0; -webkit-transform: scale(0); transform: scale(0); }
+@keyframes perfundo-fade-in-zoom { 0% { opacity: 0; -webkit-transform: scale(0); transform: scale(0); }
   100% { opacity: 1; -webkit-transform: none; transform: none; } }
 
 /*# sourceMappingURL=perfundo.css.map */

@@ -15,7 +15,8 @@
   $VARIABLES
 \*------------------------------------*/
 
-$perfundo-color: #000 !default;
+$perfundo-namespace: 'perfundo';
+$perfundo-background-color: #000 !default;
 $perfundo-opacity: 0.9 !default;
 $perfundo-svg-buttons: false !default;
 
@@ -25,14 +26,14 @@ $perfundo-svg-buttons: false !default;
   $OVERLAY
 \*------------------------------------*/
 
-.perfundo__overlay {
+.#{$perfundo-namespace}__overlay {
   position: fixed;
   top: 0;
   left: 0;
   display: none;
   width: 100%;
   height: 100%;
-  background: rgba($perfundo-color, $perfundo-opacity);
+  background: rgba($perfundo-background-color, $perfundo-opacity);
   &:before {
     position: absolute;
     top: 5em;
@@ -49,7 +50,7 @@ $perfundo-svg-buttons: false !default;
     display: block;
   }
   &:target:before {
-    animation-name: fade-in-zoom;
+    animation-name: #{$perfundo-namespace}-fade-in-zoom;
   }
 }
 
@@ -59,7 +60,7 @@ $perfundo-svg-buttons: false !default;
   $CONTROLS
 \*------------------------------------*/
 
-.perfundo__control {
+.#{$perfundo-namespace}__control {
   position: absolute;
   @if $perfundo-svg-buttons {
     width: 3em;
@@ -81,7 +82,7 @@ $perfundo-svg-buttons: false !default;
   }
 }
 
-.perfundo__close {
+.#{$perfundo-namespace}__close {
   top: 1em;
   right: 1em;
   @if $perfundo-svg-buttons {
@@ -89,8 +90,8 @@ $perfundo-svg-buttons: false !default;
   }
 }
 
-.perfundo__prev,
-.perfundo__next {
+.#{$perfundo-namespace}__prev,
+.#{$perfundo-namespace}__next {
   top: 50%;
   margin-top: -1.5em;
   opacity: 0.2;
@@ -104,14 +105,14 @@ $perfundo-svg-buttons: false !default;
   }
 }
 
-.perfundo__prev {
+.#{$perfundo-namespace}__prev {
   left: 1em;
   @if $perfundo-svg-buttons {
     transform: rotate(180deg);
   }
 }
 
-.perfundo__next {
+.#{$perfundo-namespace}__next {
   right: 1em;
 }
 
@@ -121,7 +122,7 @@ $perfundo-svg-buttons: false !default;
   $ANIMATIONS
 \*------------------------------------*/
 
-@keyframes fade-in-zoom {
+@keyframes #{$perfundo-namespace}-fade-in-zoom {
   0% {
     opacity: 0;
     transform: scale(0);
