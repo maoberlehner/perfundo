@@ -3,62 +3,121 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Perfundo - A pure CSS Lightbox</title>
-    <meta name="description" content="Proof of concept CSS only Lightbox">
+    <title>Perfundo - A pure CSS lightbox</title>
+    <meta name="description" content="Proof of concept CSS only lightbox">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="../dist/perfundo-icons.css">
+    <link rel="stylesheet" href="css/demo.css">
   </head>
   <body>
     <!--[if lt IE 9]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" rel="nofollow">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="perfundo">
-      <style>#perfundo-single:target:before{background-image:url(img-single.jpg);}</style>
-      <a class="perfundo__link" href="#perfundo-single">
-        <img src="img-single_s.jpg">
-      </a>
-      <div id="perfundo-single" class="perfundo__overlay">
-        <a href="#" class="perfundo__close perfundo__control">Close</a>
+    <article>
+      <div class="hero">
+        <header>
+          <h1>perfundo</h1>
+          <h2>a pure CSS lightbox</h2>
+        </header>
+        <div class="quick-demo">
+          <div class="perfundo">
+            <style>#perfundo-single:target:before{background-image:url(images/img-single.jpg);}</style>
+            <a class="perfundo__link" href="#perfundo-single">
+              <img src="images/img-single_s.jpg">
+            </a>
+            <div id="perfundo-single" class="perfundo__overlay">
+              <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+            </div>
+          </div>
+        </div>
+
+        <ul class="list list--flatten">
+          <li><a id="download-min" href="http://perfundo.oberlehner.net/downloads/perfundo.zip" class="button button--primary">DOWNLOAD (2.2kb)</a></li>
+          <li><a id="download-incl-icons" href="http://perfundo.oberlehner.net/downloads/perfundo-icons.zip" class="button">incl. icons (3.7kb)</a></li>
+        </ul>
+        <small><a href="https://github.com/maoberlehner/perfundo">GitHub Project</a></small>
       </div>
+
+      <div class="container">
+        <div class="main-content">
+          <h3>Usage</h3>
+          <p>This is a proof of concept and not intended (although absolutely possible) to use in real world projects. There most certainly are accessibility problems with this lightbox solution - I'm no expert on this topic, if anyone can help with improvements in this regard please use <a href="https://github.com/maoberlehner/perfundo/issues/10">this GitHub issue</a>.</p>
+          <p>The perfect use case for this solution is a project where speed is an absolute top priority - you have already axed jQuery and some related plugins but there are those few images you want to display in a lightbox - under these circumstances a lightweight solution like this would be a pefect fit. Another possibility is to use this solution as a fallback if JavaScript is not available (e.g. loading of scripts fails,...)</p>
+          <p>The usability with mobile devices is not exactly the best because there is no way (I'm aware of) to make touch gestures do anything with pure CSS.</p>
+
+          <h3>Demos</h3>
+          <h4>Single image</h4>
+          <div class="perfundo">
+            <style>#perfundo-single2:target:before{background-image:url(images/img-single.jpg);}</style>
+            <a class="perfundo__link" href="#perfundo-single2">
+              <img src="images/img-single_s.jpg">
+            </a>
+            <div id="perfundo-single2" class="perfundo__overlay">
+              <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+            </div>
+          </div>
+
+          <h4>Simple gallery</h4>
+          <div class="gallery">
+            <div class="perfundo">
+              <style>#perfundo-img1:target:before{background-image:url(images/img1.jpg);}</style>
+              <a class="perfundo__link" href="#perfundo-img1">
+                <img src="images/img1_s.jpg">
+              </a>
+              <div id="perfundo-img1" class="perfundo__overlay">
+                <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                <a class="perfundo__next perfundo__control" href="#perfundo-img2">Next</a>
+              </div>
+            </div>
+
+            <div class="perfundo">
+              <style>#perfundo-img2:target:before{background-image:url(images/img2.jpg);}</style>
+              <a class="perfundo__link" href="#perfundo-img2">
+                <img src="images/img2_s.jpg">
+              </a>
+              <div id="perfundo-img2" class="perfundo__overlay">
+                <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                <a class="perfundo__next perfundo__control" href="#perfundo-img3">Next</a>
+                <a class="perfundo__prev perfundo__control" href="#perfundo-img1">Prev</a>
+              </div>
+            </div>
+
+            <div class="perfundo">
+              <style>#perfundo-img3:target:before{background-image:url(images/img3.jpg);}</style>
+              <a class="perfundo__link" href="#perfundo-img3">
+                <img src="images/img3_s.jpg">
+              </a>
+              <div id="perfundo-img3" class="perfundo__overlay">
+                <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                <a class="perfundo__prev perfundo__control" href="#perfundo-img2">Prev</a>
+              </div>
+            </div>
+          </div>
+
+          <h4>Direct linking</h4>
+          <p>You can directly link to perfundo lightbox images from everywhere around the web like this: <a href="http://perfundo.oberlehner.net/#perfundo-single">perfundo.oberlehner.net/#perfundo-single</a></p>
+
+          <h3>Browser Support</h3>
+          <ul class="list">
+            <li>Internet Explorer (9+)</li>
+            <li>Chrome (latest 2)</li>
+            <li>Firefox (latest 2)</li>
+            <li>Safari (latest 2)</li>
+            <li>Opera (latest 2)</li>
+            <li>iOS Safari (latest)</li>
+            <li>Android Chrome (latest)</li>
+          </ul>
+          <small>This list only refelcts tested browsers, the only browser I know where it definitely won't work ist IE8 and beyond.</small>
+        </div>
+
+        <footer class="main-footer">
+          <p>A project from <a href="https://twitter.com/MaOberlehner" rel="nofollow">Markus Oberlehner</a></p>
+        </footer>
+      </article>
     </div>
-
-    <div class="gallery">
-      <div class="perfundo">
-        <style>#perfundo-img1:target:before{background-image:url(img1.jpg);}</style>
-        <a class="perfundo__link" href="#perfundo-img1">
-          <img src="img1_s.jpg">
-        </a>
-        <div id="perfundo-img1" class="perfundo__overlay">
-          <a href="#" class="perfundo__close perfundo__control">Close</a>
-          <a class="perfundo__next perfundo__control" href="#perfundo-img2">Next</a>
-        </div>
-      </div>
-
-      <div class="perfundo">
-        <style>#perfundo-img2:target:before{background-image:url(img2.jpg);}</style>
-        <a class="perfundo__link" href="#perfundo-img2">
-          <img src="img2_s.jpg">
-        </a>
-        <div id="perfundo-img2" class="perfundo__overlay">
-          <a href="#" class="perfundo__close perfundo__control">Close</a>
-          <a class="perfundo__next perfundo__control" href="#perfundo-img3">Next</a>
-          <a class="perfundo__prev perfundo__control" href="#perfundo-img1">Prev</a>
-        </div>
-      </div>
-
-      <div class="perfundo">
-        <style>#perfundo-img3:target:before{background-image:url(img3.jpg);}</style>
-        <a class="perfundo__link" href="#perfundo-img2">
-          <img src="img3_s.jpg">
-        </a>
-        <div id="perfundo-img3" class="perfundo__overlay">
-          <a href="#" class="perfundo__close perfundo__control">Close</a>
-          <a class="perfundo__prev perfundo__control" href="#perfundo-img2">Prev</a>
-        </div>
-      </div>
-    </div>
+    <div id="perfundo-untarget" class="perfundo__untarget"></div>
   </body>
 </html>
