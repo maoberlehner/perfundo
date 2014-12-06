@@ -44,7 +44,7 @@ $perfundo-svg-buttons: false !default;
     background-size: contain;
     background-repeat: no-repeat;
     content: '';
-    animation: 0.4s ease-out both;
+    animation: 0.4s ease-out 0.2s both;
   }
   &:target {
     display: block;
