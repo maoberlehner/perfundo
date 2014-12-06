@@ -1,13 +1,39 @@
-.perfundo__overlay {
+/*------------------------------------*\
+  PERFUNDO
+\*------------------------------------*/
+/**
+ * CONTENTS
+ * VARIABLES...........
+ * OVERLAY.............
+ * CONTROLS............
+ * ANIMATIONS..........
+ */
+
+
+
+/*------------------------------------*\
+  $VARIABLES
+\*------------------------------------*/
+
+$perfundo-namespace: 'perfundo';
+$perfundo-background-color: #000 !default;
+$perfundo-opacity: 0.9 !default;
+$perfundo-svg-buttons: false !default;
+
+
+
+/*------------------------------------*\
+  $OVERLAY
+\*------------------------------------*/
+
+.#{$perfundo-namespace}__overlay {
   position: fixed;
   top: 0;
   left: 0;
-  visibility: hidden;
+  display: none;
   width: 100%;
   height: 100%;
-  background: rgba(#000, 0.9);
-  opacity: 0;
-  transition: opacity 0.4s, visibility 0.8s;
+  background: rgba($perfundo-background-color, $perfundo-opacity);
   &:before {
     position: absolute;
     top: 5em;
@@ -18,60 +44,93 @@
     background-size: contain;
     background-repeat: no-repeat;
     content: '';
-    animation-duration: 0.4s;
-    animation-delay: 0.2s;
-    animation-fill-mode: both;
+    animation: 0.4s ease-out 0.2s both;
   }
   &:target {
-    visibility: visible;
-    opacity: 1;
+    display: block;
   }
   &:target:before {
-    animation-name: fade-in-zoom;
+    animation-name: #{$perfundo-namespace}-fade-in-zoom;
   }
 }
 
-.perfundo__control {
+
+
+/*------------------------------------*\
+  $CONTROLS
+\*------------------------------------*/
+
+.#{$perfundo-namespace}__control {
   position: absolute;
-  width: 3em;
-  height: 3em;
-  background-position: center center;
-  background-size: cover;
-  text-indent: -999em;
+  @if $perfundo-svg-buttons {
+    width: 3em;
+    height: 3em;
+    background-position: center center;
+    background-size: cover;
+    text-indent: -999em;
+  } @else {
+    text-decoration: none;
+    text-transform: uppercase;
+    &,
+    &:visited {
+      color: #fff;
+    }
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
 }
 
-.perfundo__close {
+.#{$perfundo-namespace}__close {
   top: 1em;
   right: 1em;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDMyIDMyIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjEuNyAxMC4zYy0wLjQtMC40LTEtMC40LTEuNCAwbC00LjMgNC4zLTQuMi00LjJjLTAuNC0wLjQtMS0wLjQtMS40IDAtMC40IDAuNC0wLjQgMSAwIDEuNGw0LjIgNC4yLTQuMyA0LjNjLTAuNCAwLjQtMC40IDEgMCAxLjQgMC40IDAuNCAxIDAuNCAxLjQgMGw0LjMtNC4zIDQuMiA0LjJjMC40IDAuNCAxIDAuNCAxLjQgMCAwLjQtMC40IDAuNC0xIDAtMS40bC00LjItNC4yIDQuMy00LjNDMjIuMSAxMS4zIDIyLjEgMTAuNyAyMS43IDEwLjN6TTE2IDBDNy4yIDAgMCA3LjIgMCAxNnM3LjIgMTYgMTYgMTZjOC44IDAgMTYtNy4yIDE2LTE2UzI0LjggMCAxNiAwek0xNiAzMEM4LjMgMzAgMiAyMy43IDIgMTZTOC4zIDIgMTYgMnMxNCA2LjMgMTQgMTRTMjMuNyAzMCAxNiAzMHoiLz48L3N2Zz4=);
+  @if $perfundo-svg-buttons {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDMyIDMyIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjEuNyAxMC4zYy0wLjQtMC40LTEtMC40LTEuNCAwbC00LjMgNC4zLTQuMi00LjJjLTAuNC0wLjQtMS0wLjQtMS40IDAtMC40IDAuNC0wLjQgMSAwIDEuNGw0LjIgNC4yLTQuMyA0LjNjLTAuNCAwLjQtMC40IDEgMCAxLjQgMC40IDAuNCAxIDAuNCAxLjQgMGw0LjMtNC4zIDQuMiA0LjJjMC40IDAuNCAxIDAuNCAxLjQgMCAwLjQtMC40IDAuNC0xIDAtMS40bC00LjItNC4yIDQuMy00LjNDMjIuMSAxMS4zIDIyLjEgMTAuNyAyMS43IDEwLjN6TTE2IDBDNy4yIDAgMCA3LjIgMCAxNnM3LjIgMTYgMTYgMTZjOC44IDAgMTYtNy4yIDE2LTE2UzI0LjggMCAxNiAwek0xNiAzMEM4LjMgMzAgMiAyMy43IDIgMTZTOC4zIDIgMTYgMnMxNCA2LjMgMTQgMTRTMjMuNyAzMCAxNiAzMHoiLz48L3N2Zz4=);
+  }
 }
 
-.perfundo__prev,
-.perfundo__next {
+.#{$perfundo-namespace}__prev,
+.#{$perfundo-namespace}__next {
   top: 50%;
   margin-top: -1.5em;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgd2lkdGg9IjQ0LjEiIGhlaWdodD0iOTQuNyIgdmlld0JveD0iMCAwIDQ0LjEgOTQuNyIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNDQuMDg4IDk0LjY3IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDQuMSA0Ny4zTDEuNSA5NC43IDAgOTMuM2w0MS40LTQ2TDAgMS4zIDEuNSAwIDQ0LjEgNDcuM3oiLz48L3N2Zz4=);
   opacity: 0.2;
   transition: opacity 0.2s;
+  @if $perfundo-svg-buttons {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgd2lkdGg9IjQ0LjEiIGhlaWdodD0iOTQuNyIgdmlld0JveD0iMCAwIDQ0LjEgOTQuNyIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNDQuMDg4IDk0LjY3IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDQuMSA0Ny4zTDEuNSA5NC43IDAgOTMuM2w0MS40LTQ2TDAgMS4zIDEuNSAwIDQ0LjEgNDcuM3oiLz48L3N2Zz4=);
+  }
   &:hover,
   &:focus {
     opacity: 1;
   }
 }
 
-.perfundo__prev {
+.#{$perfundo-namespace}__prev {
   left: 1em;
-  transform: rotate(180deg);
+  @if $perfundo-svg-buttons {
+    transform: rotate(180deg);
+  }
 }
 
-.perfundo__next {
+.#{$perfundo-namespace}__next {
   right: 1em;
 }
 
-@keyframes fade-in-zoom {
+.#{$perfundo-namespace}__untarget {
+  position: fixed;
+  top: 0;
+}
+
+
+
+/*------------------------------------*\
+  $ANIMATIONS
+\*------------------------------------*/
+
+@keyframes #{$perfundo-namespace}-fade-in-zoom {
   0% {
     opacity: 0;
-    transform: scale(0.2);
+    transform: scale(0);
   }
   100% {
     opacity: 1;
