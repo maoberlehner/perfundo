@@ -30,6 +30,8 @@
 
 .perfundo__next { right: 1em; }
 
+.perfundo__untarget { position: fixed; top: 0; }
+
 /*------------------------------------*\ $ANIMATIONS
 \*------------------------------------*/
 @-webkit-keyframes perfundo-fade-in-zoom { 0% { opacity: 0; -webkit-transform: scale(0); transform: scale(0); }

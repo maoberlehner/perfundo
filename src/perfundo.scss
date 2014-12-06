@@ -116,6 +116,11 @@ $perfundo-svg-buttons: false !default;
   right: 1em;
 }
 
+.#{$perfundo-namespace}__untarget {
+  position: fixed;
+  top: 0;
+}
+
 
 
 /*------------------------------------*\
