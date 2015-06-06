@@ -1,6 +1,6 @@
 {
   "name": "perfundo",
-  "version": "X.X.X",
+  "version": "1.0.1",
   "author": "Markus Oberlehner",
   "license": "GPL v2",
   "devDependencies": {
