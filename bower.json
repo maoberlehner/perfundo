@@ -1,0 +1,22 @@
+{
+  "name": "perfundo",
+  "version": "1.0.1",
+  "homepage": "https://github.com/maoberlehner/perfundo",
+  "authors": [
+    "Markus Oberlehner"
+  ],
+  "description": "CSS only Lightbox",
+  "main": "dist/perfundo.css",
+  "keywords": [
+    "CSS",
+    "Lightbox"
+  ],
+  "license": "GPL v2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

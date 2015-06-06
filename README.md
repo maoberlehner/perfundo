@@ -1,5 +1,5 @@
 # perfundo
-Proof of concept CSS only Lightbox  
+CSS only Lightbox  
 http://perfundo.oberlehner.net
 
 ### Usage

@@ -1,6 +1,6 @@
 {
   "name": "perfundo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Markus Oberlehner",
   "license": "GPL v2",
   "devDependencies": {
@@ -13,7 +13,7 @@
     "gulp-ruby-sass": "~0.4.0",
     "gulp-util": "~2.2.14"
   },
-  "description": "Proof of concept CSS only Lightbox",
+  "description": "CSS only Lightbox",
   "main": "gulpfile.js",
   "repository": {
     "type": "git",
