@@ -10,11 +10,13 @@
   "main": "dist/perfundo.css",
   "ignore": [
     "**/.*",
+    ".csscomb.json",
+    "gulpfile.js",
     "node_modules",
     "bower_components",
     "test",
     "tests",
-    "src",
-    "demo"
+    "demo",
+    "src"
   ]
 }
