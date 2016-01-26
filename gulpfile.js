@@ -2,8 +2,14 @@
  * Configuration
  */
 var config = {
-  destination: 'dist',
-  watchFiles: ['src/**/*.scss']
+  styles: {
+    destination: 'dist',
+    watchFiles: ['src/scss/**/*.scss']
+  },
+  scripts: {
+    destination: 'dist',
+    watchFiles: ['src/js/**/*.scss']
+  }
 };
 
 /**
@@ -23,23 +29,23 @@ var sourcemaps   = require('gulp-sourcemaps');
  * Styles
  */
 gulp.task('styles:build', ['clean:styles'], function () {
-  return gulp.src(config.watchFiles)
+  return gulp.src(config.styles.watchFiles)
     .pipe(sourcemaps.init())
       .pipe(sass({ precision: 7, errLogToConsole: true }))
       .pipe(autoprefixer())
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(config.destination))
+    .pipe(gulp.dest(config.styles.destination))
     .pipe(livereload());
 });
 
 gulp.task('styles:minify', ['styles:build'], function () {
-  return gulp.src(config.destination + '/*.css')
+  return gulp.src(config.styles.destination + '/*.css')
     .pipe(minifyCss())
     .pipe(cssnano())
     .pipe(rename(function (path) {
       path.basename += '.min';
     }))
-    .pipe(gulp.dest(config.destination))
+    .pipe(gulp.dest(config.styles.destination))
     .pipe(livereload());
 });
 
@@ -51,7 +57,7 @@ gulp.task('styles:minify', ['styles:build'], function () {
 gulp.task('clean:styles', function () {
   return del([
     // Remove everything inside the destination directory.
-    config.destination + '/**/*'
+    config.styles.destination + '/**/*'
   ]);
 });
 
@@ -60,7 +66,7 @@ gulp.task('clean:styles', function () {
  */
 gulp.task('watch', function () {
   livereload.listen();
-  gulp.watch(config.watchFiles, ['styles:minify']);
+  gulp.watch(config.styles.watchFiles, ['styles:minify']);
 });
 
 /**
