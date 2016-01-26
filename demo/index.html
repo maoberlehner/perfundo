@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="../bower_components/animate.css/animate.min.css">
     <link rel="stylesheet" href="../dist/perfundo-icons.css">
     <link rel="stylesheet" href="css/demo.css">
   </head>
@@ -24,11 +25,14 @@
         </header>
         <div class="quick-demo">
           <div class="perfundo">
-            <style>#perfundo-single:target:before{background-image:url(images/img-single.jpg);}</style>
+            <style>#perfundo-single:target .perfundo__figure img{content:url(images/img-single.jpg);}</style>
             <a class="perfundo__link" href="#perfundo-single">
-              <img src="images/img-single_s.jpg">
+              <img src="images/img-single_s.jpg" alt="Demo image">
             </a>
-            <div id="perfundo-single" class="perfundo__overlay">
+            <div id="perfundo-single" class="perfundo__overlay bounceInUp">
+              <figure class="perfundo__content perfundo__figure">
+                <img src="images/img-single_s.jpg" alt="Demo image">
+              </figure>
               <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
             </div>
           </div>
@@ -51,11 +55,15 @@
           <h3>Demos</h3>
           <h4>Single image</h4>
           <div class="perfundo">
-            <style>#perfundo-single2:target:before{background-image:url(images/img-single.jpg);}</style>
+            <style>#perfundo-single2:target .perfundo__figure img{content:url(images/img-single.jpg);}</style>
             <a class="perfundo__link" href="#perfundo-single2">
-              <img src="images/img-single_s.jpg">
+              <img src="images/img-single_s.jpg" alt="Demo image">
             </a>
-            <div id="perfundo-single2" class="perfundo__overlay">
+            <div id="perfundo-single2" class="perfundo__overlay fadeInLeft">
+              <figure class="perfundo__content perfundo__figure">
+                <img src="images/img-single_s.jpg" alt="Demo image">
+                <figcaption class="perfundo__figcaption">Single image with caption</figcaption>
+              </figure>
               <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
             </div>
           </div>
@@ -63,22 +71,28 @@
           <h4>Simple gallery</h4>
           <div class="gallery">
             <div class="perfundo">
-              <style>#perfundo-img1:target:before{background-image:url(images/img1.jpg);}</style>
+              <style>#perfundo-img1:target .perfundo__figure img{content:url(images/img1.jpg);}</style>
               <a class="perfundo__link" href="#perfundo-img1">
-                <img src="images/img1_s.jpg">
+                <img src="images/img1_s.jpg" alt="Demo image">
               </a>
-              <div id="perfundo-img1" class="perfundo__overlay">
+              <div id="perfundo-img1" class="perfundo__overlay fadeIn">
+                <figure class="perfundo__content perfundo__figure">
+                  <img src="images/img1_s.jpg" alt="Demo image">
+                </figure>
                 <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
                 <a class="perfundo__next perfundo__control" href="#perfundo-img2">Next</a>
               </div>
             </div>
 
             <div class="perfundo">
-              <style>#perfundo-img2:target:before{background-image:url(images/img2.jpg);}</style>
+              <style>#perfundo-img2:target .perfundo__figure img{content:url(images/img2.jpg);}</style>
               <a class="perfundo__link" href="#perfundo-img2">
-                <img src="images/img2_s.jpg">
+                <img src="images/img2_s.jpg" alt="Demo image">
               </a>
-              <div id="perfundo-img2" class="perfundo__overlay">
+              <div id="perfundo-img2" class="perfundo__overlay fadeIn">
+                <figure class="perfundo__content perfundo__figure">
+                  <img src="images/img2_s.jpg" alt="Demo image">
+                </figure>
                 <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
                 <a class="perfundo__next perfundo__control" href="#perfundo-img3">Next</a>
                 <a class="perfundo__prev perfundo__control" href="#perfundo-img1">Prev</a>
@@ -86,11 +100,14 @@
             </div>
 
             <div class="perfundo">
-              <style>#perfundo-img3:target:before{background-image:url(images/img3.jpg);}</style>
+              <style>#perfundo-img3:target .perfundo__figure img{content:url(images/img3.jpg);}</style>
               <a class="perfundo__link" href="#perfundo-img3">
-                <img src="images/img3_s.jpg">
+                <img src="images/img3_s.jpg" alt="Demo image">
               </a>
-              <div id="perfundo-img3" class="perfundo__overlay">
+              <div id="perfundo-img3" class="perfundo__overlay fadeIn">
+                <figure class="perfundo__content perfundo__figure">
+                  <img src="images/img3_s.jpg" alt="Demo image">
+                </figure>
                 <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
                 <a class="perfundo__prev perfundo__control" href="#perfundo-img2">Prev</a>
               </div>
