@@ -15,51 +15,52 @@
   $VARIABLES
 \*------------------------------------*/
 
-$perfundo-namespace: 'perfundo' !default;
+$perfundo-namespace:        'perfundo' !default;
 $perfundo-background-color: #000 !default;
-$perfundo-opacity: 0.9 !default;
-$perfundo-svg-buttons: false !default;
+$perfundo-opacity:          0.9 !default;
+$perfundo-svg-buttons:      false !default;
 
 
+/**
+ * @TODO
+ * - content
+ * - screenreader test
+ */
 
-/*------------------------------------*\
-  $OVERLAY
-\*------------------------------------*/
-
+/**
+ * Overlay
+ */
 .#{$perfundo-namespace}__overlay {
   position: fixed;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  display: none;
-  width: 100%;
-  height: 100%;
-  background: rgba($perfundo-background-color, $perfundo-opacity);
-  &:before {
-    position: absolute;
-    top: 5em;
-    right: 3.5em;
-    bottom: 5em;
-    left: 3.5em;
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    content: '';
-    animation: 0.4s ease-out 0.2s both;
-  }
+  display: flex;
+  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($perfundo-background-color, $perfundo-opacity);
   &:target {
-    display: block;
-  }
-  &:target:before {
-    animation-name: #{$perfundo-namespace}-fade-in-zoom;
+    visibility: visible;
   }
 }
 
+.#{$perfundo-namespace}__content {
+  text-align: left;
+  :target > & {
+    animation: 0.4s ease-out 0.2s both;
+    animation-name: inherit;
+  }
+}
 
+.#{$perfundo-namespace}__figcaption {
+  color: #efefef;
+}
 
-/*------------------------------------*\
-  $CONTROLS
-\*------------------------------------*/
-
+/**
+ * Controls
+ */
 .#{$perfundo-namespace}__control {
   position: absolute;
   @if $perfundo-svg-buttons {
@@ -119,21 +120,4 @@ $perfundo-svg-buttons: false !default;
 .#{$perfundo-namespace}__untarget {
   position: fixed;
   top: 0;
-}
-
-
-
-/*------------------------------------*\
-  $ANIMATIONS
-\*------------------------------------*/
-
-@keyframes #{$perfundo-namespace}-fade-in-zoom {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
 }

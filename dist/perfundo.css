@@ -9,36 +9,53 @@
  */
 /*------------------------------------*  $VARIABLES
 \*------------------------------------*/
-/*------------------------------------*  $OVERLAY
-\*------------------------------------*/
+/**
+ * @TODO
+ * - image caption
+ * - do not load big image initially
+ * - content
+ * - screenreader test
+ */
+/**
+ * Overlay
+ */
 .perfundo__overlay {
   position: fixed;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  display: none;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9); }
-  .perfundo__overlay:before {
-    position: absolute;
-    top: 5em;
-    right: 3.5em;
-    bottom: 5em;
-    left: 3.5em;
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    content: '';
-    -webkit-animation: 0.4s ease-out 0.2s both;
-            animation: 0.4s ease-out 0.2s both; }
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  visibility: hidden;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.9); }
   .perfundo__overlay:target {
-    display: block; }
-  .perfundo__overlay:target:before {
-    -webkit-animation-name: perfundo-fade-in-zoom;
-            animation-name: perfundo-fade-in-zoom; }
+    visibility: visible; }
 
-/*------------------------------------*  $CONTROLS
-\*------------------------------------*/
+.perfundo__content {
+  text-align: left; }
+  :target > .perfundo__content {
+    -webkit-animation: 0.4s ease-out 0.2s both;
+            animation: 0.4s ease-out 0.2s both;
+    -webkit-animation-name: inherit;
+            animation-name: inherit; }
+
+.perfundo__figcaption {
+  color: #efefef; }
+
+/**
+ * Controls
+ */
 .perfundo__control {
   position: absolute;
   text-decoration: none;
@@ -73,26 +90,5 @@
 .perfundo__untarget {
   position: fixed;
   top: 0; }
-
-/*------------------------------------*  $ANIMATIONS
-\*------------------------------------*/
-@-webkit-keyframes perfundo-fade-in-zoom {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none; } }
-@keyframes perfundo-fade-in-zoom {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none; } }
 
 /*# sourceMappingURL=perfundo.css.map */
