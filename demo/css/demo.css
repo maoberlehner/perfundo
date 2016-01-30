@@ -178,10 +178,6 @@ small {
   overflow: hidden;
 }
 
-.gallery * {
-  margin-top: 0;
-}
-
 .gallery .perfundo {
   float: left;
 }
