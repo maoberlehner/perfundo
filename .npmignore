@@ -1,6 +1,10 @@
-/.csscomb.json
+.csscomb.json
+.DS_Store
+.eyeglass_cache
 
-/bower.json
-/gulpfile.js
+gulpfile.js
+
+dist
+node_modules
 
 /demo

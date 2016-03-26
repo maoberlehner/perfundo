@@ -1,5 +1,5 @@
-*.map
-*.min.css
 .DS_Store
-/node_modules
-/bower_components
+.eyeglass_cache
+
+dist
+node_modules
