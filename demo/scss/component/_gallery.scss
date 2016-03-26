@@ -1,0 +1,10 @@
+.c-gallery {
+  overflow: hidden;
+}
+
+.c-gallery__item {
+  float: left;
+  &:not(:first-child) {
+    margin-left: 0.5625em;
+  }
+}

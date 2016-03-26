@@ -1,0 +1,13 @@
+.c-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1em;
+  padding-left: 1em;
+  min-height: 34em;
+  max-height: 67.5em;
+  height: 100vh;
+  background: map-get($cs, a);
+  color: #fff;
+  text-align: center;
+}

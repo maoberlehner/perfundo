@@ -12,15 +12,15 @@
   </head>
   <body>
     <article>
-      <div class="hero">
-        <div class="hero__inner">
-          <h1>perfundo</h1>
-          <h2>a pure CSS lightbox</h2>
-          <div class="quick-demo default-spacing">
+      <div class="c-hero">
+        <div class="c-hero__inner">
+          <h1 class="c-h1">perfundo</h1>
+          <h2 class="c-h2">a pure CSS lightbox</h2>
+          <div class="c-quick-demo u-spacing-top-m">
             <div class="perfundo">
               <style>#perfundo-single:target .perfundo__figure img{content:url(img/img-single.jpg);}</style>
-              <a class="perfundo__link" href="#perfundo-single">
-                <img src="img/img-single_s.jpg" alt="Demo image">
+              <a class="c-quick-demo__link perfundo__link" href="#perfundo-single">
+                <img src="img/img-single_s.jpg" alt="Demo image" class="c-quick-demo__img">
               </a>
               <div id="perfundo-single" class="perfundo__overlay bounceInUp">
                 <figure class="perfundo__content perfundo__figure">
@@ -31,23 +31,23 @@
             </div>
           </div>
 
-          <ul class="list list--flatten">
-            <li><a href="https://github.com/maoberlehner/perfundo" class="button button--contrast button--github">View on GitHub</a></li>
-            <li><a id="download-min" href="http://perfundo.oberlehner.net/downloads/perfundo.zip" class="button button--contrast button--secondary">Download (Xkb)</a></li>
+          <ul class="c-list c-list--flatten">
+            <li><a href="https://github.com/maoberlehner/perfundo" class="c-button c-button--contrast c-button--github">View on GitHub</a></li>
+            <li><a id="download-min" href="http://perfundo.oberlehner.net/downloads/perfundo.zip" class="c-button c-button--contrast c-button--secondary">Download (Xkb)</a></li>
           </ul>
         </div>
       </div>
 
-      <div class="container">
-        <div class="main-content">
-          <h3>Usage</h3>
+      <div class="o-container">
+        <div class="c-main-content">
+          <h3 class="c-h3">Usage</h3>
           <p>This is a proof of concept and not intended (although absolutely possible) to use in real world projects. There most certainly are accessibility problems with this lightbox solution - I'm no expert on this topic, if anyone can help with improvements in this regard please use <a href="https://github.com/maoberlehner/perfundo/issues/10">this GitHub issue</a>.</p>
           <p>The perfect use case for this solution is a project where speed is an absolute top priority - you have already axed jQuery and some related plugins but there are those few images you want to display in a lightbox - under these circumstances a lightweight solution like this would be a pefect fit. Another possibility is to use this solution as a fallback if JavaScript is not available (e.g. loading of scripts fails,...)</p>
           <p>The usability with mobile devices is not exactly the best because there is no way (I'm aware of) to make touch gestures do anything with pure CSS.</p>
 
-          <h3>Demos</h3>
-          <h4>Single image</h4>
-          <div class="perfundo default-spacing">
+          <h3 class="c-h3">Demos</h3>
+          <h4 class="c-h4">Single image</h4>
+          <div class="perfundo u-spacing-top-m">
             <style>#perfundo-single2:target .perfundo__figure img{content:url(img/img-single.jpg);}</style>
             <a class="perfundo__link" href="#perfundo-single2">
               <img src="img/img-single_s.jpg" alt="Demo image">
@@ -61,9 +61,9 @@
             </div>
           </div>
 
-          <h4>Simple gallery</h4>
-          <div class="gallery default-spacing">
-            <div class="perfundo">
+          <h4 class="c-h4">Simple gallery</h4>
+          <div class="c-gallery u-spacing-top-m">
+            <div class="c-gallery__item perfundo">
               <style>#perfundo-img1:target .perfundo__figure img{content:url(img/img1.jpg);}</style>
               <a class="perfundo__link" href="#perfundo-img1">
                 <img src="img/img1_s.jpg" alt="Demo image">
@@ -77,7 +77,7 @@
               </div>
             </div>
 
-            <div class="perfundo">
+            <div class="c-gallery__item perfundo">
               <style>#perfundo-img2:target .perfundo__figure img{content:url(img/img2.jpg);}</style>
               <a class="perfundo__link" href="#perfundo-img2">
                 <img src="img/img2_s.jpg" alt="Demo image">
@@ -92,7 +92,7 @@
               </div>
             </div>
 
-            <div class="perfundo">
+            <div class="c-gallery__item perfundo">
               <style>#perfundo-img3:target .perfundo__figure img{content:url(img/img3.jpg);}</style>
               <a class="perfundo__link" href="#perfundo-img3">
                 <img src="img/img3_s.jpg" alt="Demo image">
@@ -107,11 +107,11 @@
             </div>
           </div>
 
-          <h4>Direct linking</h4>
+          <h4 class="c-h4">Direct linking</h4>
           <p>You can directly link to perfundo lightbox images from everywhere around the web like this: <a href="http://perfundo.oberlehner.net/#perfundo-single">perfundo.oberlehner.net/#perfundo-single</a></p>
 
-          <h3>Browser Support</h3>
-          <ul class="list">
+          <h3 class="c-h3">Browser Support</h3>
+          <ul class="c-list">
             <li>Internet Explorer (9+)</li>
             <li>Chrome (latest 2)</li>
             <li>Firefox (latest 2)</li>
@@ -123,8 +123,8 @@
           <small>This list only reflects tested browsers, the only browser I know where it definitely won't work ist IE8 and beyond.</small>
         </div>
 
-        <footer class="main-footer">
-          <p>A project from <a href="https://twitter.com/MaOberlehner" rel="nofollow">Markus Oberlehner</a></p>
+        <footer class="c-main-footer">
+          <p>a project by <a href="https://twitter.com/MaOberlehner" rel="nofollow">Markus Oberlehner</a></p>
         </footer>
       </article>
     </div>
