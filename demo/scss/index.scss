@@ -1,116 +1,14 @@
-html {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  -moz-box-sizing: inherit;
-  box-sizing: inherit;
-}
-
-body {
-  font-family: 'Helvetica Neue', sans-serif;
-  line-height: 1.5;
-}
-
-* {
-  margin: 0;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-h1 {
-  font-size: 2.441em;
-}
-
-h2 {
-  font-size: 1.953em;
-}
-
-h3 {
-  font-size: 1.563em;
-}
-
-h4 {
-  font-size: 1.25em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-h1 + h2,
-h2 + h3,
-h3 + h4,
-h4 + h5,
-h5 + h6,
-p,
-ul,
-ol,
-dl,
-pre,
-form,
-table,
-figure,
-address,
-fieldset,
-blockquote,
-.default-spacing {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-* + p,
-* + ul,
-* + ol,
-* + dl,
-* + img,
-* + pre,
-* + form,
-* + table,
-* + figure,
-* + address,
-* + fieldset,
-* + blockquote,
-* + .default-spacing,
-* + h1,
-* + h2,
-* + h3,
-* + h4,
-* + h5,
-* + h6 {
-  margin-top: 1.5em;
-}
-
-ul,
-ol,
-dl {
-  padding-left: 1.5em;
-}
+@import 'variable';
+@import 'normalize/import-now';
+@import 'avalanchesass_base_box_sizing_reset';
+@import 'avalanchesass_base_typography';
+@import 'avalanchesass_component_hn';
+@import '../scss/with-icons'; // @TODO: load from node modules as eyeglass dependency
 
 img {
   max-width: 100%;
   width: auto;
   height: auto;
-}
-
-a {
-  color: #52787b;;
-}
-
-small {
-  display: block;
-  font-size: 0.85em;
 }
 
 .container {
@@ -171,13 +69,16 @@ small {
 }
 
 .hero {
-  padding: 3em 1em;
-  background: #52787b;
-  text-align: center;
-}
-
-.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1em;
+  padding-left: 1em;
+  max-height: 67.5em;
+  height: 100vh;
+  background: map-get($cs, a);
   color: #fff;
+  text-align: center;
 }
 
 .quick-demo .perfundo__link {

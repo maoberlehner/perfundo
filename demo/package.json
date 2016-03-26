@@ -6,6 +6,9 @@
   "license": "GPL v2",
   "dependencies": {
     "animate.css": "^3.5.1",
+    "avalanchesass_base_box_sizing_reset": "^3.0.0",
+    "avalanchesass_base_typography": "^3.0.0",
+    "avalanchesass_component_hn": "^3.0.0",
     "browser-sync": "^2.11.1",
     "del": "^2.2.0",
     "eyeglass": "^0.8.3",
@@ -16,7 +19,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.5.2",
-    "normalize.css": "^4.0.0"
+    "normalize-scss": "^4.0.3"
   },
   "main": "gulpfile.js"
 }
