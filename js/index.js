@@ -1,6 +1,6 @@
 (function () {
   var _ = function (element, o) {
-    var self = this;
+    var me = this;
 
     if (typeof element === 'string' && $$(element).length > 1) {
       var object = [];
@@ -11,17 +11,17 @@
     }
 
     // Setup.
-    self.element = $(element);
-    self.options = {};
+    me.element = $(element);
+    me.options = {};
 
     // Return an empty object if the element does not exist.
-    if (!self.element) {
+    if (!me.element) {
       return {};
     }
 
     o = o || {};
 
-    configure(self, {
+    configure(me, {
       disableHistory: false,
       classNames: {
         main: 'perfundo',
@@ -40,93 +40,93 @@
     }, o);
 
     // Add ".is-active" functionality.
-    var style = $('style', self.element);
+    var style = $('style', me.element);
     if (style) {
       var isActiveStyle = style.cloneNode(true);
       isActiveStyle.innerHTML = isActiveStyle.innerHTML.replace(
         /:target/gi,
-        '.' + self.options.classNames.active
+        '.' + me.options.classNames.active
       );
-      self.element.insertBefore(isActiveStyle, style);
+      me.element.insertBefore(isActiveStyle, style);
     }
 
-    $.bind($$('.' + self.options.classNames.main + self.options.classNames.link, self.element), {
+    $.bind($$('.' + me.options.classNames.main + me.options.classNames.link, me.element), {
       'click': function (e) {
         var overlay = $(this.getAttribute('href'));
-        if (self.options.disableHistory) {
+        if (me.options.disableHistory) {
           e.preventDefault();
         }
-        self.closeOverlay();
-        overlay.classList.add(self.options.classNames.active); // @TODO: use openOverlay prototype
+        me.closeOverlay();
+        overlay.classList.add(me.options.classNames.active); // @TODO: use openOverlay prototype
       }
     });
 
-    $.bind($$('.' + self.options.classNames.main + self.options.classNames.close, self.element), {
+    $.bind($$('.' + me.options.classNames.main + me.options.classNames.close, me.element), {
       'click': function (e) {
-        if (self.options.disableHistory) {
+        if (me.options.disableHistory) {
           e.preventDefault();
         }
-        self.closeOverlay();
+        me.closeOverlay();
       }
     });
 
-    // $.bind($$('.' + self.options.classNames.link, self.element), {
+    // $.bind($$('.' + me.options.classNames.link, me.element), {
     //   'focus': function (e) {
     //     var trigger = e.target;
     //     var subMenu = trigger.nextElementSibling;
     //     // Close open sub menus that are not part of the triggered menu tree.
-    //     var openSubMenus = $$('.' + self.options.classNames.open, self.element);
+    //     var openSubMenus = $$('.' + me.options.classNames.open, me.element);
     //     openSubMenus.forEach(function (openSubMenu) {
     //       if (!isDescendant(openSubMenu, trigger)) {
-    //         self.closeSubMenu(openSubMenu);
+    //         me.closeSubMenu(openSubMenu);
     //       }
     //     });
     //     // Open the sub menu.
-    //     if (self.options.focusopen == 'enabled' && subMenu && subMenu.classList.contains(self.options.classNames.sub)) {
-    //       self.openSubMenu(subMenu);
+    //     if (me.options.focusopen == 'enabled' && subMenu && subMenu.classList.contains(me.options.classNames.sub)) {
+    //       me.openSubMenu(subMenu);
     //     }
     //   },
     //   'blur': function (e) {
     //     // Close all open sub menus if the menu loses focus.
     //     setTimeout(function() {
     //       var trigger = document.activeElement;
-    //       if (!isDescendant(self.element, trigger)) {
-    //         var openSubMenus = $$('.' + self.options.classNames.open, self.element);
+    //       if (!isDescendant(me.element, trigger)) {
+    //         var openSubMenus = $$('.' + me.options.classNames.open, me.element);
     //         openSubMenus.forEach(function (openSubMenu) {
-    //           self.closeSubMenu(openSubMenu);
+    //           me.closeSubMenu(openSubMenu);
     //         });
     //       }
     //     }, 1);
     //   }
     // });
 
-    // if (self.options.spaceopen == 'enabled') {
-    //   $.bind($$('.' + self.options.classNames.link, self.element), {
+    // if (me.options.spaceopen == 'enabled') {
+    //   $.bind($$('.' + me.options.classNames.link, me.element), {
     //     'keydown': function (e) {
     //       if (e.keyCode == 32) {
     //         var trigger = e.target;
     //         var subMenu = trigger.nextElementSibling;
 
-    //         if (subMenu && subMenu.classList.contains(self.options.classNames.sub)) {
+    //         if (subMenu && subMenu.classList.contains(me.options.classNames.sub)) {
     //           e.preventDefault();
-    //           self.toggleSubMenu(subMenu);
+    //           me.toggleSubMenu(subMenu);
     //         }
     //       }
     //     }
     //   });
     // }
 
-    // if (self.options.clickopen == 'enabled') {
-    //   $$('.' + self.options.classNames.sub, self.element).forEach(function (subMenu) {
-    //     subMenu.classList.add(self.options.classNames.nohover)
+    // if (me.options.clickopen == 'enabled') {
+    //   $$('.' + me.options.classNames.sub, me.element).forEach(function (subMenu) {
+    //     subMenu.classList.add(me.options.classNames.nohover)
     //   });
-    //   $.bind($$('.' + self.options.classNames.link, self.element), {
+    //   $.bind($$('.' + me.options.classNames.link, me.element), {
     //     'click': function (e) {
     //       var subMenu = e.target.nextElementSibling;
 
-    //       if (subMenu && subMenu.classList.contains(self.options.classNames.sub)) {
+    //       if (subMenu && subMenu.classList.contains(me.options.classNames.sub)) {
     //         e.preventDefault();
-    //         self.openSubMenu(subMenu);
+    //         me.openSubMenu(subMenu);
     //       }
     //     }
     //   });
@@ -135,9 +135,9 @@
 
   _.prototype = {
     closeOverlay: function () {
-      var self = this;
-      $$('.' + self.options.classNames.main + self.options.classNames.overlay + '.' + self.options.classNames.active, self.element).forEach(function (overlay) {
-        overlay.classList.remove(self.options.classNames.active);
+      var me = this;
+      $$('.' + me.options.classNames.main + me.options.classNames.overlay + '.' + me.options.classNames.active, me.element).forEach(function (overlay) {
+        overlay.classList.remove(me.options.classNames.active);
       });
     }
     // openSubMenu: function (subMenu) {
@@ -227,9 +227,9 @@
   _.$ = $;
   _.$$ = $$;
 
-  // Make sure to export componentNav on self when in a browser.
+  // Make sure to export perfundo on self when in a browser.
   if (typeof self !== 'undefined') {
-    self.componentNav = _;
+    self.perfundo = _;
   }
 
   // Expose componentNav as a CJS module.
