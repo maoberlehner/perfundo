@@ -19,7 +19,9 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.5.2",
-    "normalize-scss": "^4.0.3"
+    "normalize-scss": "^4.0.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "main": "gulpfile.js"
 }

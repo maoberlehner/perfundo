@@ -10,8 +10,8 @@ var config = {
   },
   scripts: {
     destination: 'dist',
-    destinationFileName: 'perfundo.js',
-    browserifyEntries: ['js/perfundo.js'],
+    destinationFileName: 'index.js',
+    browserifyEntries: ['js/index.js'],
     watchDirectories: ['js/**/*']
   },
   sassOptions: {
@@ -35,6 +35,8 @@ var rename       = require('gulp-rename');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
+var buffer       = require('vinyl-buffer');
+var source       = require('vinyl-source-stream');
 
 /**
  * Styles
@@ -81,7 +83,7 @@ gulp.task('scripts:build', ['clean:scripts'], function () {
   return b.bundle()
     .pipe(source(config.scripts.destinationFileName))
     .pipe(buffer())
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest(config.scripts.destination))
     .pipe(browserSync.stream());
 });
@@ -113,6 +115,7 @@ gulp.task('watch', function () {
     proxy: config.host + config.subdirectory
   });
   gulp.watch(config.styles.watchDirectories, ['styles:minify']);
+  gulp.watch(config.scripts.watchDirectories, ['scripts:build']);
 });
 
 /**
