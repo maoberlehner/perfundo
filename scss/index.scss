@@ -30,6 +30,12 @@ $perfundo-svg-buttons:      false !default;
   }
 }
 
+.#{$perfundo-namespace}__html {
+  padding: 2em;
+  max-width: 42em;
+  background: #fff;
+}
+
 .#{$perfundo-namespace}__figcaption {
   color: #efefef;
 }
