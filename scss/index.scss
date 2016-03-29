@@ -39,6 +39,12 @@ $perfundo-svg-buttons:      false !default;
   background: #fff;
 }
 
+.#{$perfundo-namespace}__figure {
+  img {
+    display: none;
+  }
+}
+
 .#{$perfundo-namespace}__figcaption {
   color: #efefef;
 }
