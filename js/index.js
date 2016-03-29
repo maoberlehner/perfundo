@@ -53,12 +53,10 @@
 
     $.bind($$('.' + me.options.classNames.link, me.element), {
       'click': function (e) {
-        var overlay = $(this.getAttribute('href'));
         if (me.options.disableHistory) {
           e.preventDefault();
         }
-        me.closeOverlay();
-        overlay.classList.add(me.options.classNames.active); // @TODO: use openOverlay prototype
+        me.openOverlay(this.getAttribute('href'));
       }
     });
 
@@ -135,6 +133,12 @@
   };
 
   _.prototype = {
+    openOverlay: function (overlay) {
+      var me = this;
+      var overlay = $(overlay);
+      me.closeOverlay();
+      overlay.classList.add(me.options.classNames.active); // @TODO: use openOverlay prototype
+    },
     closeOverlay: function () {
       var me = this;
       $$('.' + me.options.classNames.overlay + '.' + me.options.classNames.active, me.element).forEach(function (overlay) {
