@@ -83,7 +83,11 @@ gulp.task('scripts:build', ['clean:scripts'], function () {
   return b.bundle()
     .pipe(source(config.scripts.destinationFileName))
     .pipe(buffer())
-    //.pipe(uglify())
+    .pipe(gulp.dest(config.scripts.destination))
+    .pipe(uglify())
+    .pipe(rename(function (path) {
+      path.basename += '.min';
+    }))
     .pipe(gulp.dest(config.scripts.destination))
     .pipe(browserSync.stream());
 });
