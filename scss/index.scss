@@ -24,7 +24,8 @@ $perfundo-svg-buttons:      false !default;
 }
 
 .#{$perfundo-namespace}__content {
-  text-align: left;
+  overflow: scroll;
+  max-height: 100%;
   :target > &,
   .is-active > & {
     animation: 0.4s ease-out 0.2s both;
