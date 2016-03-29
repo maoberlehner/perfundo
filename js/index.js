@@ -21,21 +21,21 @@
 
     o = o || {};
 
-    // @TODO: add a placeholder for the main class name to the class names?!
+    // @TODO: remove unused class names?!
     configure(me, {
       disableHistory: false,
       classNames: {
         main: 'perfundo',
-        link: '__link',
-        overlay: '__overlay',
-        content: '__content',
-        html: '__html',
-        figcaption: '__figcaption',
-        control: '__control',
-        close: '__close',
-        prev: '__prev',
-        next: '__next',
-        untarget: '__untarget',
+        link: 'perfundo__link',
+        overlay: 'perfundo__overlay',
+        content: 'perfundo__content',
+        html: 'perfundo__html',
+        figcaption: 'perfundo__figcaption',
+        control: 'perfundo__control',
+        close: 'perfundo__close',
+        prev: 'perfundo__prev',
+        next: 'perfundo__next',
+        untarget: 'perfundo__untarget',
         active: 'is-active'
       }
     }, o);
@@ -51,7 +51,7 @@
       me.element.insertBefore(isActiveStyle, style);
     }
 
-    $.bind($$('.' + me.options.classNames.main + me.options.classNames.link, me.element), {
+    $.bind($$('.' + me.options.classNames.link, me.element), {
       'click': function (e) {
         var overlay = $(this.getAttribute('href'));
         if (me.options.disableHistory) {
@@ -62,7 +62,7 @@
       }
     });
 
-    $.bind($$('.' + me.options.classNames.main + me.options.classNames.close, me.element), {
+    $.bind($$('.' + me.options.classNames.close, me.element), {
       'click': function (e) {
         if (me.options.disableHistory) {
           e.preventDefault();
@@ -137,7 +137,7 @@
   _.prototype = {
     closeOverlay: function () {
       var me = this;
-      $$('.' + me.options.classNames.main + me.options.classNames.overlay + '.' + me.options.classNames.active, me.element).forEach(function (overlay) {
+      $$('.' + me.options.classNames.overlay + '.' + me.options.classNames.active, me.element).forEach(function (overlay) {
         overlay.classList.remove(me.options.classNames.active);
       });
     }
