@@ -21,6 +21,7 @@
 
     o = o || {};
 
+    // @TODO: add a placeholder for the main class name to the class names?!
     configure(me, {
       disableHistory: false,
       classNames: {
