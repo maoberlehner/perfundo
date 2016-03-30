@@ -60,12 +60,14 @@
       }
     });
 
-    $.bind($$('.' + me.options.classNames.close, me.element), {
+    $.bind(me.element, {
       click: function (e) {
-        if (me.options.disableHistory) {
-          e.preventDefault();
+        if (e.target.classList.contains(me.options.classNames.close) || e.target.classList.contains(me.options.classNames.overlay)) {
+          if (me.options.disableHistory) {
+            e.preventDefault();
+          }
+          me.closeOverlay();
         }
-        me.closeOverlay();
       }
     });
 
