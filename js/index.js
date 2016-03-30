@@ -52,7 +52,7 @@
     }
 
     $.bind($$('.' + me.options.classNames.link, me.element), {
-      'click': function (e) {
+      click: function (e) {
         if (me.options.disableHistory) {
           e.preventDefault();
         }
@@ -61,7 +61,7 @@
     });
 
     $.bind($$('.' + me.options.classNames.close, me.element), {
-      'click': function (e) {
+      click: function (e) {
         if (me.options.disableHistory) {
           e.preventDefault();
         }
