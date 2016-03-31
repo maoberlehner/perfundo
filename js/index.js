@@ -2,6 +2,7 @@
   var _ = function (element, o) {
     var me = this;
 
+    // Make it possible to initialize perfundo on multiple elements at once.
     if (typeof element === 'string' && $$(element).length > 1) {
       var object = [];
       $$(element).forEach(function (element) {
@@ -10,7 +11,6 @@
       return object;
     }
 
-    // Setup.
     me.element = $(element);
     me.options = {};
 
@@ -70,68 +70,6 @@
         }
       }
     });
-
-    // $.bind($$('.' + me.options.classNames.link, me.element), {
-    //   'focus': function (e) {
-    //     var trigger = e.target;
-    //     var subMenu = trigger.nextElementSibling;
-    //     // Close open sub menus that are not part of the triggered menu tree.
-    //     var openSubMenus = $$('.' + me.options.classNames.open, me.element);
-    //     openSubMenus.forEach(function (openSubMenu) {
-    //       if (!isDescendant(openSubMenu, trigger)) {
-    //         me.closeSubMenu(openSubMenu);
-    //       }
-    //     });
-    //     // Open the sub menu.
-    //     if (me.options.focusopen == 'enabled' && subMenu && subMenu.classList.contains(me.options.classNames.sub)) {
-    //       me.openSubMenu(subMenu);
-    //     }
-    //   },
-    //   'blur': function (e) {
-    //     // Close all open sub menus if the menu loses focus.
-    //     setTimeout(function() {
-    //       var trigger = document.activeElement;
-    //       if (!isDescendant(me.element, trigger)) {
-    //         var openSubMenus = $$('.' + me.options.classNames.open, me.element);
-    //         openSubMenus.forEach(function (openSubMenu) {
-    //           me.closeSubMenu(openSubMenu);
-    //         });
-    //       }
-    //     }, 1);
-    //   }
-    // });
-
-    // if (me.options.spaceopen == 'enabled') {
-    //   $.bind($$('.' + me.options.classNames.link, me.element), {
-    //     'keydown': function (e) {
-    //       if (e.keyCode == 32) {
-    //         var trigger = e.target;
-    //         var subMenu = trigger.nextElementSibling;
-
-    //         if (subMenu && subMenu.classList.contains(me.options.classNames.sub)) {
-    //           e.preventDefault();
-    //           me.toggleSubMenu(subMenu);
-    //         }
-    //       }
-    //     }
-    //   });
-    // }
-
-    // if (me.options.clickopen == 'enabled') {
-    //   $$('.' + me.options.classNames.sub, me.element).forEach(function (subMenu) {
-    //     subMenu.classList.add(me.options.classNames.nohover)
-    //   });
-    //   $.bind($$('.' + me.options.classNames.link, me.element), {
-    //     'click': function (e) {
-    //       var subMenu = e.target.nextElementSibling;
-
-    //       if (subMenu && subMenu.classList.contains(me.options.classNames.sub)) {
-    //         e.preventDefault();
-    //         me.openSubMenu(subMenu);
-    //       }
-    //     }
-    //   });
-    // }
   };
 
   _.prototype = {
@@ -139,7 +77,7 @@
       var me = this;
       var overlay = $(overlay);
       me.closeOverlay();
-      overlay.classList.add(me.options.classNames.active); // @TODO: use openOverlay prototype
+      overlay.classList.add(me.options.classNames.active);
     },
     closeOverlay: function () {
       var me = this;
@@ -147,27 +85,6 @@
         overlay.classList.remove(me.options.classNames.active);
       });
     }
-    // openSubMenu: function (subMenu) {
-    //   subMenu = $(subMenu, this.element);
-    //   // Add open class and aria rule to the sub menu.
-    //   subMenu.previousElementSibling.setAttribute('aria-expanded', true);
-    //   subMenu.classList.add(this.options.classNames.open);
-    // },
-    // closeSubMenu: function (subMenu) {
-    //   subMenu = $(subMenu, this.element);
-    //   // Remove open class and aria rule from not targeted sub menus.
-    //   subMenu.previousElementSibling.setAttribute('aria-expanded', false);
-    //   subMenu.classList.remove(this.options.classNames.open);
-    // },
-    // toggleSubMenu: function (subMenu) {
-    //   subMenu = $(subMenu, this.element);
-    //   if (subMenu.classList.contains(this.options.classNames.open)) {
-    //     this.closeSubMenu(subMenu);
-    //   }
-    //   else {
-    //     this.openSubMenu(subMenu);
-    //   }
-    // }
   };
 
   // Private functions.
@@ -205,17 +122,6 @@
   function $$(expr, con) {
     return slice.call((con || document).querySelectorAll(expr));
   }
-
-  // function isDescendant(parent, child) {
-  //   var node = child.parentNode;
-  //   while (node != null) {
-  //     if (node == parent) {
-  //       return true;
-  //     }
-  //     node = node.parentNode;
-  //   }
-  //   return false;
-  // }
 
   $.bind = function(elements, o) {
     if (elements) {
