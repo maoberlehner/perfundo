@@ -24,7 +24,7 @@ $perfundo-svg-buttons:      false !default;
 }
 
 .#{$perfundo-namespace}__content {
-  overflow: scroll;
+  overflow: auto;
   max-height: 100%;
   :target > &,
   .is-active > & {
@@ -40,7 +40,12 @@ $perfundo-svg-buttons:      false !default;
 }
 
 .#{$perfundo-namespace}__figure {
+  display: none; // Prevents the full size image from loading.
   margin: map-get($spacing, m);
+  :target > &,
+  .is-active > & {
+    display: block;
+  }
   img {
     display: none;
   }
@@ -48,6 +53,11 @@ $perfundo-svg-buttons:      false !default;
 
 .#{$perfundo-namespace}__figcaption {
   color: #efefef;
+}
+
+.#{$perfundo-namespace}__image {
+  max-width: 100%;
+  background-size: 100%;
 }
 
 /**

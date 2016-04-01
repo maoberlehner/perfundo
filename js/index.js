@@ -40,17 +40,6 @@
       }
     }, o);
 
-    // Add ".is-active" functionality.
-    var style = $('style', me.element);
-    if (style) {
-      var isActiveStyle = style.cloneNode(true);
-      isActiveStyle.innerHTML = isActiveStyle.innerHTML.replace(
-        /:target/gi,
-        '.' + me.options.classNames.active
-      );
-      me.element.insertBefore(isActiveStyle, style);
-    }
-
     $.bind($$('.' + me.options.classNames.link, me.element), {
       click: function (e) {
         if (me.options.disableHistory) {
