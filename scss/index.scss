@@ -40,6 +40,7 @@ $perfundo-svg-buttons:      false !default;
 }
 
 .#{$perfundo-namespace}__figure {
+  margin: map-get($spacing, m);
   img {
     display: none;
   }
@@ -75,8 +76,8 @@ $perfundo-svg-buttons:      false !default;
 }
 
 .#{$perfundo-namespace}__close {
-  top: 1em;
-  right: 1em;
+  top: map-get($spacing, s);
+  right: map-get($spacing, s);
   @if $perfundo-svg-buttons {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" version%3D"1.1" x%3D"0" y%3D"0" viewBox%3D"0 0 32 32" xml%3Aspace%3D"preserve"><path fill%3D"%23fff" d%3D"M21.7 10.3c-0.4-0.4-1-0.4-1.4 0l-4.3 4.3-4.2-4.2c-0.4-0.4-1-0.4-1.4 0-0.4 0.4-0.4 1 0 1.4l4.2 4.2-4.3 4.3c-0.4 0.4-0.4 1 0 1.4 0.4 0.4 1 0.4 1.4 0l4.3-4.3 4.2 4.2c0.4 0.4 1 0.4 1.4 0 0.4-0.4 0.4-1 0-1.4l-4.2-4.2 4.3-4.3C22.1 11.3 22.1 10.7 21.7 10.3zM16 0C7.2 0 0 7.2 0 16s7.2 16 16 16c8.8 0 16-7.2 16-16S24.8 0 16 0zM16 30C8.3 30 2 23.7 2 16S8.3 2 16 2s14 6.3 14 14S23.7 30 16 30z"%2F><%2Fsvg>');
   }
@@ -98,14 +99,14 @@ $perfundo-svg-buttons:      false !default;
 }
 
 .#{$perfundo-namespace}__prev {
-  left: 1em;
+  left: map-get($spacing, l);
   @if $perfundo-svg-buttons {
     transform: rotate(180deg);
   }
 }
 
 .#{$perfundo-namespace}__next {
-  right: 1em;
+  right: map-get($spacing, l);
 }
 
 .#{$perfundo-namespace}__untarget {
