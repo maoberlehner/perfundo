@@ -24,6 +24,7 @@
     // @TODO: remove unused class names?!
     configure(me, {
       disableHistory: false,
+      swipe: true,
       classNames: {
         main: 'perfundo',
         link: 'perfundo__link',
@@ -45,7 +46,7 @@
         if (me.options.disableHistory) {
           e.preventDefault();
         }
-        me.openOverlay(this.getAttribute('href'));
+        me.open(this.getAttribute('href'));
       }
     });
 
@@ -55,24 +56,85 @@
           if (me.options.disableHistory) {
             e.preventDefault();
           }
-          me.closeOverlay();
+          me.close();
         }
       }
     });
+
+    if (me.options.swipe) {
+      // Initialize swipe detection variables.
+      var touchStartX = 0;
+      var touchStartY = 0;
+      var touchEndX = 0;
+      var touchEndY = 0;
+      // Store the swipe distance.
+      var swipeDistanceX;
+      var swipeDistanceY;
+      // Min X distance to count as horizontal swipe.
+      var swipeMinX = 50;
+      // Max Y distance to still count as horizontal swipe.
+      var swipeMaxY = 60;
+
+      $.bind($$('.' + me.options.classNames.content, me.element), {
+        touchstart: function (e) {
+          // Save touchstart coordinates.
+          touchStartX = e.changedTouches[0].clientX;
+          touchStartY = e.changedTouches[0].clientY;
+        },
+        touchend: function (e) {
+          // Save touchstart coordinates.
+          touchEndX = e.changedTouches[0].clientX;
+          touchEndY = e.changedTouches[0].clientY;
+          // Calculate swipe distances.
+          swipeDistanceX = touchStartX - touchEndX;
+          swipeDistanceY = touchStartY - touchEndY;
+          // Check if touch gesture was a swipe.
+          if ((Math.abs(swipeDistanceX) >= swipeMinX) && (Math.abs(swipeDistanceY) <= swipeMaxY)) {
+            if (swipeDistanceX > swipeMinX) {
+              me.next();
+            }
+            else {
+              me.prev();
+            }
+          }
+          // Reset variables to be ready to detect the next swipe.
+          touchStartX = 0;
+          touchStartY = 0;
+          touchEndX = 0;
+          touchEndY = 0;
+          swipeDistanceX = null;
+          swipeDistanceY = null;
+        }
+      });
+    }
   };
 
   _.prototype = {
-    openOverlay: function (overlay) {
+    open: function (overlay) {
       var me = this;
       var overlay = $(overlay);
-      me.closeOverlay();
+      me.close();
       overlay.classList.add(me.options.classNames.active);
     },
-    closeOverlay: function () {
+    close: function () {
       var me = this;
       $$('.' + me.options.classNames.overlay + '.' + me.options.classNames.active, me.element).forEach(function (overlay) {
         overlay.classList.remove(me.options.classNames.active);
       });
+    },
+    next: function () {
+      var me = this;
+      var nextLink = $('.' + me.options.classNames.next, me.element);
+      if (nextLink) {
+        nextLink.click();
+      }
+    },
+    prev: function () {
+      var me = this;
+      var prevLink = $('.' + me.options.classNames.prev, me.element);
+      if (prevLink) {
+        prevLink.click();
+      }
     }
   };
 
