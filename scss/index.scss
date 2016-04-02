@@ -1,80 +1,97 @@
+// @TODO: use sane variable names.
 $perfundo-namespace:        'perfundo' !default;
 $perfundo-background-color: #000 !default;
 $perfundo-opacity:          0.9 !default;
 $perfundo-svg-buttons:      false !default;
 
 /**
- * Overlay
+ * 1. Make the overlay full width and height.
+ * 2. Center direct children both horizontally and vertically.
+ * 3. Hide the overlay by default and show it when it is targeted or active.
  */
 .#{$perfundo-namespace}__overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  visibility: hidden;
-  justify-content: center;
-  align-items: center;
+  position: fixed; /* [1] */
+  top: 0; /* [1] */
+  right: 0; /* [1] */
+  bottom: 0; /* [1] */
+  left: 0; /* [1] */
+  display: flex; /* [2] */
+  visibility: hidden; /* [3] */
+  justify-content: center; /* [2] */
+  align-items: center; /* [2] */
   background-color: rgba($perfundo-background-color, $perfundo-opacity);
   &:target,
   &.is-active {
-    visibility: visible;
+    visibility: visible; /* [3] */
   }
 }
 
+/**
+ * 1. Add a scrollbar if the content doesn't fit vertically.
+ * 2. Inherit the animation name (e.g. animate.css class) from the parent.
+ */
 .#{$perfundo-namespace}__content {
-  overflow: auto;
-  max-height: 100%;
+  overflow: auto; /* [1] */
+  max-height: 100%; /* [1] */
   :target > &,
   .is-active > & {
     animation: 0.4s ease-out 0.2s both;
-    animation-name: inherit;
+    animation-name: inherit; /* [2] */
   }
 }
 
 .#{$perfundo-namespace}__html {
-  padding: 2em;
-  max-width: 42em;
-  background: #fff;
+  padding: 2em; // @TODO: make configurable.
+  max-width: 42em; // @TODO: make configurable.
+  background: #fff; // @TODO: make configurable.
 }
 
+/**
+ * 1. Prevent the full sized image from loading initially.
+ * 2. Trigger loading of the full sized image when the lightbox is opened.
+ */
 .#{$perfundo-namespace}__figure {
-  display: none; // Prevents the full size image from loading.
+  display: none; /* [1] */
   margin: map-get($spacing, m);
   :target > &,
   .is-active > & {
-    display: block;
+    display: block; /* [2] */
   }
   img {
-    display: none;
+    display: none; // @TODO: remove from here and html or test what makes sense for a11n.
   }
 }
 
 .#{$perfundo-namespace}__figcaption {
-  color: #efefef;
-}
-
-.#{$perfundo-namespace}__image {
-  max-width: 100%;
-  background-size: 100%;
+  color: #efefef; // @TODO: make configurable.
 }
 
 /**
- * Controls
+ * 1. Make the image container responsive.
+ * 2. Scale the background image to match the size of the image container.
+ */
+.#{$perfundo-namespace}__image {
+  max-width: 100%; /* [1] */
+  background-size: 100%; /* [2] */
+}
+
+/**
+ * 1. Make the icons as big as the control element.
+ * 2. Hide the control text visually, but have it available for screen readers.
+ * 3. Make the control links readable depending on the overlay color.
  */
 .#{$perfundo-namespace}__control {
   position: absolute;
   @if $perfundo-svg-buttons {
     width: 3em;
     height: 3em;
-    background-position: center center;
-    background-size: cover;
-    text-indent: -999em;
+    background-position: center center; /* [1] */
+    background-size: cover; /* [1] */
+    text-indent: -999em; /* [2] */
   } @else {
     &,
     &:visited {
-      color: #fff;
+      color: #fff; /* [3] */ // @TODO: make configurable.
     }
   }
 }
@@ -113,7 +130,10 @@ $perfundo-svg-buttons:      false !default;
   right: map-get($spacing, l);
 }
 
+/**
+ * 1. Move the untarget anchor to the top of the screen to prevent "jumping".
+ */
 .#{$perfundo-namespace}__untarget {
-  position: fixed;
-  top: 0;
+  position: fixed; /* [1] */
+  top: 0; /* [1] */
 }
