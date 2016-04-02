@@ -72,15 +72,9 @@ $perfundo-svg-buttons:      false !default;
     background-size: cover;
     text-indent: -999em;
   } @else {
-    text-decoration: none;
-    text-transform: uppercase;
     &,
     &:visited {
       color: #fff;
-    }
-    &:hover,
-    &:focus {
-      text-decoration: underline;
     }
   }
 }
