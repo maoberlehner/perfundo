@@ -11,3 +11,10 @@
   color: #fff;
   text-align: center;
 }
+
+.c-hero__sub-title {
+  display: block;
+  margin-top: 0.35em;
+  font-weight: map-get-deep($fonts, a, weights, normal);
+  font-size: 0.5em;
+}
