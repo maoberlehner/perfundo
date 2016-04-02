@@ -1,8 +1,10 @@
-// @TODO: use sane variable names.
-$perfundo-namespace:        'perfundo' !default;
-$perfundo-background-color: #000 !default;
-$perfundo-opacity:          0.9 !default;
-$perfundo-svg-buttons:      false !default;
+$perfundo-namespace: 'perfundo' !default;
+$perfundo-background-color: rgba(#000, 0.9) !default;
+$perfundo-color: #fff !default;
+$perfundo-control-use-icons: false !default;
+$perfundo-html-padding: 2em !default;
+$perfundo-html-max-width: 42em !default;
+$perfundo-html-background-color: #fff !default;
 
 /**
  * 1. Make the overlay full width and height.
@@ -19,7 +21,7 @@ $perfundo-svg-buttons:      false !default;
   visibility: hidden; /* [3] */
   justify-content: center; /* [2] */
   align-items: center; /* [2] */
-  background-color: rgba($perfundo-background-color, $perfundo-opacity);
+  background-color: $perfundo-background-color;
   &:target,
   &.is-active {
     visibility: visible; /* [3] */
@@ -41,9 +43,9 @@ $perfundo-svg-buttons:      false !default;
 }
 
 .#{$perfundo-namespace}__html {
-  padding: 2em; // @TODO: make configurable.
-  max-width: 42em; // @TODO: make configurable.
-  background: #fff; // @TODO: make configurable.
+  padding: $perfundo-html-padding;
+  max-width: $perfundo-html-max-width;
+  background-color: $perfundo-html-background-color;
 }
 
 /**
@@ -63,7 +65,7 @@ $perfundo-svg-buttons:      false !default;
 }
 
 .#{$perfundo-namespace}__figcaption {
-  color: #efefef; // @TODO: make configurable.
+  color: $perfundo-color;
 }
 
 /**
@@ -82,7 +84,7 @@ $perfundo-svg-buttons:      false !default;
  */
 .#{$perfundo-namespace}__control {
   position: absolute;
-  @if $perfundo-svg-buttons {
+  @if $perfundo-control-use-icons {
     width: 3em;
     height: 3em;
     background-position: center center; /* [1] */
@@ -91,7 +93,7 @@ $perfundo-svg-buttons:      false !default;
   } @else {
     &,
     &:visited {
-      color: #fff; /* [3] */ // @TODO: make configurable.
+      color: $perfundo-color; /* [3] */
     }
   }
 }
@@ -99,7 +101,7 @@ $perfundo-svg-buttons:      false !default;
 .#{$perfundo-namespace}__close {
   top: map-get($spacing, s);
   right: map-get($spacing, s);
-  @if $perfundo-svg-buttons {
+  @if $perfundo-control-use-icons {
     background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20x%3D%220%22%20y%3D%220%22%20viewBox%3D%220%200%2032%2032%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M21.7%2010.3c-0.4-0.4-1-0.4-1.4%200l-4.3%204.3-4.2-4.2c-0.4-0.4-1-0.4-1.4%200-0.4%200.4-0.4%201%200%201.4l4.2%204.2-4.3%204.3c-0.4%200.4-0.4%201%200%201.4%200.4%200.4%201%200.4%201.4%200l4.3-4.3%204.2%204.2c0.4%200.4%201%200.4%201.4%200%200.4-0.4%200.4-1%200-1.4l-4.2-4.2%204.3-4.3C22.1%2011.3%2022.1%2010.7%2021.7%2010.3zM16%200C7.2%200%200%207.2%200%2016s7.2%2016%2016%2016c8.8%200%2016-7.2%2016-16S24.8%200%2016%200zM16%2030C8.3%2030%202%2023.7%202%2016S8.3%202%2016%202s14%206.3%2014%2014S23.7%2030%2016%2030z%22%2F%3E%3C%2Fsvg%3E');
   }
 }
@@ -110,7 +112,7 @@ $perfundo-svg-buttons:      false !default;
   margin-top: -1.5em;
   opacity: 0.2;
   transition: opacity 0.2s;
-  @if $perfundo-svg-buttons {
+  @if $perfundo-control-use-icons {
     background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2244.1%22%20height%3D%2294.7%22%20viewBox%3D%220%200%2044.1%2094.7%22%20enable-background%3D%22new%200%200%2044.088%2094.67%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M44.1%2047.3L1.5%2094.7%200%2093.3l41.4-46L0%201.3%201.5%200%2044.1%2047.3z%22%2F%3E%3C%2Fsvg%3E');
   }
   &:hover,
@@ -121,7 +123,7 @@ $perfundo-svg-buttons:      false !default;
 
 .#{$perfundo-namespace}__prev {
   left: map-get($spacing, l);
-  @if $perfundo-svg-buttons {
+  @if $perfundo-control-use-icons {
     transform: rotate(180deg);
   }
 }
