@@ -8,7 +8,7 @@ $perfundo-html-background-color: #fff !default;
 
 /**
  * 1. Make the overlay full width and height.
- * 2. Center direct children both horizontally and vertically.
+ * 2. Center direct children horizontally and vertically.
  * 3. Hide the overlay by default and show it when it is targeted or active.
  */
 .#{$perfundo-namespace}__overlay {
