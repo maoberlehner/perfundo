@@ -5,7 +5,8 @@
   "author": "Markus Oberlehner",
   "license": "GPL v2",
   "dependencies": {
-    "animate.css": "^3.5.1"
+    "animate.css": "^3.5.1",
+    "prismjs": "^1.4.1"
   },
   "devDependencies": {
     "avalanchesass_base_box_sizing_reset": "^3.0.0",

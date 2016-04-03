@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
+    <link rel="stylesheet" href="node_modules/prismjs/themes/prism-okaidia.css">
     <link rel="stylesheet" href="dist/index.css">
   </head>
   <body>
@@ -60,6 +61,24 @@
               <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
             </div>
           </div>
+          <pre><code class="language-html">
+&#x3C;div class=&#x22;perfundo&#x22;&#x3E;
+  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-single2&#x22;&#x3E;
+    &#x3C;img src=&#x22;img/img-single_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+  &#x3C;/a&#x3E;
+  &#x3C;div id=&#x22;perfundo-single2&#x22; class=&#x22;perfundo__overlay fadeInLeft&#x22;&#x3E;
+    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
+      &#x3C;img src=&#x22;img/img-single_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 56.25%; background-image: url(img/img-single.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
+      &#x3C;figcaption class=&#x22;perfundo__figcaption&#x22;&#x3E;Single image with caption&#x3C;/figcaption&#x3E;
+    &#x3C;/figure&#x3E;
+    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+          </code></pre>
+          <pre><code class="language-javascript">
+// No JavaScript!
+          </code></pre>
 
           <h4 class="c-h4">Simple gallery</h4>
           <div class="u-spacing-top-m">
@@ -108,6 +127,53 @@
               </div>
             </div>
           </div>
+          <pre><code class="language-html">
+&#x3C;div class=&#x22;perfundo&#x22;&#x3E;
+  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img1&#x22;&#x3E;
+    &#x3C;img src=&#x22;img/img1_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+  &#x3C;/a&#x3E;
+  &#x3C;div id=&#x22;perfundo-img1&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
+    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
+      &#x3C;img src=&#x22;img/img1_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img1.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
+    &#x3C;/figure&#x3E;
+    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
+    &#x3C;a class=&#x22;perfundo__next perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;Next&#x3C;/a&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+
+&#x3C;div class=&#x22;perfundo&#x22;&#x3E;
+  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;
+    &#x3C;img src=&#x22;img/img2_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+  &#x3C;/a&#x3E;
+  &#x3C;div id=&#x22;perfundo-img2&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
+    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
+      &#x3C;img src=&#x22;img/img2_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img2.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
+    &#x3C;/figure&#x3E;
+    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
+    &#x3C;a class=&#x22;perfundo__next perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img3&#x22;&#x3E;Next&#x3C;/a&#x3E;
+    &#x3C;a class=&#x22;perfundo__prev perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img1&#x22;&#x3E;Prev&#x3C;/a&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+
+&#x3C;div class=&#x22;perfundo&#x22;&#x3E;
+  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img3&#x22;&#x3E;
+    &#x3C;img src=&#x22;img/img3_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+  &#x3C;/a&#x3E;
+  &#x3C;div id=&#x22;perfundo-img3&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
+    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
+      &#x3C;img src=&#x22;img/img3_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img3.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
+    &#x3C;/figure&#x3E;
+    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
+    &#x3C;a class=&#x22;perfundo__prev perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;Prev&#x3C;/a&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+          </code></pre>
+          <pre><code class="language-javascript">
+// No JavaScript!
+          </code></pre>
 
           <h4 class="c-h4">Content</h4>
           <div class="perfundo u-spacing-top-m">
@@ -123,9 +189,33 @@
               <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
             </div>
           </div>
+          <pre><code class="language-html">
+&#x3C;div class=&#x22;perfundo&#x22;&#x3E;
+  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-content&#x22;&#x3E;
+    Open the lightbox...
+  &#x3C;/a&#x3E;
+  &#x3C;div id=&#x22;perfundo-content&#x22; class=&#x22;perfundo__overlay bounceIn&#x22;&#x3E;
+    &#x3C;div class=&#x22;perfundo__content perfundo__html&#x22;&#x3E;
+      &#x3C;h5&#x3E;Lorem Ipsum&#x3C;/h5&#x3E;
+      &#x3C;p&#x3E;Sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&#x3C;/p&#x3E;
+      &#x3C;p&#x3E;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur.&#x3C;/p&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+          </code></pre>
+          <pre><code class="language-javascript">
+// No JavaScript!
+          </code></pre>
 
           <h4 class="c-h4">Direct linking</h4>
           <p><a href="http://perfundo.oberlehner.net/#perfundo-single">perfundo.oberlehner.net/#perfundo-single</a></p>
+          <pre><code class="language-html">
+&#x3C;p&#x3E;&#x3C;a href=&#x22;http://perfundo.oberlehner.net/#perfundo-single&#x22;&#x3E;perfundo.oberlehner.net/#perfundo-single&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+          </code></pre>
+          <pre><code class="language-javascript">
+// No JavaScript!
+          </code></pre>
 
           <h3 class="c-h3">Browser Support</h3>
           <ul class="c-list">
@@ -154,6 +244,8 @@
     </div>
     <div id="perfundo-untarget" class="perfundo__untarget"></div>
 
+    <script src="node_modules/prismjs/prism.js"></script>
+    <script src="node_modules/prismjs/components/prism-javascript.min.js"></script>
     <script src="dist/index.js" async></script>
   </body>
 </html>
