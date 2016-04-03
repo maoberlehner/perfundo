@@ -21,7 +21,6 @@
 
     o = o || {};
 
-    // @TODO: remove unused class names?!
     configure(me, {
       disableHistory: false,
       swipe: true,
@@ -30,9 +29,6 @@
         link: 'perfundo__link',
         overlay: 'perfundo__overlay',
         content: 'perfundo__content',
-        html: 'perfundo__html',
-        figcaption: 'perfundo__figcaption',
-        control: 'perfundo__control',
         close: 'perfundo__close',
         prev: 'perfundo__prev',
         next: 'perfundo__next',
