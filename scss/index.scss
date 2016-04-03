@@ -17,6 +17,7 @@ $perfundo-html-background-color: #fff !default;
   right: 0; /* [1] */
   bottom: 0; /* [1] */
   left: 0; /* [1] */
+  z-index: 999;
   display: flex; /* [2] */
   visibility: hidden; /* [3] */
   justify-content: center; /* [2] */
