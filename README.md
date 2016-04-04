@@ -8,14 +8,11 @@ module. To do so, install the perfundo module into your project:
 ```
 npm install perfundo --save
 ```
-[Read more about installing eyeglass modules.](https://github.com/sass-eyeglass/eyeglass#adding-eyeglass-modules-to-your-project)
 
 Now you can import perfundo into your scss file:
 ```scss
 @import 'perfundo';
-```
-or
-```scss
+// OR
 @import 'perfundo/with-icons';
 ```
 
@@ -35,7 +32,9 @@ $perfundo-html-background-color: #fff;
 If you want to use the JavaScript enhancements, load the perfundo module into
 your JavaScript file:
 ```js
+// Load the module.
 var perfundo = require('perfundo');
+// Initialize a perfundo Lightbox.
 var myLightbox = new perfundo('.perfundo', {
   disableHistory: false,
   swipe: true,
@@ -76,4 +75,3 @@ Twitter: https://twitter.com/MaOberlehner
 
 ### License
 GPL v2 (http://www.gnu.org/licenses/gpl-2.0.html)
-
