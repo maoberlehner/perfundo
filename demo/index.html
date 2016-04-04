@@ -41,10 +41,15 @@
 
       <div class="o-container">
         <div class="c-main-content">
-          <h3 class="c-h3">Usage</h3>
-          <p>This is a proof of concept and not intended (although absolutely possible) to use in real world projects. There most certainly are accessibility problems with this lightbox solution - I'm no expert on this topic, if anyone can help with improvements in this regard please use <a href="https://github.com/maoberlehner/perfundo/issues/10">this GitHub issue</a>.</p>
-          <p>The perfect use case for this solution is a project where speed is an absolute top priority - you have already axed jQuery and some related plugins but there are those few images you want to display in a lightbox - under these circumstances a lightweight solution like this would be a pefect fit. Another possibility is to use this solution as a fallback if JavaScript is not available (e.g. loading of scripts fails,...)</p>
-          <p>The usability with mobile devices is not exactly the best because there is no way (I'm aware of) to make touch gestures do anything with pure CSS.</p>
+          <h3 class="c-h3">What?</h3>
+          <p>perfundo is a pure CSS Lightbox which is completely functional without JavaScript.</p>
+
+          <h3 class="c-h3">Why?</h3>
+          <p>First and foremost I just really like doing things, which are usually done with JavaScript, without JavaScript. Next my focus was to keep the file size of the CSS file (which provides the core functionallity) at an absolute minimum. So it is possible to provide a basic Lightbox functionallity for minimalistic sites with a focus on loading time and mobile performance.</p>
+          <p>Usually my answer why things should work also without JavaScript is: progressive enhancement. But in the case of Lightboxes progressive enhancement isn't an issue. The fallback of traditional Lightbox solutions is to just link to the big version of the image, which is a very good fallback behaviour in my opinion. <a href="https://www.reddit.com/r/webdev/comments/48z7jz/do_you_take_into_account_those_who_disable/d0nxftd">Read more about why progressive enhancement is important.</a></p>
+
+          <h3 class="c-h3">How?</h3>
+          <p>The short answer is: I use the CSS <code class="language-css">:target</code> pseudo class. If you want to go into detail, I tried my best to document <a href="https://github.com/maoberlehner/perfundo/blob/master/scss/index.scss">the code with comments</a>.</p>
 
           <h3 class="c-h3">Demos</h3>
           <h4 class="c-h4">Single image</h4>
