@@ -78,7 +78,7 @@
           touchStartY = e.changedTouches[0].clientY;
         },
         touchend: function (e) {
-          // Save touchstart coordinates.
+          // Save touchend coordinates.
           touchEndX = e.changedTouches[0].clientX;
           touchEndY = e.changedTouches[0].clientY;
           // Calculate swipe distances.
