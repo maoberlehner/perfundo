@@ -107,10 +107,13 @@ $perfundo-html-background-color: #fff !default;
   }
 }
 
+/**
+ * 1. Vertically center the prev / next controls.
+ */
 .#{$perfundo-namespace}__prev,
 .#{$perfundo-namespace}__next {
-  top: 50%;
-  margin-top: -1.5em;
+  top: 50%; /* [1] */
+  margin-top: -1.5em; /* [1] */
   opacity: 0.2;
   transition: opacity 0.2s;
   @if $perfundo-control-use-icons {
@@ -122,10 +125,14 @@ $perfundo-html-background-color: #fff !default;
   }
 }
 
+/**
+ * 1. Rotate the control element so it is possible to use the same icon for
+ *    prev and next.
+ */
 .#{$perfundo-namespace}__prev {
   left: 2em;
   @if $perfundo-control-use-icons {
-    transform: rotate(180deg);
+    transform: rotate(180deg); /* [1] */
   }
 }
 
