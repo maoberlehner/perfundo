@@ -53,10 +53,8 @@ var myLightbox = new perfundo('.perfundo', {
 ```
 
 ### Standalone (without npm)
-Download the CSS file (with or without svg icons) from
-https://perfundo.oberlehner.net (optionally you can also download the
-JavaScript enhancement file). Add the files to your HTML file like in the
-following example:
+Download https://perfundo.oberlehner.net/downloads/perfundo-2.0.0.zip. Add the
+files to your HTML file like in the following example:
 ```html
 <!-- Put this inside the <head> section of your HTML. -->
 <link rel="stylesheet" href="perfundo.min.css">
