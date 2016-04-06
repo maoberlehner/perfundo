@@ -224,6 +224,106 @@
 // No JavaScript!
           </code></pre>
 
+          <h4 class="c-h4">JavaScript enhanced gallery</h4>
+          <p>With using some JavaScript enhancements, it is possible to disable the creation of browser history steps (hash links) and enable swipe support for touch devices.</p>
+          <div class="u-spacing-top-m">
+            <div class="c-gallery o-grid">
+              <div class="c-gallery__item o-grid__item perfundo perfundo-js">
+                <a class="perfundo__link" href="#perfundo-js-img1">
+                  <img src="img/img1_s.jpg" alt="Demo image">
+                </a>
+                <div id="perfundo-js-img1" class="perfundo__overlay fadeIn">
+                  <figure class="perfundo__content perfundo__figure">
+                    <img src="img/img1_s.jpg" alt="Demo image">
+                    <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img1.jpg);"></div>
+                  </figure>
+                  <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                  <a class="perfundo__next perfundo__control perfundo__link" href="#perfundo-js-img2">Next</a>
+                </div>
+              </div>
+
+              <div class="c-gallery__item o-grid__item perfundo perfundo-js">
+                <a class="perfundo__link" href="#perfundo-js-img2">
+                  <img src="img/img2_s.jpg" alt="Demo image">
+                </a>
+                <div id="perfundo-js-img2" class="perfundo__overlay fadeIn">
+                  <figure class="perfundo__content perfundo__figure">
+                    <img src="img/img2_s.jpg" alt="Demo image">
+                    <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img2.jpg);"></div>
+                  </figure>
+                  <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                  <a class="perfundo__next perfundo__control perfundo__link" href="#perfundo-js-img3">Next</a>
+                  <a class="perfundo__prev perfundo__control perfundo__link" href="#perfundo-js-img1">Prev</a>
+                </div>
+              </div>
+
+              <div class="c-gallery__item o-grid__item perfundo perfundo-js">
+                <a class="perfundo__link" href="#perfundo-js-img3">
+                  <img src="img/img3_s.jpg" alt="Demo image">
+                </a>
+                <div id="perfundo-js-img3" class="perfundo__overlay fadeIn">
+                  <figure class="perfundo__content perfundo__figure">
+                    <img src="img/img3_s.jpg" alt="Demo image">
+                    <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img3.jpg);"></div>
+                  </figure>
+                  <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                  <a class="perfundo__prev perfundo__control perfundo__link" href="#perfundo-js-img2">Prev</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <pre><code class="language-html">
+&#x3C;div class=&#x22;perfundo perfundo-js&#x22;&#x3E;
+  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img1&#x22;&#x3E;
+    &#x3C;img src=&#x22;img/img1_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+  &#x3C;/a&#x3E;
+  &#x3C;div id=&#x22;perfundo-img1&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
+    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
+      &#x3C;img src=&#x22;img/img1_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img1.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
+    &#x3C;/figure&#x3E;
+    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
+    &#x3C;a class=&#x22;perfundo__next perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;Next&#x3C;/a&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+
+&#x3C;div class=&#x22;perfundo perfundo-js&#x22;&#x3E;
+  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;
+    &#x3C;img src=&#x22;img/img2_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+  &#x3C;/a&#x3E;
+  &#x3C;div id=&#x22;perfundo-img2&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
+    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
+      &#x3C;img src=&#x22;img/img2_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img2.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
+    &#x3C;/figure&#x3E;
+    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
+    &#x3C;a class=&#x22;perfundo__next perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img3&#x22;&#x3E;Next&#x3C;/a&#x3E;
+    &#x3C;a class=&#x22;perfundo__prev perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img1&#x22;&#x3E;Prev&#x3C;/a&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+
+&#x3C;div class=&#x22;perfundo perfundo-js&#x22;&#x3E;
+  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img3&#x22;&#x3E;
+    &#x3C;img src=&#x22;img/img3_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+  &#x3C;/a&#x3E;
+  &#x3C;div id=&#x22;perfundo-img3&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
+    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
+      &#x3C;img src=&#x22;img/img3_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
+      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img3.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
+    &#x3C;/figure&#x3E;
+    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
+    &#x3C;a class=&#x22;perfundo__prev perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;Prev&#x3C;/a&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+          </code></pre>
+          <pre><code class="language-javascript">
+// Initialize a perfundo Lightbox.
+var myLightbox = new perfundo(&#x27;.perfundo-js&#x27;, {
+  disableHistory: true,
+  swipe: true
+});
+          </code></pre>
+
           <h3 class="c-h3">Donate</h3>
           <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_s-xclick">
