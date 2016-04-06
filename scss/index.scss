@@ -61,7 +61,8 @@ $perfundo-html-background-color: #fff !default;
     display: block; /* [2] */
   }
   img {
-    display: none;
+    display: block;
+    height: 0;
   }
 }
 
