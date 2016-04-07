@@ -6,6 +6,7 @@
   "license": "GPL v2",
   "dependencies": {
     "animate.css": "^3.5.1",
+    "perfundo": "^2.0.0",
     "prismjs": "^1.4.1"
   },
   "devDependencies": {
