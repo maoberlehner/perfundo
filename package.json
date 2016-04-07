@@ -1,6 +1,6 @@
 {
   "name": "perfundo",
-  "description": "CSS only Lightbox",
+  "description": "a pure CSS lightbox",
   "keywords": [
     "eyeglass-module",
     "sass"
