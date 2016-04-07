@@ -1,11 +1,11 @@
 {
   "name": "perfundo",
-  "description": "CSS only Lightbox",
+  "description": "a pure CSS lightbox",
   "keywords": [
     "eyeglass-module",
     "sass"
   ],
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Markus Oberlehner",
   "homepage": "https://github.com/maoberlehner/perfundo",
   "license": "GPL v2",
