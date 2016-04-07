@@ -1,18 +1,75 @@
 # perfundo
-CSS only Lightbox  
-http://perfundo.oberlehner.net
+a pure CSS lightbox (https://perfundo.oberlehner.net).
 
-### Usage
-This is a proof of concept and not intended (although absolutely possible) to use in real world projects. There most certainly are accessibility problems with this lightbox solution - I'm no expert on this topic, if anyone can help with improvements in this regard please use [this GitHub issue](https://github.com/maoberlehner/perfundo/issues/10).
+## Usage
+### As an npm module
+perfundo can be used as an [eyeglass](https://github.com/sass-eyeglass/eyeglass)
+module. To do so, install the perfundo module into your project:
+```
+npm install perfundo --save
+```
 
-The perfect use case for this solution is a project where speed is an absolute top priority - you have already axed jQuery and some related plugins but there are those few images you want to display in a lightbox - under these circumstances a lightweight solution like this would be a pefect fit. Another possibility is to use this solution as a fallback if JavaScript is not available (e.g. loading of scripts fails,...)
+Now you can import perfundo into your scss file:
+```scss
+@import 'perfundo';
+// OR
+@import 'perfundo/with-icons';
+```
 
-The usability with mobile devices is not exactly the best because there is no way (I'm aware of) to make touch gestures do anything with pure CSS.
+There are variables to control certain aspects of the Lightbox:
+```scss
+$perfundo-namespace: 'perfundo';
+$perfundo-background-color: rgba(#000, 0.9);
+$perfundo-color: #fff;
+$perfundo-control-use-icons: false;
+$perfundo-html-padding: 2em;
+$perfundo-html-max-width: 42em;
+$perfundo-html-background-color: #fff;
 
-### License
-perfundo is licensed under GPL v2 (http://www.gnu.org/licenses/gpl-2.0.html)
+@import 'perfundo';
+```
 
+If you want to use the JavaScript enhancements, load the perfundo module into
+your JavaScript file:
+```js
+// Load the module.
+var perfundo = require('perfundo');
+// Initialize a perfundo Lightbox.
+var myLightbox = new perfundo('.perfundo', {
+  disableHistory: false,
+  swipe: true,
+  classNames: {
+    main: 'perfundo',
+    link: 'perfundo__link',
+    overlay: 'perfundo__overlay',
+    content: 'perfundo__content',
+    close: 'perfundo__close',
+    prev: 'perfundo__prev',
+    next: 'perfundo__next',
+    untarget: 'perfundo__untarget',
+    active: 'is-active'
+  }
+});
+```
+
+### Standalone (without npm)
+Download https://perfundo.oberlehner.net/downloads/perfundo-2.0.0.zip. Add the
+files to your HTML file like in the following example:
+```html
+<!-- Put this inside the <head> section of your HTML. -->
+<link rel="stylesheet" href="perfundo.min.css">
+
+<!-- Put this before the closing </body> tag (optionally!). -->
+<script src="perfundo.min.js"></script>
+<script>
+  var myLightbox = new perfundo('.perfundo');
+</script>
+```
+
+## About
 ### Author
 Markus Oberlehner  
-Twitter: https://twitter.com/MaOberlehner  
-Work: Web Developer @ roromedia - http://www.roromedia.com
+Twitter: https://twitter.com/MaOberlehner
+
+### License
+GPL v2 (http://www.gnu.org/licenses/gpl-2.0.html)
