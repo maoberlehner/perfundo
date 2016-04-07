@@ -1,0 +1,150 @@
+$perfundo-namespace: 'perfundo' !default;
+$perfundo-background-color: rgba(#000, 0.9) !default;
+$perfundo-color: #fff !default;
+$perfundo-control-use-icons: false !default;
+$perfundo-html-padding: 2em !default;
+$perfundo-html-max-width: 42em !default;
+$perfundo-html-background-color: #fff !default;
+
+/**
+ * 1. Make the overlay full width and height.
+ * 2. Center direct children horizontally and vertically.
+ * 3. Hide the overlay by default and show it when it is targeted or active.
+ */
+.#{$perfundo-namespace}__overlay {
+  position: fixed; /* [1] */
+  top: 0; /* [1] */
+  right: 0; /* [1] */
+  bottom: 0; /* [1] */
+  left: 0; /* [1] */
+  z-index: 999;
+  display: flex; /* [2] */
+  visibility: hidden; /* [3] */
+  justify-content: center; /* [2] */
+  align-items: center; /* [2] */
+  background-color: $perfundo-background-color;
+  &:target,
+  &.is-active {
+    visibility: visible; /* [3] */
+  }
+}
+
+/**
+ * 1. Add a scrollbar if the content doesn't fit vertically.
+ * 2. Inherit the animation name (e.g. animate.css class) from the parent.
+ */
+.#{$perfundo-namespace}__content {
+  overflow: auto; /* [1] */
+  max-height: 100%; /* [1] */
+  :target > &,
+  .is-active > & {
+    animation: 0.4s ease-out 0.2s both;
+    animation-name: inherit; /* [2] */
+  }
+}
+
+.#{$perfundo-namespace}__html {
+  padding: $perfundo-html-padding;
+  max-width: $perfundo-html-max-width;
+  background-color: $perfundo-html-background-color;
+}
+
+/**
+ * 1. Prevent the full sized image from loading initially.
+ * 2. Trigger loading of the full sized image when the lightbox is opened.
+ */
+.#{$perfundo-namespace}__figure {
+  display: none; /* [1] */
+  margin: 1.5em;
+  :target > &,
+  .is-active > & {
+    display: block; /* [2] */
+  }
+  img {
+    display: block;
+    height: 0;
+  }
+}
+
+.#{$perfundo-namespace}__figcaption {
+  color: $perfundo-color;
+}
+
+/**
+ * 1. Make the image container responsive.
+ * 2. Scale the background image to match the size of the image container.
+ */
+.#{$perfundo-namespace}__image {
+  max-width: 100%; /* [1] */
+  background-size: 100%; /* [2] */
+}
+
+/**
+ * 1. Make the icons as big as the control element.
+ * 2. Hide the control text visually, but have it available for screen readers.
+ * 3. Make the control links readable depending on the overlay color.
+ */
+.#{$perfundo-namespace}__control {
+  position: absolute;
+  @if $perfundo-control-use-icons {
+    width: 3em;
+    height: 3em;
+    background-position: center center; /* [1] */
+    background-size: cover; /* [1] */
+    text-indent: -999em; /* [2] */
+  } @else {
+    &,
+    &:visited {
+      color: $perfundo-color; /* [3] */
+    }
+  }
+}
+
+.#{$perfundo-namespace}__close {
+  top: 1em;
+  right: 1em;
+  @if $perfundo-control-use-icons {
+    background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20x%3D%220%22%20y%3D%220%22%20viewBox%3D%220%200%2032%2032%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M21.7%2010.3c-0.4-0.4-1-0.4-1.4%200l-4.3%204.3-4.2-4.2c-0.4-0.4-1-0.4-1.4%200-0.4%200.4-0.4%201%200%201.4l4.2%204.2-4.3%204.3c-0.4%200.4-0.4%201%200%201.4%200.4%200.4%201%200.4%201.4%200l4.3-4.3%204.2%204.2c0.4%200.4%201%200.4%201.4%200%200.4-0.4%200.4-1%200-1.4l-4.2-4.2%204.3-4.3C22.1%2011.3%2022.1%2010.7%2021.7%2010.3zM16%200C7.2%200%200%207.2%200%2016s7.2%2016%2016%2016c8.8%200%2016-7.2%2016-16S24.8%200%2016%200zM16%2030C8.3%2030%202%2023.7%202%2016S8.3%202%2016%202s14%206.3%2014%2014S23.7%2030%2016%2030z%22%2F%3E%3C%2Fsvg%3E');
+  }
+}
+
+/**
+ * 1. Vertically center the prev / next controls.
+ */
+.#{$perfundo-namespace}__prev,
+.#{$perfundo-namespace}__next {
+  top: 50%; /* [1] */
+  margin-top: -1.5em; /* [1] */
+  opacity: 0.2;
+  transition: opacity 0.2s;
+  @if $perfundo-control-use-icons {
+    background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2244.1%22%20height%3D%2294.7%22%20viewBox%3D%220%200%2044.1%2094.7%22%20enable-background%3D%22new%200%200%2044.088%2094.67%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M44.1%2047.3L1.5%2094.7%200%2093.3l41.4-46L0%201.3%201.5%200%2044.1%2047.3z%22%2F%3E%3C%2Fsvg%3E');
+  }
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+/**
+ * 1. Rotate the control element so it is possible to use the same icon for
+ *    prev and next.
+ */
+.#{$perfundo-namespace}__prev {
+  left: 2em;
+  @if $perfundo-control-use-icons {
+    transform: rotate(180deg); /* [1] */
+  }
+}
+
+.#{$perfundo-namespace}__next {
+  right: 2em;
+}
+
+/**
+ * 1. Move the untarget anchor to the top of the screen to prevent "jumping".
+ */
+.#{$perfundo-namespace}__untarget {
+  position: fixed; /* [1] */
+  top: 0; /* [1] */
+}

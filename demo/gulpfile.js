@@ -33,7 +33,6 @@ var cssnano      = require('gulp-cssnano');
 var minifyCss    = require('gulp-minify-css');
 var rename       = require('gulp-rename');
 var sass         = require('gulp-sass');
-var size         = require('gulp-size');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 var buffer       = require('vinyl-buffer');
@@ -66,10 +65,6 @@ gulp.task('styles:minify', ['styles:build'], function () {
     .pipe(rename(function (path) {
       path.basename += '.min';
     }))
-    .pipe(size({
-      showFiles: true,
-      showTotal: false
-    }))
     .pipe(gulp.dest(config.styles.destination))
     .pipe(browserSync.stream());
 });
@@ -88,10 +83,10 @@ gulp.task('scripts:build', ['clean:scripts'], function () {
   return b.bundle()
     .pipe(source(config.scripts.destinationFileName))
     .pipe(buffer())
+    .pipe(gulp.dest(config.scripts.destination))
     .pipe(uglify())
-    .pipe(size({
-      showFiles: true,
-      showTotal: false
+    .pipe(rename(function (path) {
+      path.basename += '.min';
     }))
     .pipe(gulp.dest(config.scripts.destination))
     .pipe(browserSync.stream());

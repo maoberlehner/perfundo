@@ -1,5 +1,10 @@
+.csscomb.json
 .DS_Store
 .eyeglass_cache
 
+gulpfile.js
+
 dist
 node_modules
+
+/demo

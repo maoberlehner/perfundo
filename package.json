@@ -1,19 +1,31 @@
 {
   "name": "perfundo",
-  "version": "X.X.X",
+  "description": "CSS only Lightbox",
+  "keywords": [
+    "eyeglass-module",
+    "sass"
+  ],
+  "version": "2.0.0",
   "author": "Markus Oberlehner",
+  "homepage": "https://github.com/maoberlehner/perfundo",
   "license": "GPL v2",
   "devDependencies": {
-    "gulp": "~3.5.5",
-    "gulp-autoprefixer": "0.0.6",
-    "gulp-cssshrink": "^0.1.4",
-    "gulp-livereload": "~1.2.0",
-    "gulp-minify-css": "^0.3.7",
-    "gulp-rename": "^1.2.0",
-    "gulp-ruby-sass": "~0.4.0",
-    "gulp-util": "~2.2.14"
+    "browser-sync": "^2.11.1",
+    "browserify": "^13.0.0",
+    "del": "^2.2.0",
+    "eyeglass": "^0.8.3",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cssnano": "^2.0.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.0",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.5.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
-  "description": "CSS only Lightbox",
   "main": "gulpfile.js",
   "repository": {
     "type": "git",
@@ -22,5 +34,9 @@
   "bugs": {
     "url": "https://github.com/maoberlehner/perfundo/issues"
   },
-  "homepage": "https://github.com/maoberlehner/perfundo"
+  "eyeglass": {
+    "sassDir": "scss",
+    "exports": false,
+    "needs": "^0.8.2"
+  }
 }
