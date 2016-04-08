@@ -199,7 +199,7 @@
     self.perfundo = _;
   }
 
-  // Expose componentNav as a CJS module.
+  // Expose perfundo as a CJS module.
   if (typeof module === 'object' && module.exports) {
     module.exports = _;
   }
