@@ -1,3 +1,11 @@
+/**
+ * perfundo - a pure CSS lightbox
+ * @author Markus Oberlehner https://perfundo.oberlehner.net/
+ *
+ * Parts of this file are copied from the code of the great awesomeplete
+ * autocomplete widget by Lea Verou (http://leaverou.github.io/awesomplete)
+ */
+
 (function () {
   var _ = function (element, o) {
     var me = this;
@@ -191,7 +199,7 @@
     self.perfundo = _;
   }
 
-  // Expose componentNav as a CJS module.
+  // Expose perfundo as a CJS module.
   if (typeof module === 'object' && module.exports) {
     module.exports = _;
   }
