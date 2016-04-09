@@ -16,5 +16,5 @@
 @import 'component/main_footer';
 @import 'component/quick_demo';
 @import 'component/prismjs';
-@import '../scss/with-icons'; // @TODO: load from node modules as eyeglass dependency
+@import 'perfundo/with-icons';
 @import 'utility/spacing';
