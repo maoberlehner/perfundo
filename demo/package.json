@@ -11,9 +11,9 @@
   "devDependencies": {
     "avalanchesass_base_box_sizing_reset": "^3.0.0",
     "avalanchesass_base_typography": "^3.0.0",
+    "avalanchesass_component_hn": "^3.0.0",
     "avalanchesass_object_grid": "^3.1.0",
     "avalanchesass_object_media": "avalanchesass/avalanche_object_media#dev-3.0.0",
-    "avalanchesass_component_hn": "^3.0.0",
     "browser-sync": "^2.11.1",
     "browserify": "^13.0.0",
     "del": "^2.2.0",
@@ -27,9 +27,9 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.5.3",
     "normalize-scss": "^4.0.3",
-    "perfundo": "^2.0.0",
+    "perfundo": "^2.0.3",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
-  "main": "gulpfile.js"
+  "main": "js/index.js"
 }

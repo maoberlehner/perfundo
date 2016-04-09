@@ -23,7 +23,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.5.3"
   },
-  "main": "gulpfile.js",
+  "main": "js/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/maoberlehner/perfundo"
