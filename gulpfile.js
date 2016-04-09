@@ -23,7 +23,6 @@ var config = {
  * Plugins
  */
 var browserSync  = require('browser-sync').create();
-var browserify   = require('browserify');
 var del          = require('del');
 var eyeglass     = require('eyeglass');
 var fs           = require('fs');
@@ -36,8 +35,6 @@ var sass         = require('gulp-sass');
 var size         = require('gulp-size');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
-var buffer       = require('vinyl-buffer');
-var source       = require('vinyl-source-stream');
 
 /**
  * Styles
@@ -79,19 +76,20 @@ gulp.task('styles:minify', ['styles:build'], function () {
  */
 // Bundle js resources with browserify and create a minified output file.
 gulp.task('scripts:build', ['clean:scripts'], function () {
-  // Set up the browserify instance.
-  var b = browserify({
-    entries: config.scripts.browserifyEntries,
-    debug: true
+  // Use the watch directories config variable to define the src directories.
+  var srcDirectories = [];
+  config.scripts.watchDirectories.forEach(function (value) {
+    srcDirectories.push(value + '.js');
   });
-
-  return b.bundle()
-    .pipe(source(config.scripts.destinationFileName))
-    .pipe(buffer())
+  return gulp.src(srcDirectories)
+    .pipe(gulp.dest(config.scripts.destination))
     .pipe(uglify())
     .pipe(size({
       showFiles: true,
       showTotal: false
+    }))
+    .pipe(rename(function (path) {
+      path.basename += '.min';
     }))
     .pipe(gulp.dest(config.scripts.destination))
     .pipe(browserSync.stream());
