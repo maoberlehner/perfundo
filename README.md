@@ -52,7 +52,7 @@ var myLightbox = new perfundo('.perfundo', {
 ```
 
 ### Standalone (without npm)
-Download https://perfundo.oberlehner.net/downloads/perfundo-2.0.3.zip. Add the
+Download https://perfundo.oberlehner.net/downloads/perfundo-2.0.4.zip. Add the
 files to your HTML file like in the following example:
 ```html
 <!-- Put this inside the <head> section of your HTML. -->
