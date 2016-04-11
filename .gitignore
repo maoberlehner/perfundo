@@ -1,5 +1,5 @@
 .DS_Store
 .eyeglass_cache
 
-dist
+demo/dist
 node_modules

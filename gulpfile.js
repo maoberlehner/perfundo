@@ -33,7 +33,6 @@ var minifyCss    = require('gulp-minify-css');
 var rename       = require('gulp-rename');
 var sass         = require('gulp-sass');
 var size         = require('gulp-size');
-var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 
 /**
@@ -47,10 +46,16 @@ gulp.task('styles:build', ['clean:styles'], function () {
     srcDirectories.push(value + '.scss');
   });
   return gulp.src(srcDirectories)
-    .pipe(sourcemaps.init())
     .pipe(sass(eyeglass(config.sassOptions)).on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(sourcemaps.write())
+    .pipe(rename(function (path) {
+      if (path.basename == 'index') {
+        path.basename = 'perfundo';
+      }
+      else {
+        path.basename = 'perfundo.' + path.basename;
+      }
+    }))
     .pipe(gulp.dest(config.styles.destination))
     .pipe(browserSync.stream());
 });
@@ -82,6 +87,9 @@ gulp.task('scripts:build', ['clean:scripts'], function () {
     srcDirectories.push(value + '.js');
   });
   return gulp.src(srcDirectories)
+    .pipe(rename(function (path) {
+      path.basename = 'perfundo';
+    }))
     .pipe(gulp.dest(config.scripts.destination))
     .pipe(uglify())
     .pipe(size({
