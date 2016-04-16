@@ -13,7 +13,7 @@
     "avalanchesass_base_typography": "^3.0.0",
     "avalanchesass_component_hn": "^3.0.0",
     "avalanchesass_object_grid": "^3.1.0",
-    "avalanchesass_object_media": "avalanchesass/avalanche_object_media#dev-3.0.0",
+    "avalanchesass_object_media": "^3.0.0",
     "browser-sync": "^2.11.1",
     "browserify": "^13.0.0",
     "del": "^2.2.0",
