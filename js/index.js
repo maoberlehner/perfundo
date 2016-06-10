@@ -12,7 +12,7 @@ function $(expr, con) {
 }
 
 function $$(expr, con) {
-  return slice.call((con || document).querySelectorAll(expr));
+  return Array.prototype.slice.call((con || document).querySelectorAll(expr));
 }
 
 
@@ -47,7 +47,7 @@ class Perfundo {
   }
 
   open(overlayItem) {
-    let overlayItem = $(overlayItem);
+    overlayItem = $(overlayItem);
     this.close();
     overlayItem.classList.add(this.options.classNames.active);
   }
@@ -99,7 +99,7 @@ class Perfundo {
   }
 }
 
-let perfundo = new Perfundo('body', {'swipe': false});
+let perfundo = new Perfundo('#perfundo');
 
 console.log(perfundo);
 
