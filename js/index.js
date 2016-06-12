@@ -23,6 +23,15 @@ export default class Perfundo {
   constructor(element, options = {}) {
     let me = this;
 
+    // Make it possible to initialize perfundo on multiple elements at once.
+    if (typeof element === 'string' && $$(element).length > 1) {
+      let object = [];
+      $$(element).forEach((element) => {
+        object.push(new Perfundo(element, options));
+      });
+      return object;
+    }
+
     this.element = $(element);
     this.options = options;
 
@@ -114,14 +123,14 @@ export default class Perfundo {
   }
 
   next() {
-    var nextLink = $('.' + this.options.classNames.next, this.element);
+    let nextLink = $('.' + this.options.classNames.next, this.element);
     if (nextLink) {
       nextLink.click();
     }
   }
 
   prev() {
-    var prevLink = $('.' + this.options.classNames.prev, this.element);
+    let prevLink = $('.' + this.options.classNames.prev, this.element);
     if (prevLink) {
       prevLink.click();
     }
@@ -169,8 +178,8 @@ $.bind = function(elements, o) {
   if (elements) {
     elements = elements.length ? elements : [elements];
     elements.forEach(function (element) {
-      for (var event in o) {
-        var callback = o[event];
+      for (let event in o) {
+        let callback = o[event];
         event.split(/\s+/).forEach(function (event) {
           element.addEventListener(event, callback);
         });
