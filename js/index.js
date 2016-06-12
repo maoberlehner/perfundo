@@ -49,7 +49,7 @@ const defaultOptions = {
   }
 };
 
-export class Perfundo {
+export default class Perfundo {
   constructor(element, options = {}) {
     let me = this;
 

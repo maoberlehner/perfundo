@@ -20,9 +20,15 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.0",
     "gulp-size": "^2.1.0",
-    "gulp-uglify": "^1.5.3"
+    "gulp-uglify": "^1.5.3",
+    "rollup": "^0.28.0",
+    "rollup-plugin-buble": "^0.10.0",
+    "rollup-plugin-commonjs": "^3.0.0",
+    "rollup-plugin-node-resolve": "^1.7.0",
+    "uglify-js": "^2.6.2"
   },
   "main": "dist/perfundo.js",
+  "jsnext:main": "js/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/maoberlehner/perfundo"
@@ -34,5 +40,10 @@
     "sassDir": "scss",
     "exports": false,
     "needs": "^0.8.2"
+  },
+  "scripts": {
+    "scripts:bundle": "rollup --config --sourcemap inline --format iife --name Perfundo --output dist/perfundo.js js/index.js",
+    "scripts:minify": "uglifyjs --compress --output ./dist/perfundo.min.js ./dist/perfundo.js",
+    "scripts": "npm run scripts:bundle && npm run scripts:minify"
   }
 }

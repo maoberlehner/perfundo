@@ -1,7 +1,8 @@
 // Load the module.
-import Perfundo from 'perfundo';
+// @TODO: load from node modules.
+import Perfundo from '../../js/index.js';
 // Initialize a perfundo Lightbox.
-var myLightbox = new perfundo('.perfundo-js', {
+const myLightbox = new Perfundo('.perfundo-js', {
   disableHistory: true,
   swipe: true
 });

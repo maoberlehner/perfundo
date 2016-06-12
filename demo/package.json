@@ -28,8 +28,18 @@
     "gulp-uglify": "^1.5.3",
     "normalize-scss": "^4.0.3",
     "perfundo": "^2.0.3",
+    "rollup": "^0.28.0",
+    "rollup-plugin-buble": "^0.10.0",
+    "rollup-plugin-commonjs": "^3.0.0",
+    "rollup-plugin-node-resolve": "^1.7.0",
+    "uglify-js": "^2.6.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
-  "main": "js/index.js"
+  "main": "js/index.js",
+  "scripts": {
+    "scripts:bundle": "rollup --config --sourcemap inline --format iife --output dist/index.js js/index.js",
+    "scripts:minify": "uglifyjs --compress --output ./dist/index.min.js ./dist/index.js",
+    "scripts": "npm run scripts:bundle && npm run scripts:minify"
+  }
 }
