@@ -1,38 +1,8 @@
 /**
  * perfundo - a pure CSS lightbox
  * @author Markus Oberlehner https://perfundo.oberlehner.net/
- *
- * Parts of this file are copied from the code of the great awesomeplete
- * autocomplete widget by Lea Verou (http://leaverou.github.io/awesomplete)
  */
 'use strict';
-
-// @TODO: use bliss.js instead
-function $(expr, con) {
-  return typeof expr === 'string' ? (con || document).querySelector(expr) : expr || null;
-}
-
-function $$(expr, con) {
-  return Array.prototype.slice.call((con || document).querySelectorAll(expr));
-}
-
-$.bind = function(elements, o) {
-  if (elements) {
-    elements = elements.length ? elements : [elements];
-    elements.forEach(function (element) {
-      for (var event in o) {
-        var callback = o[event];
-        event.split(/\s+/).forEach(function (event) {
-          element.addEventListener(event, callback);
-        });
-      }
-    });
-  }
-};
-// END @TODO
-
-
-
 
 const defaultOptions = {
   disableHistory: false,
@@ -183,3 +153,28 @@ export default class Perfundo {
     }
   }
 }
+
+/**
+ * Helper functions taken from: http://blissfuljs.com/
+ */
+function $(expr, con) {
+  return typeof expr === 'string' ? (con || document).querySelector(expr) : expr || null;
+}
+
+function $$(expr, con) {
+  return Array.prototype.slice.call((con || document).querySelectorAll(expr));
+}
+
+$.bind = function(elements, o) {
+  if (elements) {
+    elements = elements.length ? elements : [elements];
+    elements.forEach(function (element) {
+      for (var event in o) {
+        var callback = o[event];
+        event.split(/\s+/).forEach(function (event) {
+          element.addEventListener(event, callback);
+        });
+      }
+    });
+  }
+};
