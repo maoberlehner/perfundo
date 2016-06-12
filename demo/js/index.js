@@ -1,5 +1,5 @@
 // Load the module.
-var perfundo = require('perfundo');
+import Perfundo from 'perfundo';
 // Initialize a perfundo Lightbox.
 var myLightbox = new perfundo('.perfundo-js', {
   disableHistory: true,
