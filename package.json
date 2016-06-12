@@ -22,7 +22,7 @@
     "gulp-size": "^2.1.0",
     "gulp-uglify": "^1.5.3"
   },
-  "main": "js/index.js",
+  "main": "dist/perfundo.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/maoberlehner/perfundo"
