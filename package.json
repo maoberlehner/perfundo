@@ -7,20 +7,15 @@
   ],
   "version": "2.0.4",
   "author": "Markus Oberlehner",
-  "homepage": "https://github.com/maoberlehner/perfundo",
+  "homepage": "https://perfundo.oberlehner.net",
   "license": "GPL v2",
   "devDependencies": {
-    "browser-sync": "^2.11.1",
-    "del": "^2.2.0",
-    "eyeglass": "^0.8.3",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-cssnano": "^2.0.1",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.1.0",
-    "gulp-size": "^2.1.0",
-    "gulp-uglify": "^1.5.3",
+    "autoprefixer": "^6.3.6",
+    "clean-css": "^3.4.17",
+    "node-sass": "^3.7.0",
+    "onchange": "^2.4.0",
+    "parallelshell": "^2.0.0",
+    "postcss-cli": "^2.5.2",
     "rollup": "^0.28.0",
     "rollup-plugin-buble": "^0.10.0",
     "rollup-plugin-commonjs": "^3.0.0",
@@ -42,8 +37,15 @@
     "needs": "^0.8.2"
   },
   "scripts": {
-    "scripts:bundle": "rollup --config --sourcemap inline --format iife --name Perfundo --output dist/perfundo.js js/index.js",
+    "styles:sass": "node-sass ./scss/index.scss ./dist/perfundo.css && node-sass ./scss/with-icons.scss ./dist/perfundo.with-icons.css",
+    "styles:postcss": "postcss --use autoprefixer --replace ./dist/*.css",
+    "styles:minify": "cleancss --output ./dist/perfundo.min.css ./dist/perfundo.css && cleancss --output ./dist/perfundo.with-icons.min.css ./dist/perfundo.with-icons.css",
+    "styles": "npm run styles:sass && npm run styles:postcss && npm run styles:minify",
+    "scripts:bundle": "rollup --config --format iife --name Perfundo --output dist/perfundo.js js/index.js",
     "scripts:minify": "uglifyjs --compress --output ./dist/perfundo.min.js ./dist/perfundo.js",
-    "scripts": "npm run scripts:bundle && npm run scripts:minify"
+    "scripts": "npm run scripts:bundle && npm run scripts:minify",
+    "watch:styles": "onchange './scss/**/*.scss' -- npm run styles",
+    "watch:scripts": "onchange './js/**/*.js' -- npm run scripts",
+    "watch": "parallelshell 'npm run watch:styles' 'npm run watch:scripts'"
   }
 }
