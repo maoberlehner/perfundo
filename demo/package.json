@@ -29,6 +29,8 @@
     "rollup-plugin-buble": "^0.10.0",
     "rollup-plugin-commonjs": "^3.0.0",
     "rollup-plugin-node-resolve": "^1.7.0",
+    "stylelint": "^6.6.0",
+    "stylelint-config-standard": "^9.0.0",
     "uglify-js": "^2.6.2"
   },
   "main": "js/index.js",
@@ -40,7 +42,8 @@
     "styles:sass": "node-sass --source-map-embed --importer node_modules/node-sass-magic-importer --output dist scss/index.scss",
     "styles:postcss": "postcss --use autoprefixer --replace dist/*.css",
     "styles:minify": "cleancss --output dist/index.min.css dist/index.css",
-    "styles": "npm run styles:sass && npm run styles:postcss && npm run styles:minify",
+    "styles:lint": "stylelint scss/**/*.scss --syntax scss || exit 0",
+    "styles": "npm run styles:sass && npm run styles:postcss && npm run styles:minify && npm run styles:lint",
     "scripts:bundle": "rollup --config --sourcemap inline --format iife --output dist/index.js js/index.js",
     "scripts:minify": "uglifyjs --compress --output dist/index.min.js dist/index.js",
     "scripts:lint": "jshint js/index.js || exit 0",
