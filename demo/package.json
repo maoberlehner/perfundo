@@ -32,16 +32,16 @@
   },
   "main": "js/index.js",
   "scripts": {
-    "styles:sass": "node-sass --source-map-embed --importer ./node_modules/node-sass-magic-importer --output ./dist ./scss/index.scss",
-    "styles:postcss": "postcss --use autoprefixer --replace ./dist/*.css",
-    "styles:minify": "cleancss --output ./dist/index.min.css ./dist/index.css",
+    "styles:sass": "node-sass --source-map-embed --importer node_modules/node-sass-magic-importer --output dist scss/index.scss",
+    "styles:postcss": "postcss --use autoprefixer --replace dist/*.css",
+    "styles:minify": "cleancss --output dist/index.min.css dist/index.css",
     "styles": "npm run styles:sass && npm run styles:postcss && npm run styles:minify",
     "scripts:bundle": "rollup --config --sourcemap inline --format iife --output dist/index.js js/index.js",
-    "scripts:minify": "uglifyjs --compress --output ./dist/index.min.js ./dist/index.js",
+    "scripts:minify": "uglifyjs --compress --output dist/index.min.js dist/index.js",
     "scripts": "npm run scripts:bundle && npm run scripts:minify",
-    "serve": "browser-sync start --server './' --files './dist'",
-    "watch:styles": "onchange './scss/**/*.scss' -- npm run styles",
-    "watch:scripts": "onchange './js/**/*.js' -- npm run scripts",
+    "serve": "browser-sync start --server --files 'dist'",
+    "watch:styles": "onchange 'scss/**/*.scss' -- npm run styles",
+    "watch:scripts": "onchange 'js/**/*.js' -- npm run scripts",
     "watch": "parallelshell 'npm run serve' 'npm run watch:styles' 'npm run watch:scripts'"
   }
 }

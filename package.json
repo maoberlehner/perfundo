@@ -37,15 +37,15 @@
     "needs": "^0.8.2"
   },
   "scripts": {
-    "styles:sass": "node-sass ./scss/index.scss ./dist/perfundo.css && node-sass ./scss/with-icons.scss ./dist/perfundo.with-icons.css",
-    "styles:postcss": "postcss --use autoprefixer --replace ./dist/*.css",
-    "styles:minify": "cleancss --output ./dist/perfundo.min.css ./dist/perfundo.css && cleancss --output ./dist/perfundo.with-icons.min.css ./dist/perfundo.with-icons.css",
+    "styles:sass": "node-sass scss/index.scss dist/perfundo.css && node-sass scss/with-icons.scss dist/perfundo.with-icons.css",
+    "styles:postcss": "postcss --use autoprefixer --replace dist/*.css",
+    "styles:minify": "cleancss --output dist/perfundo.min.css dist/perfundo.css && cleancss --output dist/perfundo.with-icons.min.css dist/perfundo.with-icons.css",
     "styles": "npm run styles:sass && npm run styles:postcss && npm run styles:minify",
     "scripts:bundle": "rollup --config --format iife --name Perfundo --output dist/perfundo.js js/index.js",
-    "scripts:minify": "uglifyjs --compress --output ./dist/perfundo.min.js ./dist/perfundo.js",
+    "scripts:minify": "uglifyjs --compress --output dist/perfundo.min.js dist/perfundo.js",
     "scripts": "npm run scripts:bundle && npm run scripts:minify",
-    "watch:styles": "onchange './scss/**/*.scss' -- npm run styles",
-    "watch:scripts": "onchange './js/**/*.js' -- npm run scripts",
+    "watch:styles": "onchange 'scss/**/*.scss' -- npm run styles",
+    "watch:scripts": "onchange 'js/**/*.js' -- npm run scripts",
     "watch": "parallelshell 'npm run watch:styles' 'npm run watch:scripts'"
   }
 }
