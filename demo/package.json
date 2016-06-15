@@ -17,6 +17,7 @@
     "autoprefixer": "^6.3.6",
     "browser-sync": "^2.12.8",
     "clean-css": "^3.4.17",
+    "jshint": "^2.9.2",
     "node-sass": "^3.7.0",
     "node-sass-magic-importer": "^0.0.3",
     "normalize-scss": "^4.0.3",
@@ -31,6 +32,10 @@
     "uglify-js": "^2.6.2"
   },
   "main": "js/index.js",
+  "jshintConfig": {
+    "esversion": 6,
+    "browser": true
+  },
   "scripts": {
     "styles:sass": "node-sass --source-map-embed --importer node_modules/node-sass-magic-importer --output dist scss/index.scss",
     "styles:postcss": "postcss --use autoprefixer --replace dist/*.css",
@@ -38,7 +43,8 @@
     "styles": "npm run styles:sass && npm run styles:postcss && npm run styles:minify",
     "scripts:bundle": "rollup --config --sourcemap inline --format iife --output dist/index.js js/index.js",
     "scripts:minify": "uglifyjs --compress --output dist/index.min.js dist/index.js",
-    "scripts": "npm run scripts:bundle && npm run scripts:minify",
+    "scripts:lint": "jshint js/index.js || exit 0",
+    "scripts": "npm run scripts:bundle && npm run scripts:minify && npm run scripts:lint",
     "serve": "browser-sync start --server --files 'dist'",
     "watch:styles": "onchange 'scss/**/*.scss' -- npm run styles",
     "watch:scripts": "onchange 'js/**/*.js' -- npm run scripts",

@@ -12,6 +12,7 @@
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "clean-css": "^3.4.17",
+    "jshint": "^2.9.2",
     "node-sass": "^3.7.0",
     "onchange": "^2.4.0",
     "parallelshell": "^2.0.0",
@@ -36,6 +37,12 @@
     "exports": false,
     "needs": "^0.8.2"
   },
+  "jshintConfig": {
+    "esversion": 6,
+    "node": true,
+    "loopfunc": true,
+    "browser": true
+  },
   "scripts": {
     "styles:sass": "node-sass scss/index.scss dist/perfundo.css && node-sass scss/with-icons.scss dist/perfundo.with-icons.css",
     "styles:postcss": "postcss --use autoprefixer --replace dist/*.css",
@@ -43,7 +50,8 @@
     "styles": "npm run styles:sass && npm run styles:postcss && npm run styles:minify",
     "scripts:bundle": "rollup --config --format iife --name Perfundo --output dist/perfundo.js js/index.js",
     "scripts:minify": "uglifyjs --compress --output dist/perfundo.min.js dist/perfundo.js",
-    "scripts": "npm run scripts:bundle && npm run scripts:minify",
+    "scripts:lint": "jshint js/index.js || exit 0",
+    "scripts": "npm run scripts:bundle && npm run scripts:minify && npm run scripts:lint",
     "watch:styles": "onchange 'scss/**/*.scss' -- npm run styles",
     "watch:scripts": "onchange 'js/**/*.js' -- npm run scripts",
     "watch": "parallelshell 'npm run watch:styles' 'npm run watch:scripts'"
