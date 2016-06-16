@@ -34,10 +34,6 @@
     "uglify-js": "^2.6.2"
   },
   "main": "js/index.js",
-  "jshintConfig": {
-    "esversion": 6,
-    "browser": true
-  },
   "scripts": {
     "styles:sass": "node-sass --source-map-embed --importer node_modules/node-sass-magic-importer --output dist scss/index.scss",
     "styles:postcss": "postcss --use autoprefixer --replace dist/*.css",

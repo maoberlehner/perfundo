@@ -39,12 +39,6 @@
     "exports": false,
     "needs": "^0.8.2"
   },
-  "jshintConfig": {
-    "esversion": 6,
-    "node": true,
-    "loopfunc": true,
-    "browser": true
-  },
   "scripts": {
     "styles:sass": "node-sass scss/index.scss dist/perfundo.css && node-sass scss/with-icons.scss dist/perfundo.with-icons.css",
     "styles:postcss": "postcss --use autoprefixer --replace dist/*.css",
