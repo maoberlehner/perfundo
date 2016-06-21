@@ -2,8 +2,6 @@
  * perfundo - a pure CSS lightbox
  * @author Markus Oberlehner https://perfundo.oberlehner.net/
  */
-'use strict';
-
 const defaultOptions = {
   disableHistory: false,
   swipe: true,
