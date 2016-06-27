@@ -58,7 +58,7 @@
     "watch:styles": "onchange scss/**/*.scss -- npm run styles",
     "watch:scripts": "onchange js/**/*.js -- npm run scripts",
     "watch": "parallelshell 'npm run watch:styles' 'npm run watch:scripts'",
-    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
   },
   "pre-commit": [
     "precommit-msg",
