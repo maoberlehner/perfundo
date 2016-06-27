@@ -27,6 +27,9 @@
   },
   "main": "dist/perfundo.js",
   "jsnext:main": "js/index.js",
+  "style": "dist/perfundo.css",
+  "sass": "scss/index.scss",
+  "sassDir": "scss",
   "repository": {
     "type": "git",
     "url": "https://github.com/maoberlehner/perfundo"
