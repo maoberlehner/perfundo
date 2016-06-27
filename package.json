@@ -49,8 +49,8 @@
     "scripts:minify": "uglifyjs --compress --output dist/perfundo.min.js dist/perfundo.js",
     "scripts:lint": "jshint js/index.js || exit 0",
     "scripts": "npm run scripts:bundle && npm run scripts:minify && npm run scripts:lint",
-    "watch:styles": "onchange 'scss/**/*.scss' -- npm run styles",
-    "watch:scripts": "onchange 'js/**/*.js' -- npm run scripts",
+    "watch:styles": "onchange scss/**/*.scss -- npm run styles",
+    "watch:scripts": "onchange js/**/*.js -- npm run scripts",
     "watch": "parallelshell 'npm run watch:styles' 'npm run watch:scripts'"
   }
 }
