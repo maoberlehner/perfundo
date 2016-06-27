@@ -2,7 +2,7 @@
   "extends": "stylelint-config-standard",
   "rules": {
     "at-rule-empty-line-before": ["always", {
-      except: "all-nested"
+      except: ["all-nested", "blockless-group"]
     }],
     "block-closing-brace-newline-after": ["always", {
       "ignoreAtRules": ["if", "else"]
