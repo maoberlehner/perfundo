@@ -4,8 +4,7 @@ a pure CSS lightbox (https://perfundo.oberlehner.net).
 ## Usage
 ### As an npm module
 To use perfundo in your SASS project, it is recommended to use the [node-sass-magic-importer](https://github.com/maoberlehner/node-sass-magic-importer) node-sass importer so it is possible to easily load perfundo directly from your `node_modules` directory.
-Make sure you checkout the [usage section](https://github.com/maoberlehner/node-sass-magic-importer#usage) on how to use the [node-sass-magic-importer](https://github.com/maoberlehner/node-sass-magic-importer).
-
+Make sure you checkout the [usage section](https://github.com/maoberlehner/node-sass-magic-importer#usage) on how to use the [node-sass-magic-importer](https://github.com/maoberlehner/node-sass-magic-importer).  
 Alternatively you can use perfundo as an [eyeglass](https://github.com/sass-eyeglass/eyeglass) module.
 
 Install perfundo:
