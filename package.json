@@ -8,7 +8,7 @@
   "version": "2.0.4",
   "author": "Markus Oberlehner",
   "homepage": "https://perfundo.oberlehner.net",
-  "license": "GPL v2",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "clean-css": "^3.4.17",
