@@ -7,8 +7,8 @@ export default {
     buble(),
     nodeResolve({
       jsnext: true,
-      browser: true
+      browser: true,
     }),
-    commonjs()
-  ]
+    commonjs(),
+  ],
 };

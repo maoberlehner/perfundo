@@ -2,30 +2,41 @@
  * perfundo - a pure CSS lightbox
  * @author Markus Oberlehner https://perfundo.oberlehner.net/
  */
-const defaultOptions = {
-  disableHistory: false,
-  swipe: true,
-  classNames: {
-    link: 'perfundo__link',
-    overlay: 'perfundo__overlay',
-    content: 'perfundo__content',
-    close: 'perfundo__close',
-    prev: 'perfundo__prev',
-    next: 'perfundo__next',
-    untarget: 'perfundo__untarget',
-    active: 'is-active'
-  }
-};
+
+/**
+ * Helper functions taken from: http://blissfuljs.com/
+ */
+function $(expr, con) {
+  return typeof expr === `string` ? (con || document).querySelector(expr) : expr || null;
+}
+
+function $$(expr, con) {
+  return Array.prototype.slice.call((con || document).querySelectorAll(expr));
+}
 
 export default class Perfundo {
   constructor(element, options = {}) {
-    let me = this;
+    const me = this;
+    const defaultOptions = {
+      disableHistory: false,
+      swipe: true,
+      classNames: {
+        link: `perfundo__link`,
+        overlay: `perfundo__overlay`,
+        content: `perfundo__content`,
+        close: `perfundo__close`,
+        prev: `perfundo__prev`,
+        next: `perfundo__next`,
+        untarget: `perfundo__untarget`,
+        active: `is-active`,
+      },
+    };
 
     // Make it possible to initialize perfundo on multiple elements at once.
-    if (typeof element === 'string' && $$(element).length > 1) {
-      let object = [];
-      $$(element).forEach((element) => {
-        object.push(new Perfundo(element, options));
+    if (typeof element === `string` && $$(element).length > 1) {
+      const object = [];
+      $$(element).forEach((singleElement) => {
+        object.push(new Perfundo(singleElement, options));
       });
       return object;
     }
@@ -38,26 +49,29 @@ export default class Perfundo {
       return {};
     }
 
-    this._configure(defaultOptions);
+    this.configure(defaultOptions);
 
-    $.bind($$('.' + this.options.classNames.link, this.element), {
+    $.bind($$(`.${this.options.classNames.link}`, this.element), {
       click(e) {
         if (me.options.disableHistory) {
           e.preventDefault();
         }
-        me.open(this.getAttribute('href'));
-      }
+        me.open(this.getAttribute(`href`));
+      },
     });
 
     $.bind(this.element, {
       click(e) {
-        if (e.target.classList.contains(me.options.classNames.close) || e.target.classList.contains(me.options.classNames.overlay)) {
+        const isCloseButton = e.target.classList.contains(me.options.classNames.close);
+        const isOverlay = e.target.classList.contains(me.options.classNames.overlay);
+
+        if (isCloseButton || isOverlay) {
           if (me.options.disableHistory) {
             e.preventDefault();
           }
           me.close();
         }
-      }
+      },
     });
 
     if (this.options.swipe) {
@@ -70,11 +84,11 @@ export default class Perfundo {
       let swipeDistanceX;
       let swipeDistanceY;
       // Min X distance to count as horizontal swipe.
-      let swipeMinX = 50;
+      const swipeMinX = 50;
       // Max Y distance to still count as horizontal swipe.
-      let swipeMaxY = 60;
+      const swipeMaxY = 60;
 
-      $.bind($$('.' + this.options.classNames.content, this.element), {
+      $.bind($$(`.${this.options.classNames.content}`, this.element), {
         touchstart(e) {
           // Save touchstart coordinates.
           touchStartX = e.changedTouches[0].clientX;
@@ -91,8 +105,7 @@ export default class Perfundo {
           if ((Math.abs(swipeDistanceX) >= swipeMinX) && (Math.abs(swipeDistanceY) <= swipeMaxY)) {
             if (swipeDistanceX > swipeMinX) {
               me.next();
-            }
-            else {
+            } else {
               me.prev();
             }
           }
@@ -103,32 +116,31 @@ export default class Perfundo {
           touchEndY = 0;
           swipeDistanceX = null;
           swipeDistanceY = null;
-        }
+        },
       });
     }
   }
 
   open(overlayItem) {
-    overlayItem = $(overlayItem);
     this.close();
-    overlayItem.classList.add(this.options.classNames.active);
+    $(overlayItem).classList.add(this.options.classNames.active);
   }
 
   close() {
-    $$('.' + this.options.classNames.overlay + '.' + this.options.classNames.active, this.element).forEach((overlayItem) => {
+    $$(`.${this.options.classNames.overlay}.${this.options.classNames.active}`, this.element).forEach((overlayItem) => {
       overlayItem.classList.remove(this.options.classNames.active);
     });
   }
 
   next() {
-    let nextLink = $('.' + this.options.classNames.next, this.element);
+    const nextLink = $(`.${this.options.classNames.next}`, this.element);
     if (nextLink) {
       nextLink.click();
     }
   }
 
   prev() {
-    let prevLink = $('.' + this.options.classNames.prev, this.element);
+    const prevLink = $(`.${this.options.classNames.prev}`, this.element);
     if (prevLink) {
       prevLink.click();
     }
@@ -137,51 +149,38 @@ export default class Perfundo {
   /**
    * Private functions.
    */
-  _configure(defaultOptions) {
+  configure(defaultOptions) {
     // @TODO: refactor
     // - should data attributes trump arguments or the other way?
-    for (let i in defaultOptions) {
-      let initial = defaultOptions[i];
-      let attrValue = this.element.getAttribute('data-' + i.toLowerCase());
+    Object.kys(defaultOptions).forEach((key) => {
+      const initial = defaultOptions[key];
+      const attrValue = this.element.getAttribute(`data-${key.toLowerCase()}`);
 
-      if (typeof initial === 'number') {
-        this.options[i] = parseInt(attrValue);
-      }
-      else if (initial instanceof Function) {
-        this.options[i] = null;
-      }
-      else if (attrValue) {
-        this.options[i] = attrValue;
+      if (typeof initial === `number`) {
+        this.options[key] = parseInt(attrValue, 10);
+      } else if (initial instanceof Function) {
+        this.options[key] = null;
+      } else if (attrValue) {
+        this.options[key] = attrValue;
       }
 
-      if (!this.options[i] && this.options[i] !== 0) {
-        this.options[i] = (i in this.options) ? this.options[i] : initial;
+      if (!this.options[key] && this.options[key] !== 0) {
+        this.options[key] = (key in this.options) ? this.options[key] : initial;
       }
-    }
+    });
   }
 }
 
-/**
- * Helper functions taken from: http://blissfuljs.com/
- */
-function $(expr, con) {
-  return typeof expr === 'string' ? (con || document).querySelector(expr) : expr || null;
-}
-
-function $$(expr, con) {
-  return Array.prototype.slice.call((con || document).querySelectorAll(expr));
-}
-
-$.bind = function(elements, o) {
+$.bind = function bind(elements, o) {
   if (elements) {
-    elements = elements.length ? elements : [elements];
-    elements.forEach(function (element) {
-      for (let event in o) {
-        let callback = o[event];
-        event.split(/\s+/).forEach(function (event) {
+    const elementsArray = elements.length ? elements : [elements];
+    elementsArray.forEach((element) => {
+      Object.keys(o).forEach((events) => {
+        const callback = o[events];
+        events.split(/\s+/).forEach((event) => {
           element.addEventListener(event, callback);
         });
-      }
+      });
     });
   }
 };
