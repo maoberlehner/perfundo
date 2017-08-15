@@ -10,6 +10,7 @@
   "homepage": "https://perfundo.oberlehner.net",
   "license": "MIT",
   "devDependencies": {
+    "@avalanche/stylelint-config": "^0.1.2",
     "autoprefixer": "^6.3.6",
     "clean-css": "^3.4.17",
     "jshint": "^2.9.2",
@@ -21,8 +22,7 @@
     "rollup-plugin-buble": "^0.10.0",
     "rollup-plugin-commonjs": "^3.0.0",
     "rollup-plugin-node-resolve": "^1.7.0",
-    "stylelint": "^6.6.0",
-    "stylelint-config-standard": "^9.0.0",
+    "stylelint": "^8.0.0",
     "uglify-js": "^2.6.2"
   },
   "main": "dist/perfundo.js",

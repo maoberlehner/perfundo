@@ -7,25 +7,25 @@ $perfundo-html-max-width: 42em !default;
 $perfundo-html-background-color: #fff !default;
 
 /**
- * 1. Make the overlay full width and height.
- * 2. Center direct children horizontally and vertically.
- * 3. Hide the overlay by default and show it when it is targeted or active.
+ * 1. Hide the overlay by default and show it when it is targeted or active.
+ * 2. Make the overlay full width and height.
  */
 .#{$perfundo-namespace}__overlay {
-  position: fixed; /* [1] */
-  top: 0; /* [1] */
-  right: 0; /* [1] */
-  bottom: 0; /* [1] */
-  left: 0; /* [1] */
+  display: flex;
+  visibility: hidden; /* [1] */
+  position: fixed; /* [2] */
+  top: 0; /* [2] */
+  right: 0; /* [2] */
+  bottom: 0; /* [2] */
+  left: 0; /* [2] */
   z-index: 999;
-  display: flex; /* [2] */
-  visibility: hidden; /* [3] */
-  justify-content: center; /* [2] */
-  align-items: center; /* [2] */
+  justify-content: center;
+  align-items: center;
   background-color: $perfundo-background-color;
+
   &:target,
   &.is-active {
-    visibility: visible; /* [3] */
+    visibility: visible; /* [1] */
   }
 }
 
@@ -34,8 +34,9 @@ $perfundo-html-background-color: #fff !default;
  * 2. Inherit the animation name (e.g. animate.css class) from the parent.
  */
 .#{$perfundo-namespace}__content {
-  overflow: auto; /* [1] */
   max-height: 100%; /* [1] */
+  overflow: auto; /* [1] */
+
   :target > &,
   .is-active > & {
     animation: 0.4s ease-out 0.2s both;
@@ -56,10 +57,12 @@ $perfundo-html-background-color: #fff !default;
 .#{$perfundo-namespace}__figure {
   display: none; /* [1] */
   margin: 1.5em;
+
   :target > &,
   .is-active > & {
     display: block; /* [2] */
   }
+
   img {
     display: block;
     height: 0;
@@ -86,6 +89,7 @@ $perfundo-html-background-color: #fff !default;
  */
 .#{$perfundo-namespace}__control {
   position: absolute;
+
   @if $perfundo-control-use-icons {
     width: 3em;
     height: 3em;
@@ -103,6 +107,7 @@ $perfundo-html-background-color: #fff !default;
 .#{$perfundo-namespace}__close {
   top: 1em;
   right: 1em;
+
   @if $perfundo-control-use-icons {
     background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20x%3D%220%22%20y%3D%220%22%20viewBox%3D%220%200%2032%2032%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M21.7%2010.3c-0.4-0.4-1-0.4-1.4%200l-4.3%204.3-4.2-4.2c-0.4-0.4-1-0.4-1.4%200-0.4%200.4-0.4%201%200%201.4l4.2%204.2-4.3%204.3c-0.4%200.4-0.4%201%200%201.4%200.4%200.4%201%200.4%201.4%200l4.3-4.3%204.2%204.2c0.4%200.4%201%200.4%201.4%200%200.4-0.4%200.4-1%200-1.4l-4.2-4.2%204.3-4.3C22.1%2011.3%2022.1%2010.7%2021.7%2010.3zM16%200C7.2%200%200%207.2%200%2016s7.2%2016%2016%2016c8.8%200%2016-7.2%2016-16S24.8%200%2016%200zM16%2030C8.3%2030%202%2023.7%202%2016S8.3%202%2016%202s14%206.3%2014%2014S23.7%2030%2016%2030z%22%2F%3E%3C%2Fsvg%3E');
   }
@@ -117,9 +122,11 @@ $perfundo-html-background-color: #fff !default;
   margin-top: -1.5em; /* [1] */
   opacity: 0.2;
   transition: opacity 0.2s;
+
   @if $perfundo-control-use-icons {
     background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2244.1%22%20height%3D%2294.7%22%20viewBox%3D%220%200%2044.1%2094.7%22%20enable-background%3D%22new%200%200%2044.088%2094.67%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M44.1%2047.3L1.5%2094.7%200%2093.3l41.4-46L0%201.3%201.5%200%2044.1%2047.3z%22%2F%3E%3C%2Fsvg%3E');
   }
+
   &:hover,
   &:focus {
     opacity: 1;
@@ -132,6 +139,7 @@ $perfundo-html-background-color: #fff !default;
  */
 .#{$perfundo-namespace}__prev {
   left: 2em;
+
   @if $perfundo-control-use-icons {
     transform: rotate(180deg); /* [1] */
   }
