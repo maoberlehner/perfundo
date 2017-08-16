@@ -1,19 +1,20 @@
 .c-button {
   display: inline-block;
   padding: 0.75em;
-  background: map-get($cs-contrast, a);
+  background: setting-color(a, contrast);
   font-weight: 700;
   transition: background 0.2s, color 0.2s;
+
   &:hover,
   &:focus {
-    background-color: mix(map-get($cs, a), map-get($cs-contrast, a), 30%);
+    background-color: mix(setting-color(a), setting-color(a, contrast), 30%);
     text-decoration: none;
   }
 }
 
 .c-button--secondary {
   padding: 0.5625em;
-  border: 0.1875em solid map-get($cs-contrast, a);
+  border: 0.1875em solid setting-color(a, contrast);
   background: transparent;
 }
 
@@ -28,12 +29,13 @@
   &.c-button--secondary {
     &,
     &:visited {
-      color: map-get($cs-contrast, a);
+      color: setting-color(a, contrast);
     }
+
     &:hover,
     &:focus {
-      background-color: map-get($cs-contrast, a);
-      color: map-get($cs, a);
+      background-color: setting-color(a, contrast);
+      color: setting-color(a);
     }
   }
 }

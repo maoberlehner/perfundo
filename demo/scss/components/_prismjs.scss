@@ -1,10 +1,11 @@
-pre[class*="language-"] {
-  padding: 0 map-get($spacing, s);
-  font-size: map-get($font-sizes, s);
+pre[class*='language-'] {
+  padding: 0 setting-spacing(s);
+  font-size: 0.75em;
 }
 
 pre {
   position: relative;
+
   &::before {
     position: absolute;
     top: 0.1em;

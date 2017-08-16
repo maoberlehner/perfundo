@@ -1,13 +1,13 @@
 .c-hero {
   display: flex;
-  justify-content: center;
-  align-items: center;
   padding-right: 1em;
   padding-left: 1em;
   min-height: 34em;
   max-height: 67.5em;
   height: 100vh;
-  background: map-get($cs, a);
+  justify-content: center;
+  align-items: center;
+  background: setting-color(a);
   color: #fff;
   text-align: center;
 }
@@ -15,6 +15,6 @@
 .c-hero__sub-title {
   display: block;
   margin-top: 0.35em;
-  font-weight: map-get-deep($fonts, a, weights, normal);
+  font-weight: 400;
   font-size: 0.5em;
 }

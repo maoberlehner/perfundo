@@ -1,20 +1,64 @@
-@import 'object/grid_variable';
-@import 'variable';
-@import 'normalize-scss/sass/normalize/import-now';
-//@import 'avalanchesass_base_box_sizing_reset';
-//@import 'avalanchesass_base_typography';
-@import 'base/img';
-//@import 'avalanchesass_object_grid';
-//@import 'avalanchesass_object_media';
-@import 'object/container';
-//@import 'avalanchesass_component_hn';
-@import 'component/button';
-@import 'component/gallery';
-@import 'component/hero';
-@import 'component/list';
-@import 'component/main_content';
-@import 'component/main_footer';
-@import 'component/quick_demo';
-@import 'component/prismjs';
-@import 'perfundo/scss/with-icons';
-@import 'utility/spacing';
+/**
+ * Settings
+ *
+ * - Globally-available settings.
+ * - Config switches.
+ * - Brand colors, etc.
+ */
+@import '~@avalanche/setting-breakpoints';
+@import '~@avalanche/setting-colors';
+@import '~@avalanche/setting-font-sizes';
+@import '~@avalanche/setting-spacings';
+@import 'settings/**/*';
+
+/**
+ * Generic
+ *
+ * - Ground zero styles.
+ * - Low-specificity, far-reaching.
+ * - Resets, Normalize.css, etc.
+ */
+@import '~@avalanche/generic-box-sizing-reset';
+@import 'generic/**/*';
+
+/**
+ * Objects
+ *
+ * - OOCSS.
+ * - Design patterns.
+ * - No cosmetics.
+ * - Agnostically named classes only (e.g. .o-uilist {}).
+ */
+@import '{
+  .o-container,
+  .o-container--s,
+} from ~@avalanche/object-container';
+@import '{ .o-grid } from ~@avalanche/object-grid';
+@import '{
+  .o-media,
+  .o-media__body,
+} from ~@avalanche/object-media';
+@import '{
+  .o-vertical-spacing,
+  .o-vertical-spacing--l,
+} from ~@avalanche/object-vertical-spacing';
+// @import 'objects/**/*';
+
+/**
+ * Components
+ *
+ * - Designed pieces of UI.
+ * - Still only using classes.
+ * - More explicitly named (e.g. .c-products-list {}).
+ */
+@import 'components/**/*';
+
+/**
+ * Utilities
+ *
+ * - Overrides, helpers, utilities.
+ * - Only affect one piece of the DOM at a time.
+ * - Usually carry !important.
+ */
+@import '{ .u-spacing-top-m } from ~@avalanche/utility-spacing';
+// @import 'utilities/**/*';
