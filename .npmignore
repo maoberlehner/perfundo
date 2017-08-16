@@ -1,3 +1,10 @@
-.csscomb.json
+demo
 
-/demo
+.editorconfig
+.eslintrc
+.stylelintrc
+.travis.yml
+
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+rollup.config.js

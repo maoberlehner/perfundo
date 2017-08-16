@@ -152,7 +152,7 @@ export default class Perfundo {
   configure(defaultOptions) {
     // @TODO: refactor
     // - should data attributes trump arguments or the other way?
-    Object.kys(defaultOptions).forEach((key) => {
+    Object.keys(defaultOptions).forEach((key) => {
       const initial = defaultOptions[key];
       const attrValue = this.element.getAttribute(`data-${key.toLowerCase()}`);
 
