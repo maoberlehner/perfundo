@@ -3,5 +3,9 @@
     "browser": true,
     "node": true
   },
-  "extends": "@avalanche/eslint-config"
+  "plugins": ["compat"],
+  "extends": "@avalanche/eslint-config",
+  "rules": {
+    "compat/compat": 2
+  }
 }
