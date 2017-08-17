@@ -1,5 +1,6 @@
-## Reporting Issues
+# Contributing
 
+## Reporting Issues
 Found a problem? Want a new feature?
 
 - See if your issue or idea has [already been reported].
@@ -8,7 +9,6 @@ Found a problem? Want a new feature?
 Remember, a bug is a _demonstrable problem_ caused by _our_ code.
 
 ## Submitting Pull Requests
-
 Pull requests are the greatest contributions, so be sure they are focused in scope, and do avoid unrelated commits.
 
 1. To begin, [fork this project], clone your fork, and add our upstream.
@@ -22,7 +22,6 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
    # Install the tools necessary for development
    npm install
    ```
-
 2. Create a branch for your feature or hotfix:
    ```bash
    # Move into a new branch for a feature
@@ -32,7 +31,6 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
    # Move into a new branch for a hotfix
    git checkout -b hotfix/something
    ```
-
 3. Push your branch up to your fork:
    ```bash
    # Push a feature branch
@@ -42,7 +40,6 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
    # Push a hotfix branch
    git push origin hotfix/something
    ```
-
 4. Now [open a pull request] with a clear title and description.
 
 [already been reported]: https://github.com/maoberlehner/perfundo/issues
