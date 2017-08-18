@@ -1,4 +1,6 @@
 # perfundo
+[![Build Status](https://travis-ci.org/maoberlehner/perfundo.svg?branch=master)](https://travis-ci.org/maoberlehner/perfundo)
+
 a pure CSS lightbox (https://perfundo.oberlehner.net).
 
 ## Usage
