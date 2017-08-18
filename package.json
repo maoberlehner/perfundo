@@ -64,15 +64,16 @@
     "styles:sass": "node-sass scss/index.scss dist/perfundo.css && node-sass scss/with-icons.scss dist/perfundo.with-icons.css && node-sass --importer node_modules/node-sass-magic-importer/dist/cli.js demo/scss/index.scss demo/dist/index.css",
     "styles:postcss": "postcss --use autoprefixer --replace dist/**/*.css && postcss --use autoprefixer --replace demo/dist/**/*.css",
     "styles:minify": "cleancss --output dist/perfundo.min.css dist/perfundo.css && cleancss --output dist/perfundo.with-icons.min.css dist/perfundo.with-icons.css && cleancss --output demo/dist/index.min.css demo/dist/index.css",
-    "styles:lint": "stylelint demo/scss/**/*.scss scss/**/*.scss --syntax scss",
     "styles": "npm run styles:sass && npm run styles:postcss && npm run styles:minify",
     "scripts:bundle": "rollup --config --format umd --name Perfundo --output dist/perfundo.js js/index.js",
     "scripts:minify": "uglifyjs --compress --output dist/perfundo.min.js dist/perfundo.js",
-    "scripts:lint": "eslint js/**/*.js rollup.config.js",
     "scripts": "npm run scripts:bundle && npm run scripts:minify",
     "watch:styles": "onchange scss/**/*.scss -- npm run styles",
     "watch:scripts": "onchange js/**/*.js -- npm run scripts",
     "watch": "parallelshell 'npm run watch:styles' 'npm run watch:scripts'",
+    "lint:styles": "stylelint demo/scss/**/*.scss scss/**/*.scss --syntax scss",
+    "lint:scripts": "eslint js/**/*.js rollup.config.js",
+    "lint": "npm run lint:styles && npm run lint:scripts",
     "demo": "mkdir -p demo/vendor && cp -R dist/ demo/vendor/perfundo && cp -R node_modules/prismjs demo/vendor && cp -R node_modules/animate.css demo/vendor"
   },
   "browserslist": ["last 2 versions"]
