@@ -2,7 +2,6 @@
   "name": "perfundo",
   "description": "a pure CSS lightbox",
   "keywords": [
-    "eyeglass-module",
     "lightbox",
     "css",
     "sass"
@@ -54,11 +53,6 @@
   },
   "bugs": {
     "url": "https://github.com/maoberlehner/perfundo/issues"
-  },
-  "eyeglass": {
-    "sassDir": "scss",
-    "exports": false,
-    "needs": "^0.8.2"
   },
   "scripts": {
     "styles:sass": "node-sass scss/index.scss dist/perfundo.css && node-sass scss/with-icons.scss dist/perfundo.with-icons.css && node-sass --importer node_modules/node-sass-magic-importer/dist/cli.js demo/scss/index.scss demo/dist/index.css",
