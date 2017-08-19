@@ -51,6 +51,9 @@
  * - Still only using classes.
  * - More explicitly named (e.g. .c-products-list {}).
  */
+@import '../vendor/animate.css/animate.min';
+@import '../vendor/highlight.js/styles/github';
+@import '../vendor/perfundo/perfundo.with-icons.min';
 @import 'components/**/*';
 
 /**

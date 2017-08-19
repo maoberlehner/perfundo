@@ -21,7 +21,7 @@
     "@avalanche/setting-font-sizes": "^4.0.0-alpha.4",
     "@avalanche/setting-spacings": "^4.0.0-alpha.5",
     "animate.css": "^3.5.2",
-    "prismjs": "^1.6.0"
+    "highlight.js": "^9.12.0"
   },
   "devDependencies": {
     "@avalanche/eslint-config": "^1.0.2",
@@ -68,7 +68,7 @@
     "lint:styles": "stylelint demo/scss/**/*.scss scss/**/*.scss --syntax scss",
     "lint:scripts": "eslint js/**/*.js rollup.config.js",
     "lint": "npm run lint:styles && npm run lint:scripts",
-    "demo": "mkdir -p demo/vendor && cp -R dist/ demo/vendor/perfundo && cp -R node_modules/prismjs demo/vendor && cp -R node_modules/animate.css demo/vendor"
+    "demo": "mkdir -p demo/vendor && cp -R dist/ demo/vendor/perfundo && cp -R node_modules/animate.css demo/vendor && cp -R node_modules/highlight.js demo/vendor"
   },
   "browserslist": [
     "last 2 versions"

@@ -29,3 +29,43 @@ a {
     text-decoration: underline;
   }
 }
+
+pre,
+code {
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+pre {
+  position: relative;
+  padding: setting-spacing(l) setting-spacing(s) setting-spacing(m);
+  background: setting-color(a, gray);
+  font-size: 100%;
+
+  &::before {
+    position: absolute;
+    top: 0.2em;
+    right: 0.5em;
+    font-size: setting-font-size(s);
+  }
+
+  &.language-html::before {
+    content: 'HTML';
+  }
+
+  &.language-javascript::before {
+    content: 'JavaScript';
+  }
+}
+
+code {
+  padding: 0.2em 0.4em;
+  border-radius: 0.1875em;
+  background: setting-color(a, gray);
+  font-size: 85%;
+
+  pre & {
+    display: block;
+    padding: 0;
+    overflow: auto;
+  }
+}
