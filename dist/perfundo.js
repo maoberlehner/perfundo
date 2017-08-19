@@ -4,128 +4,164 @@
 	(global.Perfundo = factory());
 }(this, (function () { 'use strict';
 
-/**
- * perfundo - a pure CSS lightbox
- * @author Markus Oberlehner https://perfundo.oberlehner.net/
- */
+function configure(element, userOptions, defaultOptions) {
+  return Object.keys(defaultOptions).reduce(function (options, key) {
+    var initial = defaultOptions[key];
+    var attrValue = element.getAttribute(("data-" + (key.toLowerCase())));
+
+    // eslint-disable-next-line no-param-reassign
+    options[key] = attrValue || userOptions[key] || initial;
+
+    return options;
+  }, {});
+}
+
+var defaultOptions = {
+  disableHistory: false,
+  swipe: true,
+  classNames: {
+    link: "perfundo__link",
+    overlay: "perfundo__overlay",
+    content: "perfundo__content",
+    close: "perfundo__close",
+    prev: "perfundo__prev",
+    next: "perfundo__next",
+    untarget: "perfundo__untarget",
+    active: "is-active",
+  },
+};
 
 /**
  * Helper functions taken from: http://blissfuljs.com/
  */
-function $(expr, con) {
-  return typeof expr === "string" ? (con || document).querySelector(expr) : expr || null;
+
+function $(selector, context) {
+  return typeof selector === "string" ? (context || document).querySelector(selector) : selector || null;
 }
 
-function $$(expr, con) {
-  return Array.prototype.slice.call((con || document).querySelectorAll(expr));
+function $$(selector, context) {
+  return Array.prototype.slice.call((context || document).querySelectorAll(selector));
 }
 
-var Perfundo = function Perfundo(element, options) {
+$.bind = function bind(elements, o) {
+  if (elements) {
+    var elementsArray = elements.length ? elements : [elements];
+    elementsArray.forEach(function (element) {
+      Object.keys(o).forEach(function (events) {
+        var callback = o[events];
+        events.split(/\s+/).forEach(function (event) {
+          element.addEventListener(event, callback);
+        });
+      });
+    });
+  }
+};
+
+/**
+ * perfundo - a pure CSS lightbox
+ * @author Markus Oberlehner https://perfundo.oberlehner.net/
+ */
+var Perfundo = function Perfundo(selector, options) {
   if ( options === void 0 ) options = {};
 
-  var me = this;
-  var defaultOptions = {
-    disableHistory: false,
-    swipe: true,
-    classNames: {
-      link: "perfundo__link",
-      overlay: "perfundo__overlay",
-      content: "perfundo__content",
-      close: "perfundo__close",
-      prev: "perfundo__prev",
-      next: "perfundo__next",
-      untarget: "perfundo__untarget",
-      active: "is-active",
-    },
-  };
+  var self = this;
 
   // Make it possible to initialize perfundo on multiple elements at once.
-  if (typeof element === "string" && $$(element).length > 1) {
-    var object = [];
-    $$(element).forEach(function (singleElement) {
-      object.push(new Perfundo(singleElement, options));
-    });
-    return object;
+  if (typeof selector === "string" && $$(selector).length > 1) {
+    return $$(selector).map(function (element) { return new Perfundo(element, options); });
   }
 
-  this.element = $(element);
-  this.options = options;
+  self.element = $(selector);
 
   // Return an empty object if the element does not exist.
-  if (!this.element) {
+  if (!self.element) {
     return {};
   }
 
-  this.configure(defaultOptions);
+  self.options = configure(self.element, options, defaultOptions);
 
-  $.bind($$(("." + (this.options.classNames.link)), this.element), {
+  self.initEvents();
+};
+
+Perfundo.prototype.initEvents = function initEvents () {
+  var self = this;
+
+  $.bind($$(("." + (self.options.classNames.link)), self.element), {
     click: function click(e) {
-      if (me.options.disableHistory) {
+      if (self.options.disableHistory) {
         e.preventDefault();
       }
-      me.open(this.getAttribute("href"));
+      self.open(this.getAttribute("href"));
     },
   });
 
-  $.bind(this.element, {
+  $.bind(self.element, {
     click: function click(e) {
-      var isCloseButton = e.target.classList.contains(me.options.classNames.close);
-      var isOverlay = e.target.classList.contains(me.options.classNames.overlay);
+      var isCloseButton = e.target.classList.contains(self.options.classNames.close);
+      var isOverlay = e.target.classList.contains(self.options.classNames.overlay);
 
       if (isCloseButton || isOverlay) {
-        if (me.options.disableHistory) {
+        if (self.options.disableHistory) {
           e.preventDefault();
         }
-        me.close();
+        self.close();
       }
     },
   });
 
-  if (this.options.swipe) {
-    // Initialize swipe detection variables.
-    var touchStartX = 0;
-    var touchStartY = 0;
-    var touchEndX = 0;
-    var touchEndY = 0;
-    // Store the swipe distance.
-    var swipeDistanceX;
-    var swipeDistanceY;
-    // Min X distance to count as horizontal swipe.
-    var swipeMinX = 50;
-    // Max Y distance to still count as horizontal swipe.
-    var swipeMaxY = 60;
-
-    $.bind($$(("." + (this.options.classNames.content)), this.element), {
-      touchstart: function touchstart(e) {
-        // Save touchstart coordinates.
-        touchStartX = e.changedTouches[0].clientX;
-        touchStartY = e.changedTouches[0].clientY;
-      },
-      touchend: function touchend(e) {
-        // Save touchend coordinates.
-        touchEndX = e.changedTouches[0].clientX;
-        touchEndY = e.changedTouches[0].clientY;
-        // Calculate swipe distances.
-        swipeDistanceX = touchStartX - touchEndX;
-        swipeDistanceY = touchStartY - touchEndY;
-        // Check if touch gesture was a swipe.
-        if ((Math.abs(swipeDistanceX) >= swipeMinX) && (Math.abs(swipeDistanceY) <= swipeMaxY)) {
-          if (swipeDistanceX > swipeMinX) {
-            me.next();
-          } else {
-            me.prev();
-          }
-        }
-        // Reset variables to be ready to detect the next swipe.
-        touchStartX = 0;
-        touchStartY = 0;
-        touchEndX = 0;
-        touchEndY = 0;
-        swipeDistanceX = null;
-        swipeDistanceY = null;
-      },
-    });
+  if (self.options.swipe) {
+    self.initSwipeEvents();
   }
+};
+
+Perfundo.prototype.initSwipeEvents = function initSwipeEvents () {
+  var self = this;
+
+  // Initialize swipe detection variables.
+  var touchStartX = 0;
+  var touchStartY = 0;
+  var touchEndX = 0;
+  var touchEndY = 0;
+  // Store the swipe distance.
+  var swipeDistanceX;
+  var swipeDistanceY;
+  // Min X distance to count as horizontal swipe.
+  var swipeMinX = 50;
+  // Max Y distance to still count as horizontal swipe.
+  var swipeMaxY = 60;
+
+  $.bind($$(("." + (self.options.classNames.content)), self.element), {
+    touchstart: function touchstart(e) {
+      // Save touchstart coordinates.
+      touchStartX = e.changedTouches[0].clientX;
+      touchStartY = e.changedTouches[0].clientY;
+    },
+    touchend: function touchend(e) {
+      // Save touchend coordinates.
+      touchEndX = e.changedTouches[0].clientX;
+      touchEndY = e.changedTouches[0].clientY;
+      // Calculate swipe distances.
+      swipeDistanceX = touchStartX - touchEndX;
+      swipeDistanceY = touchStartY - touchEndY;
+
+      // Check if touch gesture was a swipe.
+      if ((Math.abs(swipeDistanceX) >= swipeMinX) && (Math.abs(swipeDistanceY) <= swipeMaxY)) {
+        if (swipeDistanceX > swipeMinX) {
+          self.next();
+        } else {
+          self.prev();
+        }
+      }
+
+      // Reset variables to be ready to detect the next swipe.
+      touchStartX = 0;
+      touchStartY = 0;
+      touchEndX = 0;
+      touchEndY = 0;
+      swipeDistanceX = null;
+      swipeDistanceY = null;
+    },
+  });
 };
 
 Perfundo.prototype.open = function open (overlayItem) {
@@ -143,6 +179,7 @@ Perfundo.prototype.close = function close () {
 
 Perfundo.prototype.next = function next () {
   var nextLink = $(("." + (this.options.classNames.next)), this.element);
+
   if (nextLink) {
     nextLink.click();
   }
@@ -150,48 +187,9 @@ Perfundo.prototype.next = function next () {
 
 Perfundo.prototype.prev = function prev () {
   var prevLink = $(("." + (this.options.classNames.prev)), this.element);
+
   if (prevLink) {
     prevLink.click();
-  }
-};
-
-/**
- * Private functions.
- */
-Perfundo.prototype.configure = function configure (defaultOptions) {
-    var this$1 = this;
-
-  // @TODO: refactor
-  // - should data attributes trump arguments or the other way?
-  Object.keys(defaultOptions).forEach(function (key) {
-    var initial = defaultOptions[key];
-    var attrValue = this$1.element.getAttribute(("data-" + (key.toLowerCase())));
-
-    if (typeof initial === "number") {
-      this$1.options[key] = parseInt(attrValue, 10);
-    } else if (initial instanceof Function) {
-      this$1.options[key] = null;
-    } else if (attrValue) {
-      this$1.options[key] = attrValue;
-    }
-
-    if (!this$1.options[key] && this$1.options[key] !== 0) {
-      this$1.options[key] = (key in this$1.options) ? this$1.options[key] : initial;
-    }
-  });
-};
-
-$.bind = function bind(elements, o) {
-  if (elements) {
-    var elementsArray = elements.length ? elements : [elements];
-    elementsArray.forEach(function (element) {
-      Object.keys(o).forEach(function (events) {
-        var callback = o[events];
-        events.split(/\s+/).forEach(function (event) {
-          element.addEventListener(event, callback);
-        });
-      });
-    });
   }
 };
 
