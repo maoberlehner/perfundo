@@ -26,6 +26,7 @@
 }
 
 .c-button--contrast {
+  // stylelint-disable
   &.c-button--secondary {
     &,
     &:visited {
@@ -38,4 +39,5 @@
       color: setting-color(a);
     }
   }
+  // stylelint-enable
 }
