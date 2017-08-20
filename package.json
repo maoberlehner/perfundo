@@ -62,13 +62,14 @@
     "scripts:bundle": "rollup --config --format umd --name Perfundo --output dist/perfundo.js js/index.js",
     "scripts:minify": "uglifyjs --compress --output dist/perfundo.min.js dist/perfundo.js",
     "scripts": "npm run scripts:bundle && npm run scripts:minify",
+    "build": "npm run styles && npm run scripts",
     "watch:styles": "onchange scss/**/*.scss -- npm run styles",
     "watch:scripts": "onchange js/**/*.js -- npm run scripts",
     "watch": "parallelshell 'npm run watch:styles' 'npm run watch:scripts'",
     "lint:styles": "stylelint demo/scss/**/*.scss scss/**/*.scss --syntax scss",
     "lint:scripts": "eslint js/**/*.js rollup.config.js",
     "lint": "npm run lint:styles && npm run lint:scripts",
-    "demo": "mkdir -p demo/vendor && cp -R dist/ demo/vendor/perfundo && cp -R node_modules/animate.css demo/vendor && cp -R node_modules/highlight.js demo/vendor"
+    "demo": "npm run build && mkdir -p demo/vendor && cp -R dist/ demo/vendor/perfundo && cp -R node_modules/animate.css demo/vendor && cp -R node_modules/highlight.js demo/vendor"
   },
   "browserslist": [
     "last 2 versions"
