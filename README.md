@@ -31,7 +31,6 @@ Now you can import perfundo into your Sass file:
 
 There are variables to control certain aspects of the Lightbox:
 ```scss
-$perfundo-namespace: 'perfundo';
 $perfundo-background-color: rgba(#000, 0.9);
 $perfundo-color: #fff;
 $perfundo-control-use-icons: false;
