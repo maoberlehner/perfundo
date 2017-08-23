@@ -77,7 +77,9 @@ Download https://perfundo.oberlehner.net/downloads/perfundo-2.0.4.zip. Add the f
 ## About
 ### Author
 Markus Oberlehner  
-Twitter: https://twitter.com/MaOberlehner
+Website: https://markus.oberlehner.net  
+Twitter: https://twitter.com/MaOberlehner  
+PayPal.me: https://paypal.me/maoberlehner
 
 ### License
-GPL v2 (http://www.gnu.org/licenses/gpl-2.0.html)
+MIT
