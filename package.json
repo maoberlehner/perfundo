@@ -20,6 +20,7 @@
     "@avalanche/setting-colors": "^4.0.0-alpha.4",
     "@avalanche/setting-font-sizes": "^4.0.0-alpha.4",
     "@avalanche/setting-spacings": "^4.0.0-alpha.5",
+    "@avalanche/utility-text-align": "^4.0.0-alpha.4",
     "animate.css": "^3.5.2",
     "highlight.js": "^9.12.0"
   },

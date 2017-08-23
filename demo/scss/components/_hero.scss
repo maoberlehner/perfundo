@@ -1,10 +1,8 @@
 .c-hero {
   display: flex;
-  padding-right: 1em;
-  padding-left: 1em;
-  min-height: 34em;
+  padding: setting-spacing(xxl) setting-spacing(m);
+  min-height: 100vh;
   max-height: 67.5em;
-  height: 100vh;
   justify-content: center;
   align-items: center;
   background: setting-color(a);
@@ -21,4 +19,8 @@
 
 .c-hero__head {
   font-size: setting-font-size(l);
+}
+
+.c-hero__img {
+  max-height: 48vh;
 }
