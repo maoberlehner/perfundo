@@ -1,0 +1,3 @@
+{
+  "extends": "@avalanche/stylelint-config"
+}

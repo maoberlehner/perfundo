@@ -1,0 +1,12 @@
+.c-teaser {
+  padding-top: setting-spacing(xxl, true);
+  padding-bottom: setting-spacing(xxl, true);
+  border: 1px solid setting-color(b, gray);
+  border-right: none;
+  border-left: none;
+  font-size: setting-font-size(l);
+}
+
+.c-teaser__content {
+  font-size: setting-font-size(l);
+}

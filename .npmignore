@@ -1,10 +1,10 @@
-.csscomb.json
-.DS_Store
-.eyeglass_cache
+demo
 
-gulpfile.js
+.editorconfig
+.eslintrc
+.stylelintrc
+.travis.yml
 
-dist
-node_modules
-
-/demo
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+rollup.config.js

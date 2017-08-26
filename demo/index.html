@@ -7,344 +7,339 @@
     <meta name="description" content="perfundo is a pure CSS Lightbox which is completely functional without JavaScript.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
-    <link rel="stylesheet" href="node_modules/prismjs/themes/prism-okaidia.css">
     <link rel="stylesheet" href="dist/index.min.css">
   </head>
   <body>
-    <article>
-      <div class="c-hero">
-        <div class="c-hero__inner">
+    <div class="c-hero">
+      <div class="o-vertical-spacing o-vertical-spacing--xl c-hero__inner">
+        <div class="c-hero__head">
           <h1 class="c-h1">perfundo</h1>
-          <h2 class="c-h2">a pure CSS lightbox<br /><small class="c-hero__sub-title">(now with JavaScript)</small></h2>
-          <div class="c-quick-demo u-spacing-top-m">
-            <div class="perfundo">
-              <a class="c-quick-demo__link perfundo__link" href="#perfundo-single">
-                <img src="img/img-single_s.jpg" alt="Demo image" class="c-quick-demo__img">
-              </a>
-              <div id="perfundo-single" class="perfundo__overlay bounceIn">
-                <figure class="perfundo__content perfundo__figure">
-                  <img src="img/img-single_s.jpg" alt="Demo image">
-                  <div class="perfundo__image" style="width: 800px; padding-top: 56.25%; background-image: url(img/img-single.jpg);"></div>
-                </figure>
-                <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
-              </div>
-            </div>
-          </div>
-
-          <ul class="c-list c-list--flatten">
-            <li><a href="https://github.com/maoberlehner/perfundo" class="c-button c-button--contrast c-button--github">View on GitHub</a></li>
-            <li><a id="download" href="https://perfundo.oberlehner.net/downloads/perfundo-2.0.4.zip" class="c-button c-button--contrast c-button--secondary">Download</a></li>
-          </ul>
+          <h2 class="c-h3">
+            a pure CSS lightbox<br />
+            <small class="c-hero__sub-title">(now with JavaScript)</small>
+          </h2>
         </div>
-      </div>
-
-      <div class="o-container">
-        <div class="c-main-content">
-          <h3 class="c-h3">What?</h3>
-          <p>perfundo is a pure CSS Lightbox which is completely functional without JavaScript.</p>
-
-          <h3 class="c-h3">Why?</h3>
-          <p>First and foremost I just really like doing things, which are usually done with JavaScript, without JavaScript. Next my focus was to keep the file size of the CSS file (which provides the core functionallity) at an absolute minimum. So it is possible to provide a basic Lightbox functionallity for minimalistic sites with a focus on loading time and mobile performance.</p>
-          <p>Usually my answer why things should work also without JavaScript is: progressive enhancement. But in the case of Lightboxes progressive enhancement isn't an issue. The fallback of traditional Lightbox solutions is to just link to the big version of the image, which is a very good fallback behaviour in my opinion. <a href="https://www.reddit.com/r/webdev/comments/48z7jz/do_you_take_into_account_those_who_disable/d0nxftd">Read more about why progressive enhancement is important.</a></p>
-
-          <h3 class="c-h3">How?</h3>
-          <p>The short answer is: I use the CSS <code class="language-css">:target</code> pseudo class. If you want to go into detail, I tried my best to document <a href="https://github.com/maoberlehner/perfundo/blob/master/scss/index.scss">the code with comments</a>.</p>
-
-          <p><a href="https://daneden.github.io/animate.css/">animate.css</a> is used for animations.</p>
-
-          <h3 class="c-h3">Demos</h3>
-          <h4 class="c-h4">Single image</h4>
-          <div class="perfundo u-spacing-top-m">
-            <a class="perfundo__link" href="#perfundo-single2">
-              <img src="img/img-single_s.jpg" alt="Demo image">
+        <div class="c-quick-demo">
+          <div class="perfundo">
+            <a class="c-quick-demo__link perfundo__link" href="#perfundo-single">
+              <img src="img/img-single_s.jpg" alt="Demo image" class="c-hero__img c-quick-demo__img">
             </a>
-            <div id="perfundo-single2" class="perfundo__overlay fadeInLeft">
+            <div id="perfundo-single" class="perfundo__overlay bounceIn">
               <figure class="perfundo__content perfundo__figure">
                 <img src="img/img-single_s.jpg" alt="Demo image">
                 <div class="perfundo__image" style="width: 800px; padding-top: 56.25%; background-image: url(img/img-single.jpg);"></div>
-                <figcaption class="perfundo__figcaption">Single image with caption</figcaption>
               </figure>
               <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
             </div>
           </div>
-          <pre><code class="language-html">
-&#x3C;div class=&#x22;perfundo&#x22;&#x3E;
-  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-single2&#x22;&#x3E;
-    &#x3C;img src=&#x22;img/img-single_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-  &#x3C;/a&#x3E;
-  &#x3C;div id=&#x22;perfundo-single2&#x22; class=&#x22;perfundo__overlay fadeInLeft&#x22;&#x3E;
-    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
-      &#x3C;img src=&#x22;img/img-single_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 56.25%; background-image: url(img/img-single.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
-      &#x3C;figcaption class=&#x22;perfundo__figcaption&#x22;&#x3E;Single image with caption&#x3C;/figcaption&#x3E;
-    &#x3C;/figure&#x3E;
-    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
-  &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-          </code></pre>
-          <pre><code class="language-javascript">
-// No JavaScript!
-          </code></pre>
+        </div>
+        <ul class="c-list c-list--flatten">
+            <li><a href="https://github.com/maoberlehner/perfundo" class="c-button c-button--contrast c-button--github">Star on GitHub</a></li>
+            <li><a id="download" href="https://perfundo.oberlehner.net/downloads/perfundo-2.0.4.zip" class="c-button c-button--contrast c-button--secondary">Download</a></li>
+          </ul>
+      </div>
+    </div>
 
-          <h4 class="c-h4">Simple gallery</h4>
-          <div class="u-spacing-top-m">
-            <div class="c-gallery o-grid">
-              <div class="c-gallery__item o-grid__item perfundo">
-                <a class="perfundo__link" href="#perfundo-img1">
-                  <img src="img/img1_s.jpg" alt="Demo image">
-                </a>
-                <div id="perfundo-img1" class="perfundo__overlay fadeIn">
-                  <figure class="perfundo__content perfundo__figure">
-                    <img src="img/img1_s.jpg" alt="Demo image">
-                    <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img1.jpg);"></div>
-                  </figure>
-                  <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
-                  <a class="perfundo__next perfundo__control perfundo__link" href="#perfundo-img2">Next</a>
+    <div class="o-vertical-spacing o-vertical-spacing--xxl c-main-content">
+      <div class="o-container o-container--s">
+        <div class="o-vertical-spacing o-vertical-spacing--xxl">
+          <section class="o-vertical-spacing">
+            <h2 class="c-h2">About</h2>
+            <p>
+              perfundo is an extremely lightweight, pure CSS Lightbox which is completely functional without JavaScript. You can view the code <a href="https://github.com/maoberlehner/perfundo" rel="nofollow">on GitHub</a>.
+            </p>
+          </section>
+          <section>
+            <h2 class="c-h2">Demos</h2>
+            <div class="o-vertical-spacing o-vertical-spacing--xxl">
+              <div class="o-vertical-spacing">
+                <h3 class="c-h3">Single image</h3>
+                <div class="perfundo">
+                  <a class="perfundo__link" href="#perfundo-single2">
+                    <img src="img/img-single_s.jpg" alt="Demo image">
+                  </a>
+                  <div id="perfundo-single2" class="perfundo__overlay fadeInLeft">
+                    <figure class="perfundo__content perfundo__figure">
+                      <img src="img/img-single_s.jpg" alt="Demo image">
+                      <div class="perfundo__image" style="width: 800px; padding-top: 56.25%; background-image: url(img/img-single.jpg);"></div>
+                      <figcaption class="perfundo__figcaption">Single image with caption</figcaption>
+                    </figure>
+                    <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                  </div>
                 </div>
+                <pre class="language-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-single2"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img-single_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"perfundo-single2"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__overlay fadeInLeft"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__content perfundo__figure"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img-single_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__image"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 800px; padding-top: 56.25%; background-image: url(img/img-single.jpg);"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__figcaption"</span>&gt;</span>Single image with caption<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-untarget"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__close perfundo__control"</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+                <pre class="language-javascript"><code><span class="hljs-comment">// No JavaScript!</span></code></pre>
               </div>
 
-              <div class="c-gallery__item o-grid__item perfundo">
-                <a class="perfundo__link" href="#perfundo-img2">
-                  <img src="img/img2_s.jpg" alt="Demo image">
-                </a>
-                <div id="perfundo-img2" class="perfundo__overlay fadeIn">
-                  <figure class="perfundo__content perfundo__figure">
-                    <img src="img/img2_s.jpg" alt="Demo image">
-                    <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img2.jpg);"></div>
-                  </figure>
-                  <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
-                  <a class="perfundo__next perfundo__control perfundo__link" href="#perfundo-img3">Next</a>
-                  <a class="perfundo__prev perfundo__control perfundo__link" href="#perfundo-img1">Prev</a>
+              <div class="o-vertical-spacing">
+                <h3 class="c-h3">Simple gallery</h3>
+                <div class="c-gallery">
+                  <div class="o-grid">
+                    <div class="o-grid__item c-gallery__item perfundo">
+                      <a class="perfundo__link" href="#perfundo-img1">
+                        <img src="img/img1_s.jpg" alt="Demo image">
+                      </a>
+                      <div id="perfundo-img1" class="perfundo__overlay fadeIn">
+                        <figure class="perfundo__content perfundo__figure">
+                          <img src="img/img1_s.jpg" alt="Demo image">
+                          <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img1.jpg);"></div>
+                        </figure>
+                        <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                        <a class="perfundo__next perfundo__control" href="#perfundo-img2">Next</a>
+                      </div>
+                    </div>
+
+                    <div class="o-grid__item c-gallery__item perfundo">
+                      <a class="perfundo__link" href="#perfundo-img2">
+                        <img src="img/img2_s.jpg" alt="Demo image">
+                      </a>
+                      <div id="perfundo-img2" class="perfundo__overlay fadeIn">
+                        <figure class="perfundo__content perfundo__figure">
+                          <img src="img/img2_s.jpg" alt="Demo image">
+                          <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img2.jpg);"></div>
+                        </figure>
+                        <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                        <a class="perfundo__next perfundo__control" href="#perfundo-img3">Next</a>
+                        <a class="perfundo__prev perfundo__control" href="#perfundo-img1">Prev</a>
+                      </div>
+                    </div>
+
+                    <div class="o-grid__item c-gallery__item perfundo">
+                      <a class="perfundo__link" href="#perfundo-img3">
+                        <img src="img/img3_s.jpg" alt="Demo image">
+                      </a>
+                      <div id="perfundo-img3" class="perfundo__overlay fadeIn">
+                        <figure class="perfundo__content perfundo__figure">
+                          <img src="img/img3_s.jpg" alt="Demo image">
+                          <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img3.jpg);"></div>
+                        </figure>
+                        <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                        <a class="perfundo__prev perfundo__control" href="#perfundo-img2">Prev</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                <pre class="language-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img1"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img1_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"perfundo-img1"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__overlay fadeIn"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__content perfundo__figure"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img1_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__image"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 800px; padding-top: 66.25%; background-image: url(img/img1.jpg);"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-untarget"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__close perfundo__control"</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__next perfundo__control"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img2"</span>&gt;</span>Next<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img2"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img2_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"perfundo-img2"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__overlay fadeIn"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__content perfundo__figure"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img2_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__image"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 800px; padding-top: 66.25%; background-image: url(img/img2.jpg);"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-untarget"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__close perfundo__control"</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__next perfundo__control"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img3"</span>&gt;</span>Next<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__prev perfundo__control"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img1"</span>&gt;</span>Prev<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img3"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img3_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"perfundo-img3"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__overlay fadeIn"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__content perfundo__figure"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img3_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__image"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 800px; padding-top: 66.25%; background-image: url(img/img3.jpg);"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-untarget"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__close perfundo__control"</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__prev perfundo__control"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img2"</span>&gt;</span>Prev<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+                <pre class="language-javascript"><code><span class="hljs-comment">// No JavaScript!</span></code></pre>
               </div>
 
-              <div class="c-gallery__item o-grid__item perfundo">
-                <a class="perfundo__link" href="#perfundo-img3">
-                  <img src="img/img3_s.jpg" alt="Demo image">
-                </a>
-                <div id="perfundo-img3" class="perfundo__overlay fadeIn">
-                  <figure class="perfundo__content perfundo__figure">
-                    <img src="img/img3_s.jpg" alt="Demo image">
-                    <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img3.jpg);"></div>
-                  </figure>
-                  <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
-                  <a class="perfundo__prev perfundo__control perfundo__link" href="#perfundo-img2">Prev</a>
+              <div class="o-vertical-spacing">
+                <h3 class="c-h3">Content</h3>
+                <div class="perfundo">
+                  <a class="perfundo__link" href="#perfundo-content">
+                    Open the lightbox...
+                  </a>
+                  <div id="perfundo-content" class="perfundo__overlay bounceIn">
+                    <div class="perfundo__content perfundo__html">
+                      <h5>Lorem Ipsum</h5>
+                      <p>Sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur.</p>
+                    </div>
+                    <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <pre><code class="language-html">
-&#x3C;div class=&#x22;perfundo&#x22;&#x3E;
-  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img1&#x22;&#x3E;
-    &#x3C;img src=&#x22;img/img1_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-  &#x3C;/a&#x3E;
-  &#x3C;div id=&#x22;perfundo-img1&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
-    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
-      &#x3C;img src=&#x22;img/img1_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img1.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
-    &#x3C;/figure&#x3E;
-    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
-    &#x3C;a class=&#x22;perfundo__next perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;Next&#x3C;/a&#x3E;
-  &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-
-&#x3C;div class=&#x22;perfundo&#x22;&#x3E;
-  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;
-    &#x3C;img src=&#x22;img/img2_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-  &#x3C;/a&#x3E;
-  &#x3C;div id=&#x22;perfundo-img2&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
-    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
-      &#x3C;img src=&#x22;img/img2_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img2.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
-    &#x3C;/figure&#x3E;
-    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
-    &#x3C;a class=&#x22;perfundo__next perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img3&#x22;&#x3E;Next&#x3C;/a&#x3E;
-    &#x3C;a class=&#x22;perfundo__prev perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img1&#x22;&#x3E;Prev&#x3C;/a&#x3E;
-  &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-
-&#x3C;div class=&#x22;perfundo&#x22;&#x3E;
-  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img3&#x22;&#x3E;
-    &#x3C;img src=&#x22;img/img3_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-  &#x3C;/a&#x3E;
-  &#x3C;div id=&#x22;perfundo-img3&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
-    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
-      &#x3C;img src=&#x22;img/img3_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img3.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
-    &#x3C;/figure&#x3E;
-    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
-    &#x3C;a class=&#x22;perfundo__prev perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;Prev&#x3C;/a&#x3E;
-  &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-          </code></pre>
-          <pre><code class="language-javascript">
-// No JavaScript!
-          </code></pre>
-
-          <h4 class="c-h4">Content</h4>
-          <div class="perfundo u-spacing-top-m">
-            <a class="perfundo__link" href="#perfundo-content">
-              Open the lightbox...
-            </a>
-            <div id="perfundo-content" class="perfundo__overlay bounceIn">
-              <div class="perfundo__content perfundo__html">
-                <h5>Lorem Ipsum</h5>
-                <p>Sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur.</p>
-              </div>
-              <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
-            </div>
-          </div>
-          <pre><code class="language-html">
-&#x3C;div class=&#x22;perfundo&#x22;&#x3E;
-  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-content&#x22;&#x3E;
+                <pre class="language-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-content"</span>&gt;</span>
     Open the lightbox...
-  &#x3C;/a&#x3E;
-  &#x3C;div id=&#x22;perfundo-content&#x22; class=&#x22;perfundo__overlay bounceIn&#x22;&#x3E;
-    &#x3C;div class=&#x22;perfundo__content perfundo__html&#x22;&#x3E;
-      &#x3C;h5&#x3E;Lorem Ipsum&#x3C;/h5&#x3E;
-      &#x3C;p&#x3E;Sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&#x3C;/p&#x3E;
-      &#x3C;p&#x3E;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur.&#x3C;/p&#x3E;
-    &#x3C;/div&#x3E;
-    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
-  &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-          </code></pre>
-          <pre><code class="language-javascript">
-// No JavaScript!
-          </code></pre>
-
-          <h4 class="c-h4">Direct linking</h4>
-          <p><a href="https://perfundo.oberlehner.net/#perfundo-single">perfundo.oberlehner.net/#perfundo-single</a></p>
-          <pre><code class="language-html">
-&#x3C;p&#x3E;&#x3C;a href=&#x22;https://perfundo.oberlehner.net/#perfundo-single&#x22;&#x3E;perfundo.oberlehner.net/#perfundo-single&#x3C;/a&#x3E;&#x3C;/p&#x3E;
-          </code></pre>
-          <pre><code class="language-javascript">
-// No JavaScript!
-          </code></pre>
-
-          <h4 class="c-h4">JavaScript enhanced gallery</h4>
-          <p>With using some JavaScript enhancements, it is possible to disable the creation of browser history steps (hash links) and enable swipe support for touch devices.</p>
-          <div class="u-spacing-top-m">
-            <div class="c-gallery o-grid">
-              <div class="c-gallery__item o-grid__item perfundo perfundo-js">
-                <a class="perfundo__link" href="#perfundo-js-img1">
-                  <img src="img/img1_s.jpg" alt="Demo image">
-                </a>
-                <div id="perfundo-js-img1" class="perfundo__overlay fadeIn">
-                  <figure class="perfundo__content perfundo__figure">
-                    <img src="img/img1_s.jpg" alt="Demo image">
-                    <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img1.jpg);"></div>
-                  </figure>
-                  <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
-                  <a class="perfundo__next perfundo__control perfundo__link" href="#perfundo-js-img2">Next</a>
-                </div>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"perfundo-content"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__overlay bounceIn"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__content perfundo__html"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h5</span>&gt;</span>Lorem Ipsum<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-untarget"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__close perfundo__control"</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+                <pre class="language-javascript"><code><span class="hljs-comment">// No JavaScript!</span></code></pre>
               </div>
 
-              <div class="c-gallery__item o-grid__item perfundo perfundo-js">
-                <a class="perfundo__link" href="#perfundo-js-img2">
-                  <img src="img/img2_s.jpg" alt="Demo image">
-                </a>
-                <div id="perfundo-js-img2" class="perfundo__overlay fadeIn">
-                  <figure class="perfundo__content perfundo__figure">
-                    <img src="img/img2_s.jpg" alt="Demo image">
-                    <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img2.jpg);"></div>
-                  </figure>
-                  <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
-                  <a class="perfundo__next perfundo__control perfundo__link" href="#perfundo-js-img3">Next</a>
-                  <a class="perfundo__prev perfundo__control perfundo__link" href="#perfundo-js-img1">Prev</a>
-                </div>
+              <div class="o-vertical-spacing">
+                <h3 class="c-h3">Direct linking</h3>
+                <p><a href="https://perfundo.oberlehner.net/#perfundo-single">perfundo.oberlehner.net/#perfundo-single</a></p>
+                <pre class="language-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://perfundo.oberlehner.net/#perfundo-single"</span>&gt;</span>perfundo.oberlehner.net/#perfundo-single<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+                <pre class="language-javascript"><code><span class="hljs-comment">// No JavaScript!</span></code></pre>
               </div>
 
-              <div class="c-gallery__item o-grid__item perfundo perfundo-js">
-                <a class="perfundo__link" href="#perfundo-js-img3">
-                  <img src="img/img3_s.jpg" alt="Demo image">
-                </a>
-                <div id="perfundo-js-img3" class="perfundo__overlay fadeIn">
-                  <figure class="perfundo__content perfundo__figure">
-                    <img src="img/img3_s.jpg" alt="Demo image">
-                    <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img3.jpg);"></div>
-                  </figure>
-                  <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
-                  <a class="perfundo__prev perfundo__control perfundo__link" href="#perfundo-js-img2">Prev</a>
+              <div class="o-vertical-spacing">
+                <h3 class="c-h3">JavaScript enhanced gallery</h3>
+                <p>With using some JavaScript enhancements, it is possible to disable the creation of entries in the browser history (hash links) and enable swipe support for touch devices.</p>
+                <div class="c-gallery">
+                  <div class="o-grid">
+                    <div class="o-grid__item c-gallery__item perfundo perfundo-js">
+                      <a class="perfundo__link" href="#perfundo-js-img1">
+                        <img src="img/img1_s.jpg" alt="Demo image">
+                      </a>
+                      <div id="perfundo-js-img1" class="perfundo__overlay fadeIn">
+                        <figure class="perfundo__content perfundo__figure">
+                          <img src="img/img1_s.jpg" alt="Demo image">
+                          <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img1.jpg);"></div>
+                        </figure>
+                        <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                        <a class="perfundo__next perfundo__control" href="#perfundo-js-img2">Next</a>
+                      </div>
+                    </div>
+
+                    <div class="o-grid__item c-gallery__item perfundo perfundo-js">
+                      <a class="perfundo__link" href="#perfundo-js-img2">
+                        <img src="img/img2_s.jpg" alt="Demo image">
+                      </a>
+                      <div id="perfundo-js-img2" class="perfundo__overlay fadeIn">
+                        <figure class="perfundo__content perfundo__figure">
+                          <img src="img/img2_s.jpg" alt="Demo image">
+                          <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img2.jpg);"></div>
+                        </figure>
+                        <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                        <a class="perfundo__next perfundo__control" href="#perfundo-js-img3">Next</a>
+                        <a class="perfundo__prev perfundo__control" href="#perfundo-js-img1">Prev</a>
+                      </div>
+                    </div>
+
+                    <div class="o-grid__item c-gallery__item perfundo perfundo-js">
+                      <a class="perfundo__link" href="#perfundo-js-img3">
+                        <img src="img/img3_s.jpg" alt="Demo image">
+                      </a>
+                      <div id="perfundo-js-img3" class="perfundo__overlay fadeIn">
+                        <figure class="perfundo__content perfundo__figure">
+                          <img src="img/img3_s.jpg" alt="Demo image">
+                          <div class="perfundo__image" style="width: 800px; padding-top: 66.25%; background-image: url(img/img3.jpg);"></div>
+                        </figure>
+                        <a href="#perfundo-untarget" class="perfundo__close perfundo__control">Close</a>
+                        <a class="perfundo__prev perfundo__control" href="#perfundo-js-img2">Prev</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                <pre class="language-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo perfundo-js"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img1"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img1_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"perfundo-img1"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__overlay fadeIn"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__content perfundo__figure"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img1_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__image"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 800px; padding-top: 66.25%; background-image: url(img/img1.jpg);"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-untarget"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__close perfundo__control"</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__next perfundo__control"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img2"</span>&gt;</span>Next<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo perfundo-js"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img2"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img2_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"perfundo-img2"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__overlay fadeIn"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__content perfundo__figure"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img2_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__image"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 800px; padding-top: 66.25%; background-image: url(img/img2.jpg);"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-untarget"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__close perfundo__control"</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__next perfundo__control"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img3"</span>&gt;</span>Next<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__prev perfundo__control"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img1"</span>&gt;</span>Prev<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo perfundo-js"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img3"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img3_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"perfundo-img3"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__overlay fadeIn"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__content perfundo__figure"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/img3_s.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Demo image"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__image"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 800px; padding-top: 66.25%; background-image: url(img/img3.jpg);"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-untarget"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__close perfundo__control"</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"perfundo__prev perfundo__control"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#perfundo-img2"</span>&gt;</span>Prev<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+                <pre class="language-javascript"><code><span class="hljs-comment">// Initialize a perfundo Lightbox.</span>
+perfundo(<span class="hljs-string">'.perfundo'</span>, {
+  <span class="hljs-attr">disableHistory</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">swipe</span>: <span class="hljs-literal">true</span>
+});</code></pre>
               </div>
             </div>
-          </div>
-          <pre><code class="language-html">
-&#x3C;div class=&#x22;perfundo perfundo-js&#x22;&#x3E;
-  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img1&#x22;&#x3E;
-    &#x3C;img src=&#x22;img/img1_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-  &#x3C;/a&#x3E;
-  &#x3C;div id=&#x22;perfundo-img1&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
-    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
-      &#x3C;img src=&#x22;img/img1_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img1.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
-    &#x3C;/figure&#x3E;
-    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
-    &#x3C;a class=&#x22;perfundo__next perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;Next&#x3C;/a&#x3E;
-  &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
+          </section>
+        </div>
+      </div>
 
-&#x3C;div class=&#x22;perfundo perfundo-js&#x22;&#x3E;
-  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;
-    &#x3C;img src=&#x22;img/img2_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-  &#x3C;/a&#x3E;
-  &#x3C;div id=&#x22;perfundo-img2&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
-    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
-      &#x3C;img src=&#x22;img/img2_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img2.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
-    &#x3C;/figure&#x3E;
-    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
-    &#x3C;a class=&#x22;perfundo__next perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img3&#x22;&#x3E;Next&#x3C;/a&#x3E;
-    &#x3C;a class=&#x22;perfundo__prev perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img1&#x22;&#x3E;Prev&#x3C;/a&#x3E;
-  &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
+      <section class="c-teaser u-text-align-center">
+        <div class="o-vertical-spacing o-vertical-spacing--s o-container o-container--s">
+          <h2 class="c-h2">Do you want to support perfundo?</h2>
+          <p class="c-teaser__content">
+            Star the project <a href="https://github.com/maoberlehner/perfundo" rel="nofollow">on GitHub</a>
+          </p>
+        </div>
+      </section>
 
-&#x3C;div class=&#x22;perfundo perfundo-js&#x22;&#x3E;
-  &#x3C;a class=&#x22;perfundo__link&#x22; href=&#x22;#perfundo-img3&#x22;&#x3E;
-    &#x3C;img src=&#x22;img/img3_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-  &#x3C;/a&#x3E;
-  &#x3C;div id=&#x22;perfundo-img3&#x22; class=&#x22;perfundo__overlay fadeIn&#x22;&#x3E;
-    &#x3C;figure class=&#x22;perfundo__content perfundo__figure&#x22;&#x3E;
-      &#x3C;img src=&#x22;img/img3_s.jpg&#x22; alt=&#x22;Demo image&#x22;&#x3E;
-      &#x3C;div class=&#x22;perfundo__image&#x22; style=&#x22;width: 800px; padding-top: 66.25%; background-image: url(img/img3.jpg);&#x22;&#x3E;&#x3C;/div&#x3E;
-    &#x3C;/figure&#x3E;
-    &#x3C;a href=&#x22;#perfundo-untarget&#x22; class=&#x22;perfundo__close perfundo__control&#x22;&#x3E;Close&#x3C;/a&#x3E;
-    &#x3C;a class=&#x22;perfundo__prev perfundo__control perfundo__link&#x22; href=&#x22;#perfundo-img2&#x22;&#x3E;Prev&#x3C;/a&#x3E;
-  &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-          </code></pre>
-          <pre><code class="language-javascript">
-// Initialize a perfundo Lightbox.
-var myLightbox = new perfundo(&#x27;.perfundo-js&#x27;, {
-  disableHistory: true,
-  swipe: true
-});
-          </code></pre>
-
-          <h3 class="c-h3">Buy me a beer</h3>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="4SPHUVQJ7FVVL">
-            <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-            <img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
-          </form>
-
-          <h3 class="c-h3">Other projects</h3>
-          <div class="u-spacing-top-m">
-            <h4 class="c-h4"><a href="https://avalanche.oberlehner.net">avalanche</a></h4>
-            <div class="o-media o-media--stacked2m">
+      <div class="o-container o-container--s">
+        <div class="o-vertical-spacing o-vertical-spacing--xxl">
+          <section class="o-vertical-spacing">
+            <h2 class="c-h2">More projects</h2>
+            <h3 class="c-h3"><a href="https://avalanche.oberlehner.net">avalanche</a></h3>
+            <div class="o-media">
               <div class="o-media__body">
                 <p>avalanche is a modular front-end framework which can be extended with npm packages. The goal is to provide a workflow to manage the complexity of big front-end projects.<br /><a href="https://avalanche.oberlehner.net">Learn more about avalanche...</a></p>
               </div>
               <div class="o-media__figure">
-                <a href="https://avalanche.oberlehner.net"><svg width="100" height="110" viewBox="0 0 150 165" xmlns="http://www.w3.org/2000/svg"><title>avalanche</title><g fill="#9FCBD6" fill-rule="evenodd"><path d="M147.285 77.756c-2.146-5.686-6.57-9.845-11.225-13.623-10.84-8.794-15.94-12.28-16.137-8.77-.118 2.144-.583 3.89-1.463 4.878-1.116.133-2.212.328-3.285.59-1.44-.54-3.244-1.89-5.467-4.298-7.025-7.613-22.25-17.566-16.98-9.953 5.268 7.61 5.856 17.565-8.36 2.336-14.213-15.225-20.328-9.365-15.06-5.27 5.27 4.1 9.954 21.078-3.513 6.444-13.464-14.635-16.978-7.613-16.978-7.613 32.75 40.904 32.53 40.84 51.038 61.465 1.035 1.362 2.19 2.624 3.456 3.77 4.858 4.396 11.297 7.075 18.362 7.075 15.12 0 27.37-12.257 27.37-27.373.004-3.397-.622-6.652-1.757-9.658zM.934.583v163.5h135.85L.933.584z"/><ellipse cx="48.421" cy="23.826" rx="3.207" ry="3.207"/><circle cx="90.099" cy="24.629" r="8.014"/><ellipse cx="111.745" cy="40.65" rx="1.612" ry="1.612"/></g></svg></a>
+                <a href="https://avalanche.oberlehner.net"><svg width="100" height="110" viewBox="0 0 150 165" xmlns="http://www.w3.org/2000/svg"><title>avalanche</title><g fill="#2196f3" fill-rule="evenodd"><path d="M147.285 77.756c-2.146-5.686-6.57-9.845-11.225-13.623-10.84-8.794-15.94-12.28-16.137-8.77-.118 2.144-.583 3.89-1.463 4.878-1.116.133-2.212.328-3.285.59-1.44-.54-3.244-1.89-5.467-4.298-7.025-7.613-22.25-17.566-16.98-9.953 5.268 7.61 5.856 17.565-8.36 2.336-14.213-15.225-20.328-9.365-15.06-5.27 5.27 4.1 9.954 21.078-3.513 6.444-13.464-14.635-16.978-7.613-16.978-7.613 32.75 40.904 32.53 40.84 51.038 61.465 1.035 1.362 2.19 2.624 3.456 3.77 4.858 4.396 11.297 7.075 18.362 7.075 15.12 0 27.37-12.257 27.37-27.373.004-3.397-.622-6.652-1.757-9.658zM.934.583v163.5h135.85L.933.584z"/><ellipse cx="48.421" cy="23.826" rx="3.207" ry="3.207"/><circle cx="90.099" cy="24.629" r="8.014"/><ellipse cx="111.745" cy="40.65" rx="1.612" ry="1.612"/></g></svg></a>
               </div>
             </div>
-            <h4 class="c-h4"><a href="https://collectorium.oberlehner.net">collectorium</a></h4>
-            <div class="o-media o-media--stacked2m">
+            <h3 class="c-h3"><a href="https://collectorium.oberlehner.net">collectorium</a></h3>
+            <div class="o-media">
               <div class="o-media__body">
                 <p>collectorium - pure CSS tabs, completely functional without JavaScript.<br /><a href="https://collectorium.oberlehner.net">Learn more about collectorium...</a></p>
               </div>
@@ -352,18 +347,22 @@ var myLightbox = new perfundo(&#x27;.perfundo-js&#x27;, {
                 <a href="https://collectorium.oberlehner.net"><svg width="100" height="100" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg"><title>collectorium</title><g fill="none" fill-rule="evenodd"><circle fill="#2893BA" cx="75" cy="75" r="75"/><path d="M92.274 64.274h20.178c-.29-4.84-1.452-9.024-3.484-12.556-2.033-3.533-4.67-6.484-7.912-8.855-3.242-2.37-6.92-4.137-11.032-5.298-4.113-1.162-8.395-1.742-12.847-1.742-6.096 0-11.516 1.016-16.258 3.048-4.743 2.033-8.76 4.864-12.05 8.493-3.29 3.63-5.78 7.935-7.475 12.92-1.693 4.983-2.54 10.378-2.54 16.185 0 5.613.92 10.766 2.758 15.46 1.84 4.693 4.403 8.733 7.693 12.12 3.29 3.388 7.283 6.025 11.976 7.912 4.694 1.887 9.847 2.83 15.46 2.83 9.968 0 18.145-2.613 24.532-7.838 6.387-5.226 10.258-12.823 11.613-22.79H93c-.677 4.644-2.347 8.346-5.008 11.104-2.66 2.758-6.46 4.137-11.395 4.137-3.194 0-5.903-.726-8.13-2.177-2.225-1.452-3.99-3.315-5.298-5.59-1.307-2.273-2.25-4.813-2.83-7.62-.582-2.806-.872-5.564-.872-8.274 0-2.807.29-5.637.87-8.492.58-2.855 1.573-5.468 2.977-7.84 1.403-2.37 3.217-4.305 5.443-5.805 2.226-1.5 4.984-2.25 8.274-2.25 8.807 0 13.887 4.306 15.242 12.92z" fill="#FFF"/></g></svg></a>
               </div>
             </div>
-          </div>
+          </section>
         </div>
-
-        <footer class="c-main-footer">
-          <p>a project by <a href="https://twitter.com/MaOberlehner" rel="nofollow">Markus Oberlehner</a></p>
-        </footer>
-      </article>
+      </div>
     </div>
+
+    <footer class="c-main-footer u-text-align-center">
+      <p>a project by <a href="https://markus.oberlehner.net/">Markus Oberlehner</a> | powered by <a href="https://avalanche.oberlehner.net/">avalanche</a></p>
+    </footer>
     <div id="perfundo-untarget" class="perfundo__untarget"></div>
 
-    <script src="node_modules/prismjs/prism.js"></script>
-    <script src="node_modules/prismjs/components/prism-javascript.min.js"></script>
-    <script src="dist/index.min.js" async></script>
+    <script src="vendor/perfundo/perfundo.min.js"></script>
+    <script>
+      perfundo(`.perfundo-js`, {
+        disableHistory: true,
+        swipe: true,
+      });
+    </script>
   </body>
 </html>

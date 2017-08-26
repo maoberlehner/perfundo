@@ -1,0 +1,26 @@
+.c-hero {
+  display: flex;
+  padding: setting-spacing(xxl) setting-spacing(m);
+  min-height: 100vh;
+  max-height: 67.5em;
+  justify-content: center;
+  align-items: center;
+  background: setting-color(a);
+  color: #fff;
+  text-align: center;
+}
+
+.c-hero__sub-title {
+  display: block;
+  margin-top: 0.35em;
+  font-weight: 400;
+  font-size: 0.5em;
+}
+
+.c-hero__head {
+  font-size: setting-font-size(l);
+}
+
+.c-hero__img {
+  max-height: 48vh;
+}

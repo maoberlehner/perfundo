@@ -1,208 +1,254 @@
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.perfundo = factory());
+}(this, (function () { 'use strict';
+
+var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+
+
+
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var vanillaTouchwipe = createCommonjsModule(function (module, exports) {
+(function (global, factory) {
+  module.exports = factory();
+}(commonjsGlobal, (function () { 'use strict';
+
 /**
- * perfundo - a pure CSS lightbox
- * @author Markus Oberlehner https://perfundo.oberlehner.net/
+ * Original Comment:
  *
- * Parts of this file are copied from the code of the great awesomeplete
- * autocomplete widget by Lea Verou (http://leaverou.github.io/awesomplete)
+ * jQuery Plugin to obtain touch gestures from iPhone, iPod Touch and iPad, should also work with Android mobile phones (not tested yet!)
+ * Common usage: wipe images (left and right to show the previous or next image)
+ *
+ * @author Nishanth Sudharsanam
+ * @version 1.2 Allowed tracking of amount of swipe which is passed to the callback.
+ *
+ * @author Andreas Waltl, netCU Internetagentur (http://www.netcu.de)
+ * @version 1.1.1 (9th December 2010) - fix bug (older IE's had problems)
+ * @version 1.1 (1st September 2010) - support wipe up and wipe down
+ * @version 1.0 (15th July 2010)
  */
 
-(function () {
-  var _ = function (element, o) {
-    var me = this;
+function ifDefined(obj, def) {
+  return (typeof obj !== 'undefined') ? obj : def;
+}
 
-    // Make it possible to initialize perfundo on multiple elements at once.
-    if (typeof element === 'string' && $$(element).length > 1) {
-      var object = [];
-      $$(element).forEach(function (element) {
-        object.push(new _(element, o));
-      });
-      return object;
+function touchwipe(domNode, settings) {
+  settings = settings || {};
+
+  var config = {
+    min_move_x: ifDefined(settings.min_move_x, 20),
+    min_move_y: ifDefined(settings.min_move_y, 20),
+    wipeLeft: settings.wipeLeft || function() {},
+    wipeRight: settings.wipeRight || function() {},
+    wipeUp: settings.wipeUp || function() {},
+    wipeDown: settings.wipeDown || function() {},
+    preventDefaultEvents: ifDefined(settings.preventDefaultEvents, true)
+  };
+
+  var startX;
+  var startY;
+  var isMoving = false;
+
+  function cancelTouch() {
+    domNode.removeEventListener('touchmove', onTouchMove);
+    startX = null;
+    isMoving = false;
+  }
+
+  function onTouchMove(e) {
+    if (config.preventDefaultEvents) {
+      e.preventDefault();
     }
-
-    me.element = $(element);
-    me.options = {};
-
-    // Return an empty object if the element does not exist.
-    if (!me.element) {
-      return {};
-    }
-
-    o = o || {};
-
-    configure(me, {
-      disableHistory: false,
-      swipe: true,
-      classNames: {
-        link: 'perfundo__link',
-        overlay: 'perfundo__overlay',
-        content: 'perfundo__content',
-        close: 'perfundo__close',
-        prev: 'perfundo__prev',
-        next: 'perfundo__next',
-        untarget: 'perfundo__untarget',
-        active: 'is-active'
-      }
-    }, o);
-
-    $.bind($$('.' + me.options.classNames.link, me.element), {
-      click: function (e) {
-        if (me.options.disableHistory) {
-          e.preventDefault();
+    if (isMoving) {
+      var x = e.touches[0].pageX;
+      var y = e.touches[0].pageY;
+      var dx = startX - x;
+      var dy = startY - y;
+      if (Math.abs(dx) >= config.min_move_x) {
+        cancelTouch();
+        if (dx > 0) {
+          config.wipeLeft(e);
         }
-        me.open(this.getAttribute('href'));
+        else {
+          config.wipeRight(e);
+        }
       }
+      else if (Math.abs(dy) >= config.min_move_y) {
+        cancelTouch();
+        if (dy > 0) {
+          config.wipeDown(e);
+        }
+        else {
+          config.wipeUp(e);
+        }
+      }
+    }
+  }
+
+  function onTouchStart(e) {
+    if (e.touches.length === 1) {
+      startX = e.touches[0].pageX;
+      startY = e.touches[0].pageY;
+      isMoving = true;
+      domNode.addEventListener('touchmove', onTouchMove);
+    }
+  }
+
+  domNode.addEventListener('touchstart', onTouchStart);
+
+  return {
+    unbind: function() {
+      domNode.removeEventListener('touchstart', onTouchStart);
+    }
+  };
+}
+
+return touchwipe;
+
+})));
+});
+
+function configure(element, userOptions, defaultOptions) {
+  return Object.keys(defaultOptions).reduce(function (options, key) {
+    var initial = defaultOptions[key];
+    var attrValue = element.getAttribute(("data-" + (key.toLowerCase())));
+
+    // eslint-disable-next-line no-param-reassign
+    options[key] = attrValue || userOptions[key] || initial;
+
+    return options;
+  }, {});
+}
+
+var defaultOptions = {
+  disableHistory: false,
+  swipe: true,
+  rootAttribute: "data-perfundo",
+  classNames: {
+    link: "perfundo__link",
+    overlay: "perfundo__overlay",
+    content: "perfundo__content",
+    close: "perfundo__close",
+    prev: "perfundo__prev",
+    next: "perfundo__next",
+    untarget: "perfundo__untarget",
+    active: "is-active",
+  },
+};
+
+function Perfundo(dependencies, target, userOptions) {
+  var this$1 = this;
+  if ( userOptions === void 0 ) userOptions = {};
+
+  var configure = dependencies.configure;
+  var context = dependencies.context;
+  var defaultOptions = dependencies.defaultOptions;
+  var swipe = dependencies.swipe;
+  var elements = typeof target === "string"
+    ? context.querySelectorAll(target)
+    : target;
+
+  if (elements.length > 1) {
+    return [].slice.call(elements).map(function (element) { return new Perfundo(dependencies, element, userOptions); });
+  }
+
+  this.context = context;
+  this.element = elements[0] || elements;
+  this.options = configure(this.element, userOptions, defaultOptions);
+
+  this.element.setAttribute(this.options.rootAttribute, true);
+
+  if (this.options.disableHistory) {
+    this.element.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      var close = e.target.classList.contains(this$1.options.classNames.close)
+        || e.target.classList.contains(this$1.options.classNames.overlay);
+      var open = e.target.classList.contains(this$1.options.classNames.link)
+        || e.target.parentElement.classList.contains(this$1.options.classNames.link);
+
+      if (close) { this$1.close(); }
+      else if (open) { this$1.open(); }
+      else if (e.target.classList.contains(this$1.options.classNames.prev)) { this$1.prev(); }
+      else if (e.target.classList.contains(this$1.options.classNames.next)) { this$1.next(); }
     });
+  }
 
-    $.bind(me.element, {
-      click: function (e) {
-        if (e.target.classList.contains(me.options.classNames.close) || e.target.classList.contains(me.options.classNames.overlay)) {
-          if (me.options.disableHistory) {
-            e.preventDefault();
-          }
-          me.close();
-        }
-      }
+  if (this.options.swipe) {
+    swipe(this.element, {
+      wipeLeft: function () { return this$1.next(); },
+      wipeRight: function () { return this$1.prev(); },
+      preventDefaultEvents: this.options.disableHistory,
     });
+  }
+}
 
-    if (me.options.swipe) {
-      // Initialize swipe detection variables.
-      var touchStartX = 0;
-      var touchStartY = 0;
-      var touchEndX = 0;
-      var touchEndY = 0;
-      // Store the swipe distance.
-      var swipeDistanceX;
-      var swipeDistanceY;
-      // Min X distance to count as horizontal swipe.
-      var swipeMinX = 50;
-      // Max Y distance to still count as horizontal swipe.
-      var swipeMaxY = 60;
+Perfundo.prototype.open = function open() {
+  this.element.querySelector(("." + (this.options.classNames.overlay)))
+    .classList.add(this.options.classNames.active);
+};
 
-      $.bind($$('.' + me.options.classNames.content, me.element), {
-        touchstart: function (e) {
-          // Save touchstart coordinates.
-          touchStartX = e.changedTouches[0].clientX;
-          touchStartY = e.changedTouches[0].clientY;
-        },
-        touchend: function (e) {
-          // Save touchend coordinates.
-          touchEndX = e.changedTouches[0].clientX;
-          touchEndY = e.changedTouches[0].clientY;
-          // Calculate swipe distances.
-          swipeDistanceX = touchStartX - touchEndX;
-          swipeDistanceY = touchStartY - touchEndY;
-          // Check if touch gesture was a swipe.
-          if ((Math.abs(swipeDistanceX) >= swipeMinX) && (Math.abs(swipeDistanceY) <= swipeMaxY)) {
-            if (swipeDistanceX > swipeMinX) {
-              me.next();
-            }
-            else {
-              me.prev();
-            }
-          }
-          // Reset variables to be ready to detect the next swipe.
-          touchStartX = 0;
-          touchStartY = 0;
-          touchEndX = 0;
-          touchEndY = 0;
-          swipeDistanceX = null;
-          swipeDistanceY = null;
-        }
-      });
+Perfundo.prototype.close = function close() {
+  this.element.querySelector(("." + (this.options.classNames.overlay)))
+    .classList.remove(this.options.classNames.active);
+};
+
+Perfundo.prototype.prev = function prev() {
+  try {
+    var prevLink = this.element.querySelector(("." + (this.options.classNames.prev)));
+    var prevItem = this.context.querySelector(("" + (prevLink.getAttribute("href"))));
+    var prevRoot = this.getRootElement(prevItem);
+
+    if (prevRoot) {
+      this.close();
+      prevRoot.querySelector(("." + (this.options.classNames.link))).click();
     }
-  };
+  } catch (e) {
+    // Last item reached.
+  }
+};
 
-  _.prototype = {
-    open: function (overlay) {
-      var me = this;
-      var overlay = $(overlay);
-      me.close();
-      overlay.classList.add(me.options.classNames.active);
-    },
-    close: function () {
-      var me = this;
-      $$('.' + me.options.classNames.overlay + '.' + me.options.classNames.active, me.element).forEach(function (overlay) {
-        overlay.classList.remove(me.options.classNames.active);
-      });
-    },
-    next: function () {
-      var me = this;
-      var nextLink = $('.' + me.options.classNames.next, me.element);
-      if (nextLink) {
-        nextLink.click();
-      }
-    },
-    prev: function () {
-      var me = this;
-      var prevLink = $('.' + me.options.classNames.prev, me.element);
-      if (prevLink) {
-        prevLink.click();
-      }
+Perfundo.prototype.next = function next() {
+  try {
+    var nextLink = this.element.querySelector(("." + (this.options.classNames.next)));
+    var nextItem = this.context.querySelector(("" + (nextLink.getAttribute("href"))));
+    var nextRoot = this.getRootElement(nextItem);
+
+    if (nextRoot) {
+      this.close();
+      nextRoot.querySelector(("." + (this.options.classNames.link))).click();
     }
-  };
+  } catch (e) {
+    // Last item reached.
+  }
+};
 
-  // Private functions.
-  function configure(instance, properties, o) {
-    for (var i in properties) {
-      var initial = properties[i];
-      var attrValue = instance.element.getAttribute('data-' + i.toLowerCase());
+Perfundo.prototype.getRootElement = function getRootElement(element) {
+  var this$1 = this;
 
-      if (typeof initial === 'number') {
-        instance.options[i] = parseInt(attrValue);
-      }
-      else if (initial === false) {
-        instance.options[i] = attrValue !== null;
-      }
-      else if (initial instanceof Function) {
-        instance.options[i] = null;
-      }
-      else {
-        instance.options[i] = attrValue;
-      }
+  var parent = element.parentElement;
 
-      if (!instance.options[i] && instance.options[i] !== 0) {
-        instance.options[i] = (i in o) ? o[i] : initial;
-      }
-    }
+  while (parent && parent !== this.context) {
+    if (parent.hasAttribute(this$1.options.rootAttribute)) { return parent; }
+
+    parent = parent.parentElement;
   }
 
-  // Helpers.
-  var slice = Array.prototype.slice;
+  return null;
+};
 
-  function $(expr, con) {
-    return typeof expr === 'string' ? (con || document).querySelector(expr) : expr || null;
-  }
+var index = function (selector, userOptions, context) {
+    if ( context === void 0 ) context = document;
 
-  function $$(expr, con) {
-    return slice.call((con || document).querySelectorAll(expr));
-  }
+    return new Perfundo({ configure: configure, context: context, defaultOptions: defaultOptions, swipe: vanillaTouchwipe }, selector, userOptions);
+};
 
-  $.bind = function(elements, o) {
-    if (elements) {
-      elements = elements.length ? elements : [elements];
-      elements.forEach(function (element) {
-        for (var event in o) {
-          var callback = o[event];
-          event.split(/\s+/).forEach(function (event) {
-            element.addEventListener(event, callback);
-          });
-        }
-      });
-    }
-  };
+return index;
 
-  _.$ = $;
-  _.$$ = $$;
-
-  // Make sure to export perfundo on self when in a browser.
-  if (typeof self !== 'undefined') {
-    self.perfundo = _;
-  }
-
-  // Expose perfundo as a CJS module.
-  if (typeof module === 'object' && module.exports) {
-    module.exports = _;
-  }
-
-  return _;
-}());
+})));
