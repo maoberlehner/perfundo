@@ -42,9 +42,9 @@ $perfundo-html-background-color: #fff;
 If you want to use the JavaScript enhancements, load the perfundo module into your JavaScript file:
 ```js
 // Load the module.
-var Perfundo = require('perfundo');
+var perfundo = require('perfundo');
 // Initialize a perfundo Lightbox.
-Perfundo('.perfundo', {
+perfundo('.perfundo', {
   // This are the default options.
   disableHistory: false,
   swipe: true,
@@ -62,7 +62,7 @@ Perfundo('.perfundo', {
 ```
 
 ### Standalone (without npm)
-Download https://perfundo.oberlehner.net/downloads/perfundo-2.0.4.zip. Add the files to your HTML file like in the following example:
+Download https://github.com/maoberlehner/perfundo/archive/2.0.4.zip. Add the files to your HTML file like in the following example:
 ```html
 <!-- Put this inside the <head> section of your HTML. -->
 <link rel="stylesheet" href="perfundo.min.css">
@@ -70,7 +70,7 @@ Download https://perfundo.oberlehner.net/downloads/perfundo-2.0.4.zip. Add the f
 <!-- Put this before the closing </body> tag (optionally!). -->
 <script src="perfundo.min.js"></script>
 <script>
-  Perfundo('.perfundo');
+  perfundo('.perfundo');
 </script>
 ```
 
