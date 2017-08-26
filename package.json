@@ -11,6 +11,10 @@
   "homepage": "https://perfundo.oberlehner.net",
   "license": "MIT",
   "dependencies": {
+    "vanilla-touchwipe": "^1.0.0"
+  },
+  "devDependencies": {
+    "@avalanche/eslint-config": "^1.0.2",
     "@avalanche/generic-box-sizing-reset": "^4.0.0-alpha.4",
     "@avalanche/object-container": "^4.0.0-alpha.7",
     "@avalanche/object-grid": "^4.0.0-alpha.13",
@@ -20,19 +24,15 @@
     "@avalanche/setting-colors": "^4.0.0-alpha.4",
     "@avalanche/setting-font-sizes": "^4.0.0-alpha.4",
     "@avalanche/setting-spacings": "^4.0.0-alpha.5",
+    "@avalanche/stylelint-config": "^0.1.2",
     "@avalanche/utility-text-align": "^4.0.0-alpha.4",
     "animate.css": "^3.5.2",
-    "highlight.js": "^9.12.0",
-    "vanilla-touchwipe": "^1.0.0"
-  },
-  "devDependencies": {
-    "@avalanche/eslint-config": "^1.0.2",
-    "@avalanche/stylelint-config": "^0.1.2",
     "autoprefixer": "^7.1.2",
     "clean-css-cli": "^4.1.6",
     "eslint": "^4.4.1",
     "eslint-plugin-compat": "^1.0.4",
     "eslint-plugin-import": "^2.7.0",
+    "highlight.js": "^9.12.0",
     "node-sass": "^4.5.3",
     "node-sass-magic-importer": "^5.0.0-alpha.5",
     "onchange": "^3.2.1",
