@@ -3,7 +3,6 @@ export default {
   swipe: true,
   rootAttribute: `data-perfundo`,
   classNames: {
-    base: `perfundo`,
     link: `perfundo__link`,
     overlay: `perfundo__overlay`,
     content: `perfundo__content`,
