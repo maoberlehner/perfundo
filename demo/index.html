@@ -7,6 +7,7 @@
     <meta name="description" content="perfundo is a pure CSS Lightbox which is completely functional without JavaScript.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="vendor/perfundo/perfundo.with-icons.min.css">
     <link rel="stylesheet" href="dist/index.min.css">
   </head>
   <body>
@@ -35,7 +36,7 @@
         </div>
         <ul class="c-list c-list--flatten">
             <li><a href="https://github.com/maoberlehner/perfundo" class="c-button c-button--contrast c-button--github">Star on GitHub</a></li>
-            <li><a id="download" href="https://perfundo.oberlehner.net/downloads/perfundo-2.0.4.zip" class="c-button c-button--contrast c-button--secondary">Download</a></li>
+            <li><a id="download" href="https://github.com/maoberlehner/perfundo/archive/3.0.0.zip" class="c-button c-button--contrast c-button--secondary">Download</a></li>
           </ul>
       </div>
     </div>
@@ -363,6 +364,9 @@ perfundo(<span class="hljs-string">'.perfundo'</span>, {
         disableHistory: true,
         swipe: true,
       });
+      window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+      ga('create','UA-57407594-1','auto');ga('send','pageview');
     </script>
+    <script src="https://www.google-analytics.com/analytics.js" defer></script>
   </body>
 </html>
