@@ -37,6 +37,8 @@ export default function Perfundo(dependencies, target, userOptions = {}) {
       preventDefaultEvents: this.options.disableHistory,
     });
   }
+
+  return this;
 }
 
 Perfundo.prototype.open = function open() {
