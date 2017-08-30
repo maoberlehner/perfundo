@@ -32,6 +32,9 @@ test(`Returns an instance of itself if a single target is given.`, (t) => {
   const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
 
   t.true(typeof perfundoInstance === `object`);
+  t.truthy(perfundoInstance.context);
+  t.truthy(perfundoInstance.element);
+  t.truthy(perfundoInstance.options);
 });
 
 test(`Returns an array of Perfundo instances if a multi target is given.`, (t) => {
@@ -49,4 +52,6 @@ test(`Returns an array of Perfundo instances if a multi target is given.`, (t) =
   const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
 
   t.true(Array.isArray(perfundoInstances));
+  t.true(typeof perfundoInstances[0] === `object`);
+  t.true(typeof perfundoInstances[1] === `object`);
 });
