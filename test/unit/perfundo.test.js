@@ -1,18 +1,16 @@
 import test from 'ava';
 import swipe from 'vanilla-touchwipe';
-import { mocks } from 'mock-browser';
 
 import configure from '../../js/lib/configure';
 import defaultOptions from '../../js/lib/default-options';
+import createContext from './helper/create-context';
 
 import Perfundo from '../../js/lib/perfundo';
 
-const mockBrowser = new mocks.MockBrowser();
-const document = mockBrowser.getDocument();
-
+const defaultContext = createContext(defaultOptions);
 const defaultDependencies = {
   configure,
-  context: document,
+  context: defaultContext,
   defaultOptions,
   swipe,
 };
@@ -22,13 +20,8 @@ test(`Is a function.`, (t) => {
 });
 
 test(`Returns an instance of itself if a single target is given.`, (t) => {
-  const context = document.createElement(`div`);
-  const perfundoElement = document.createElement(`div`);
+  const context = createContext(defaultOptions, 1);
   const dependencies = Object.assign({}, defaultDependencies, { context });
-
-  perfundoElement.classList.add(`perfundo`);
-  context.appendChild(perfundoElement);
-
   const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
 
   t.true(typeof perfundoInstance === `object`);
@@ -38,17 +31,8 @@ test(`Returns an instance of itself if a single target is given.`, (t) => {
 });
 
 test(`Returns an array of Perfundo instances if a multi target is given.`, (t) => {
-  const context = document.createElement(`div`);
-  const perfundoElement1 = document.createElement(`div`);
-  const perfundoElement2 = document.createElement(`div`);
+  const context = createContext(defaultOptions, 2);
   const dependencies = Object.assign({}, defaultDependencies, { context });
-
-  perfundoElement1.classList.add(`perfundo`);
-  perfundoElement2.classList.add(`perfundo`);
-
-  context.appendChild(perfundoElement1);
-  context.appendChild(perfundoElement2);
-
   const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
 
   t.true(Array.isArray(perfundoInstances));
