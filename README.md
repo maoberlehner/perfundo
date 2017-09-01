@@ -75,7 +75,7 @@ Download https://github.com/maoberlehner/perfundo/archive/3.0.0.zip. Add the fil
 ```
 
 ## BrowserStack
-perfundo is using [BrowserStack](https://www.browserstack.com) to automatically test it's functionality in the following Browsers: Internet Explorer 10+, Firefox 53+, Chrome 58+, Opera 45+ and Safari 9+.
+perfundo is using [BrowserStack](https://www.browserstack.com) to automatically test it's functionality in the following Browsers: Internet Explorer 10+, Edge 14+, Firefox 53+, Chrome 58+, Opera 45+ and Safari 9+.
 
 [![BrowserStack](https://perfundo.oberlehner.net/img/browserstack.png)](https://www.browserstack.com)
 
