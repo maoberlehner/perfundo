@@ -14,7 +14,7 @@ npm install perfundo --save
 ```
 Also install [node-sass-magic-importer](https://github.com/maoberlehner/node-sass-magic-importer/tree/master/packages/node-sass-magic-importer)
 ```bash
-npm install node-sass-magic-importer --save
+npm install node-sass-magic-importer --save-dev
 ```
 
 Now you can import perfundo into your Sass file:
