@@ -56,7 +56,7 @@ test(`Should add and remove active class on overlay element.`, (t) => {
   t.false(overlayElementHasActiveClass);
 });
 
-test(`Should call \`close()\`, and \`click()\` on the previous overlay element.`, (t) => {
+test(`Should call \`close()\` on the current, and \`click()\` on the previous overlay element.`, (t) => {
   const context = createContext(defaultOptions, 2);
   const dependencies = Object.assign({}, defaultDependencies, { context });
 
@@ -76,7 +76,7 @@ test(`Should call \`close()\`, and \`click()\` on the previous overlay element.`
   t.true(mockClickCalled);
 });
 
-test(`Should call \`close()\`, and \`click()\` on the next overlay element.`, (t) => {
+test(`Should call \`close()\` on the current, and \`click()\` on the next overlay element.`, (t) => {
   const context = createContext(defaultOptions, 2);
   const dependencies = Object.assign({}, defaultDependencies, { context });
 
