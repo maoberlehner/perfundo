@@ -49,6 +49,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "stylelint": "^8.0.0",
     "testcafe": "^0.17.1",
+    "testcafe-browser-provider-browserstack": "^1.1.1",
     "uglify-js": "^3.0.27"
   },
   "main": "dist/perfundo.js",
@@ -79,7 +80,7 @@
     "lint": "npm run lint:styles && npm run lint:scripts",
     "demo": "mkdir -p demo/vendor && cp -R node_modules/animate.css demo/vendor && cp -R node_modules/highlight.js demo/vendor && npm run build && cp -R dist/ demo/vendor/perfundo",
     "test:unit": "BABEL_ENV=ava ava test/unit/**/*.test.js",
-    "test:acceptance": "npm run demo && testcafe chrome,firefox test/acceptance/ --app 'http-server demo/ -p 6666 -s'",
+    "test:acceptance": "npm run demo && testcafe 'browserstack:ie@10.0:Windows 8,browserstack:ie@11.0:Windows 10,browserstack:edge@15.0:Windows 10,browserstack:edge@14.0:Windows 10,browserstack:firefox@54.0:Windows 10,browserstack:firefox@55.0:Windows 10,browserstack:chrome@59.0:Windows 10,browserstack:chrome@60.0:Windows 10,browserstack:opera@46.0:Windows 10,browserstack:opera@47.0:Windows 10,browserstack:safari@9.1:OS X El Capitan,browserstack:safari@10.1:OS X Sierra' test/acceptance/ --app 'http-server demo/ -p 6666 -s'",
     "test": "npm run test:unit && npm run test:acceptance",
     "deploy": "npm run demo && rsync -avz --delete --exclude=/.* --exclude=/error --exclude=/stats --exclude=/google15e4ae9ecda47ac0.html -e ssh demo/ vs0.oberlehner.net:/var/www/perfundo.oberlehner.net/web"
   },
