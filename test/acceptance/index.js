@@ -3,14 +3,14 @@ import { ClientFunction, Selector } from 'testcafe';
 fixture(`Index`).page(`http://localhost:6666/`);
 
 test(`The hero section is visible.`, async (t) => {
-  const heroSection = await Selector(`.c-hero`).exists;
+  const heroSection = Selector(`.c-hero`);
 
-  await t.expect(heroSection).ok();
+  await t.expect(heroSection.exists).ok();
 });
 
 test(`Click on hero image opens lightbox.`, async (t) => {
-  const heroImageLink = await Selector(`.c-hero .perfundo__link`);
-  const heroImageOverlay = await Selector(`.c-hero .perfundo__overlay`);
+  const heroImageLink = Selector(`.c-hero .perfundo__link`);
+  const heroImageOverlay = Selector(`.c-hero .perfundo__overlay`);
 
   await t
     .expect(heroImageOverlay.visible)
@@ -21,9 +21,9 @@ test(`Click on hero image opens lightbox.`, async (t) => {
 });
 
 test(`Click on CSS only gallery image opens lightbox.`, async (t) => {
-  const getLocationHref = await ClientFunction(() => window.location.href);
-  const galleryFirstImageLink = await Selector(`.perfundo__link[href="#perfundo-img1"]`);
-  const galleryFirstImageOverlay = await Selector(`#perfundo-img1`);
+  const getLocationHref = ClientFunction(() => window.location.href);
+  const galleryFirstImageLink = Selector(`.perfundo__link[href="#perfundo-img1"]`);
+  const galleryFirstImageOverlay = Selector(`#perfundo-img1`);
 
   await t
     .expect(galleryFirstImageOverlay.visible)
@@ -36,13 +36,13 @@ test(`Click on CSS only gallery image opens lightbox.`, async (t) => {
 });
 
 test(`Click on CSS only gallery prev and next opens correct overlays.`, async (t) => {
-  const galleryFirstImageLink = await Selector(`.perfundo__link[href="#perfundo-img1"]`);
-  const galleryFirstImageNextLink = await Selector(`.perfundo__next[href="#perfundo-img2"]`);
-  const galleryFirstImageOverlay = await Selector(`#perfundo-img1`);
-  const gallerySecondImageNextLink = await Selector(`.perfundo__next[href="#perfundo-img3"]`);
-  const gallerySecondImageOverlay = await Selector(`#perfundo-img2`);
-  const galleryThirdImagePrevLink = await Selector(`.perfundo__prev[href="#perfundo-img2"]`);
-  const galleryThirdImageOverlay = await Selector(`#perfundo-img3`);
+  const galleryFirstImageLink = Selector(`.perfundo__link[href="#perfundo-img1"]`);
+  const galleryFirstImageNextLink = Selector(`.perfundo__next[href="#perfundo-img2"]`);
+  const galleryFirstImageOverlay = Selector(`#perfundo-img1`);
+  const gallerySecondImageNextLink = Selector(`.perfundo__next[href="#perfundo-img3"]`);
+  const gallerySecondImageOverlay = Selector(`#perfundo-img2`);
+  const galleryThirdImagePrevLink = Selector(`.perfundo__prev[href="#perfundo-img2"]`);
+  const galleryThirdImageOverlay = Selector(`#perfundo-img3`);
 
   await t
     .click(galleryFirstImageLink)
@@ -66,9 +66,9 @@ test(`Click on CSS only gallery prev and next opens correct overlays.`, async (t
 });
 
 test(`Click on JavaScript gallery image doesn't affect history.`, async (t) => {
-  const getLocationHref = await ClientFunction(() => window.location.href);
-  const galleryFirstImageLink = await Selector(`.perfundo__link[href="#perfundo-js-img1"]`);
-  const galleryFirstImageOverlay = await Selector(`#perfundo-js-img1`);
+  const getLocationHref = ClientFunction(() => window.location.href);
+  const galleryFirstImageLink = Selector(`.perfundo__link[href="#perfundo-js-img1"]`);
+  const galleryFirstImageOverlay = Selector(`#perfundo-js-img1`);
 
   await t
     .expect(galleryFirstImageOverlay.visible)
