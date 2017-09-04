@@ -79,6 +79,7 @@
     "lint:scripts": "eslint js/**/*.js rollup.config.js",
     "lint": "npm run lint:styles && npm run lint:scripts",
     "demo": "mkdir -p demo/vendor && cp -R node_modules/animate.css demo/vendor && cp -R node_modules/highlight.js demo/vendor && npm run build && cp -R dist/ demo/vendor/perfundo",
+    "serve-demo": "http-server demo/",
     "test:unit": "BABEL_ENV=ava ava test/unit/**/*.test.js",
     "test:acceptance": "npm run demo && testcafe 'browserstack:ie@10.0:Windows 8' test/acceptance/ --app 'http-server demo/ -p 6666 -s'",
     "test": "npm run test:unit && npm run test:acceptance",
