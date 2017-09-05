@@ -81,7 +81,7 @@
     "demo": "mkdir -p demo/vendor && cp -R node_modules/animate.css demo/vendor && cp -R node_modules/highlight.js demo/vendor && npm run build && cp -R dist/ demo/vendor/perfundo",
     "serve-demo": "http-server demo/",
     "test:unit": "BABEL_ENV=ava ava test/unit/**/*.test.js",
-    "test:acceptance": "npm run demo && testcafe 'browserstack:ie@10.0:Windows 8' test/acceptance/ --app 'http-server demo/ -p 6666 -s'",
+    "test:acceptance": "npm run demo && sh test/testcafe.sh",
     "test": "npm run test:unit && npm run test:acceptance",
     "deploy": "npm run demo && rsync -avz --delete --exclude=/.* --exclude=/error --exclude=/stats --exclude=/google15e4ae9ecda47ac0.html -e ssh demo/ vs0.oberlehner.net:/var/www/perfundo.oberlehner.net/web"
   },

@@ -1,6 +1,6 @@
 import { ClientFunction, Selector } from 'testcafe';
 
-fixture(`Index`).page(`http://localhost:6666/`);
+fixture(`Index`).page(`http://localhost:1337/`);
 
 test(`The hero section is visible.`, async (t) => {
   const heroSection = Selector(`.c-hero`);
