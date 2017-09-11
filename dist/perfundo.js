@@ -209,7 +209,7 @@ Perfundo.prototype.prev = function prev() {
       prevRoot.querySelector("." + this.options.classNames.link).click();
     }
   } catch (e) {
-    // Last item reached.
+    throw new Error("Previous item not found.");
   }
 };
 
@@ -224,7 +224,7 @@ Perfundo.prototype.next = function next() {
       nextRoot.querySelector("." + this.options.classNames.link).click();
     }
   } catch (e) {
-    // Last item reached.
+    throw new Error("Next item not found.");
   }
 };
 

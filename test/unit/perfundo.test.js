@@ -106,3 +106,12 @@ test(`Should return the elements root Perfundo element.`, (t) => {
 
   t.deepEqual(actual, expected);
 });
+
+test(`Should throw an error.`, (t) => {
+  const context = createContext(defaultOptions, 2);
+  const dependencies = Object.assign({}, defaultDependencies, { context });
+  const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
+
+  t.throws(() => perfundoInstances[0].prev(), Error);
+  t.throws(() => perfundoInstances[1].next(), Error);
+});
