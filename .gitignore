@@ -26,5 +26,6 @@ Thumbs.db
 
 # Folders to ignore
 dist
+!/dist
 node_modules
 vendor
