@@ -9,15 +9,19 @@ To use perfundo in your Sass project, it is recommended to use the [node-sass-ma
 Make sure you checkout the [usage section](https://github.com/maoberlehner/node-sass-magic-importer/tree/master/packages/node-sass-magic-importer#usage) on how to use the [node-sass-magic-importer](https://github.com/maoberlehner/node-sass-magic-importer/tree/master/packages/node-sass-magic-importer).
 
 Install perfundo:
+
 ```bash
 npm install perfundo --save
 ```
+
 Also install [node-sass-magic-importer](https://github.com/maoberlehner/node-sass-magic-importer/tree/master/packages/node-sass-magic-importer)
+
 ```bash
 npm install node-sass-magic-importer --save-dev
 ```
 
 Now you can import perfundo into your Sass file:
+
 ```scss
 @import '~perfundo';
 // OR
@@ -30,6 +34,7 @@ Now you can import perfundo into your Sass file:
 ```
 
 There are variables to control certain aspects of the Lightbox:
+
 ```scss
 $perfundo-background-color: rgba(#000, 0.9);
 $perfundo-color: #fff;
@@ -40,9 +45,10 @@ $perfundo-html-background-color: #fff;
 ```
 
 If you want to use the JavaScript enhancements, load the perfundo module into your JavaScript file:
+
 ```js
 // Load the module.
-var perfundo = require('perfundo');
+const perfundo = require('perfundo');
 // Initialize a perfundo Lightbox.
 perfundo('.perfundo', {
   // This are the default options.
@@ -63,6 +69,7 @@ perfundo('.perfundo', {
 
 ### Standalone (without npm)
 Download https://github.com/maoberlehner/perfundo/archive/3.0.0.zip. Add the files to your HTML file like in the following example:
+
 ```html
 <!-- Put this inside the <head> section of your HTML. -->
 <link rel="stylesheet" href="perfundo.min.css">
