@@ -6,7 +6,7 @@
     "css",
     "sass"
   ],
-  "version": "3.0.2",
+  "version": "3.0.4",
   "author": "Markus Oberlehner",
   "homepage": "https://perfundo.oberlehner.net",
   "license": "MIT",
@@ -49,6 +49,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "stylelint": "^8.0.0",
     "testcafe": "^0.17.1",
+    "testcafe-browser-provider-browserstack": "^1.1.1",
     "uglify-js": "^3.0.27"
   },
   "main": "dist/perfundo.js",
@@ -78,9 +79,11 @@
     "lint:scripts": "eslint js/**/*.js rollup.config.js",
     "lint": "npm run lint:styles && npm run lint:scripts",
     "demo": "mkdir -p demo/vendor && cp -R node_modules/animate.css demo/vendor && cp -R node_modules/highlight.js demo/vendor && npm run build && cp -R dist/ demo/vendor/perfundo",
-    "test:acceptance": "npm run demo && testcafe chrome,firefox test/acceptance/ --app 'http-server demo/ -p 6666 -s'",
-    "test:unit": "BABEL_ENV=ava ava test/unit/**/*.js",
-    "test": "npm run test:acceptance",
+    "serve-demo": "http-server demo/",
+    "test:unit": "BABEL_ENV=ava ava test/unit/**/*.test.js",
+    "test:acceptance": "npm run demo && ./test/testcafe.sh",
+    "test:acceptance-local": "npm run demo && testcafe chrome test/acceptance/ --app 'http-server demo/ -p 1337 -s'",
+    "test": "npm run test:unit && npm run test:acceptance",
     "deploy": "npm run demo && rsync -avz --delete --exclude=/.* --exclude=/error --exclude=/stats --exclude=/google15e4ae9ecda47ac0.html -e ssh demo/ vs0.oberlehner.net:/var/www/perfundo.oberlehner.net/web"
   },
   "browserslist": [

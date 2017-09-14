@@ -6,7 +6,7 @@ Found a problem? Want a new feature?
 - See if your issue or idea has [already been reported].
 - Provide a [reduced test case] or a [live example].
 
-Remember, a bug is a _demonstrable problem_ caused by _our_ code.
+Remember, a bug is a *demonstrable problem* caused by *our* code.
 
 ## Submitting Pull Requests
 Pull requests are the greatest contributions, so be sure they are focused in scope, and do avoid unrelated commits.

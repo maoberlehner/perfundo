@@ -2,7 +2,9 @@ import test from 'ava';
 
 import configure from '../../js/lib/configure';
 
-// is a function
+test(`Is a function.`, (t) => {
+  t.true(typeof configure === `function`);
+});
 
 test(`User options overrule default options.`, (t) => {
   const elementMock = {
