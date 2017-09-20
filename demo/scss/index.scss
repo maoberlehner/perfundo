@@ -53,7 +53,17 @@
  * - Still only using classes.
  * - More explicitly named (e.g. .c-products-list {}).
  */
-@import '../vendor/animate.css/animate.min';
+@import '[
+  rules,
+  keyframes-bounce-in,
+  keyframes-fade-in,
+  keyframes-fade-in-left
+] {
+  .bounceIn,
+  .fadeIn,
+  .fadeInLeft,
+  /(.*)\%|from|to/,
+} from ../vendor/animate.css/animate.css';
 @import '../vendor/highlight.js/styles/github';
 @import 'components/**/*';
 
