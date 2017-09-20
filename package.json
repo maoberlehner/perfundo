@@ -64,7 +64,7 @@
     "url": "https://github.com/maoberlehner/perfundo/issues"
   },
   "scripts": {
-    "styles:sass": "node-sass scss/index.scss dist/perfundo.css && node-sass scss/with-icons.scss dist/perfundo.with-icons.css && node-sass --importer node_modules/node-sass-magic-importer/dist/cli.js demo/scss/index.scss demo/dist/index.css",
+    "styles:sass": "node-sass scss/index.scss dist/perfundo.css --source-map=true && node-sass scss/with-icons.scss dist/perfundo.with-icons.css --source-map=true && node-sass --importer node_modules/node-sass-magic-importer/dist/cli.js demo/scss/index.scss demo/dist/index.css --source-map=true",
     "styles:postcss": "postcss --use autoprefixer --replace dist/**/*.css && postcss --use autoprefixer --replace demo/dist/**/*.css",
     "styles:minify": "cleancss --output dist/perfundo.min.css dist/perfundo.css && cleancss --output dist/perfundo.with-icons.min.css dist/perfundo.with-icons.css && cleancss --output demo/dist/index.min.css demo/dist/index.css",
     "styles": "npm run styles:sass && npm run styles:postcss && npm run styles:minify",
