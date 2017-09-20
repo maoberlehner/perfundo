@@ -17,11 +17,37 @@ const files = [
   },
 ];
 
+const magicImporterOptions = {
+  customFilters: {
+    keyframesBounceIn: [
+      [
+        { property: `type`, value: `atrule` },
+        { property: `name`, value: `keyframes` },
+        { property: `params`, value: `bounceIn` },
+      ],
+    ],
+    keyframesFadeIn: [
+      [
+        { property: `type`, value: `atrule` },
+        { property: `name`, value: `keyframes` },
+        { property: `params`, value: `fadeIn` },
+      ],
+    ],
+    keyframesFadeInLeft: [
+      [
+        { property: `type`, value: `atrule` },
+        { property: `name`, value: `keyframes` },
+        { property: `params`, value: `fadeInLeft` },
+      ],
+    ],
+  },
+};
+
 files.forEach(({ file, outFile }) => {
   sass.render({
     file,
     outFile,
-    importer: magicImporter(),
+    importer: magicImporter(magicImporterOptions),
     sourceMap: true,
   }, (error, result) => {
     if (error) throw error;
