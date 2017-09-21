@@ -26,6 +26,7 @@ Thumbs.db
 
 # Folders to ignore
 node_modules
+website
 vendor
 
 # Files to ignore

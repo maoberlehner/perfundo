@@ -32,10 +32,12 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-css-cli": "^4.1.10",
+    "declassify": "^1.2.1",
     "eslint": "^4.7.1",
     "eslint-plugin-compat": "^1.0.4",
     "eslint-plugin-import": "^2.7.0",
     "highlight.js": "^9.12.0",
+    "html-minifier": "^3.5.5",
     "http-server": "^0.10.0",
     "mock-browser": "^0.92.14",
     "node-sass": "^4.5.3",
@@ -50,7 +52,8 @@
     "stylelint": "^8.1.1",
     "testcafe": "^0.17.2",
     "testcafe-browser-provider-browserstack": "^1.1.1",
-    "uglify-js": "^3.1.1"
+    "uglify-js": "^3.1.1",
+    "uncss": "^0.15.0"
   },
   "main": "dist/perfundo.js",
   "module": "js/index.js",
@@ -80,11 +83,13 @@
     "lint": "npm run lint:styles && npm run lint:scripts",
     "demo": "mkdir -p demo/vendor && cp -R node_modules/animate.css demo/vendor && cp -R node_modules/highlight.js demo/vendor && npm run build && cp -R dist/ demo/vendor/perfundo",
     "serve-demo": "http-server demo/",
+    "website": "npm run demo && cp -R demo/ website && node scripts/website.js",
+    "serve-website": "http-server website/",
     "test:unit": "BABEL_ENV=ava ava test/unit/**/*.test.js",
     "test:acceptance": "npm run demo && ./test/testcafe.sh",
     "test:acceptance-local": "npm run demo && testcafe chrome test/acceptance/ --app 'http-server demo/ -p 1337 -s'",
     "test": "npm run test:unit && npm run test:acceptance",
-    "deploy": "npm run demo && rsync -avz --delete --exclude=/.* --exclude=/error --exclude=/stats --exclude=/google15e4ae9ecda47ac0.html -e ssh demo/ vs0.oberlehner.net:/var/www/perfundo.oberlehner.net/web"
+    "deploy": "npm run website && rsync -avz --delete --exclude=/.* --exclude=/error --exclude=/stats --exclude=/google15e4ae9ecda47ac0.html -e ssh website/ vs0.oberlehner.net:/var/www/perfundo.oberlehner.net/web"
   },
   "browserslist": [
     "last 2 versions"
