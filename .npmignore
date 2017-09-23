@@ -1,9 +1,12 @@
 demo
+scripts
 test
+website
 
 .babelrc
 .editorconfig
 .eslintrc
+.gitattributes
 .stylelintrc
 .travis.yml
 
