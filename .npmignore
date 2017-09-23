@@ -1,6 +1,7 @@
 demo
 test
 
+.babelrc
 .editorconfig
 .eslintrc
 .stylelintrc

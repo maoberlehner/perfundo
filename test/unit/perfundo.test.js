@@ -56,7 +56,7 @@ test(`Should add and remove active class on overlay element.`, (t) => {
   t.false(overlayElementHasActiveClass);
 });
 
-test(`Should call \`close()\`, and \`click()\` on the previous overlay element.`, (t) => {
+test(`Should call \`close()\` on the current, and \`click()\` on the previous overlay element.`, (t) => {
   const context = createContext(defaultOptions, 2);
   const dependencies = Object.assign({}, defaultDependencies, { context });
 
@@ -76,7 +76,7 @@ test(`Should call \`close()\`, and \`click()\` on the previous overlay element.`
   t.true(mockClickCalled);
 });
 
-test(`Should call \`close()\`, and \`click()\` on the next overlay element.`, (t) => {
+test(`Should call \`close()\` on the current, and \`click()\` on the next overlay element.`, (t) => {
   const context = createContext(defaultOptions, 2);
   const dependencies = Object.assign({}, defaultDependencies, { context });
 
@@ -105,4 +105,13 @@ test(`Should return the elements root Perfundo element.`, (t) => {
   const expected = context.querySelector(`.perfundo`);
 
   t.deepEqual(actual, expected);
+});
+
+test(`Should throw an error.`, (t) => {
+  const context = createContext(defaultOptions, 2);
+  const dependencies = Object.assign({}, defaultDependencies, { context });
+  const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
+
+  t.throws(() => perfundoInstances[0].prev(), Error);
+  t.throws(() => perfundoInstances[1].next(), Error);
 });

@@ -1,16 +1,11 @@
 import test from 'ava';
-import { mocks } from 'mock-browser';
+
+import defaultOptions from '../../js/lib/default-options';
+import createContext from './helper/create-context';
 
 import perfundo from '../../js/index';
 
-const mockBrowser = new mocks.MockBrowser();
-const document = mockBrowser.getDocument();
-
-const context = document.createElement(`div`);
-const perfundoElement = document.createElement(`div`);
-
-perfundoElement.classList.add(`perfundo`);
-context.appendChild(perfundoElement);
+const context = createContext(defaultOptions);
 
 test(`Is a function.`, (t) => {
   t.true(typeof perfundo === `function`);

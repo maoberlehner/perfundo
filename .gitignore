@@ -25,6 +25,11 @@ nbproject
 Thumbs.db
 
 # Folders to ignore
-dist
 node_modules
+website
 vendor
+
+# Files to ignore
+demo/dist/*.min.css
+*.css.map
+*.js.map
