@@ -41,7 +41,7 @@
     "http-server": "^0.10.0",
     "mock-browser": "^0.92.14",
     "node-sass": "^4.5.3",
-    "node-sass-magic-importer": "^5.0.0-alpha.11",
+    "node-sass-magic-importer": "^5.0.0-alpha.12",
     "onchange": "^3.2.1",
     "parallelshell": "^3.0.1",
     "postcss-cli": "^4.1.1",
@@ -52,7 +52,7 @@
     "stylelint": "^8.1.1",
     "testcafe": "^0.17.2",
     "testcafe-browser-provider-browserstack": "^1.1.1",
-    "uglify-js": "^3.1.1",
+    "uglify-js": "^3.1.2",
     "uncss": "^0.15.0"
   },
   "main": "dist/perfundo.js",
