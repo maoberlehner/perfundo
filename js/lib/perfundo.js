@@ -11,6 +11,8 @@ export default function Perfundo(dependencies, target, userOptions = {}) {
   this.context = context;
   this.element = elements[0] || elements;
   this.options = configure(this.element, userOptions, defaultOptions);
+  this.hasPrev = this.element.querySelector(`.${this.options.classNames.prev}`) !== null;
+  this.hasNext = this.element.querySelector(`.${this.options.classNames.next}`) !== null;
 
   this.element.setAttribute(this.options.rootAttribute, true);
 
@@ -30,6 +32,13 @@ export default function Perfundo(dependencies, target, userOptions = {}) {
     });
   }
 
+  if (this.options.keyboard) {
+    this.element.addEventListener(`keyup`, (e) => {
+      if (this.hasPrev && e.keyCode === 37) this.prev();
+      else if (this.hasNext && e.keyCode === 39) this.next();
+    });
+  }
+
   if (this.options.swipe) {
     swipe(this.element, {
       wipeLeft: () => this.next(),
@@ -42,6 +51,7 @@ export default function Perfundo(dependencies, target, userOptions = {}) {
 }
 
 Perfundo.prototype.open = function open() {
+  this.element.querySelector(`.${this.options.classNames.link}`).focus();
   this.element.querySelector(`.${this.options.classNames.overlay}`)
     .classList.add(this.options.classNames.active);
 };

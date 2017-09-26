@@ -128,6 +128,7 @@ function configure(element, userOptions, defaultOptions) {
 var defaultOptions = {
   disableHistory: false,
   swipe: true,
+  keyboard: true,
   rootAttribute: "data-perfundo",
   classNames: {
     link: "perfundo__link",
@@ -161,6 +162,8 @@ function Perfundo(dependencies, target) {
   this.context = context;
   this.element = elements[0] || elements;
   this.options = configure(this.element, userOptions, defaultOptions);
+  this.hasPrev = this.element.querySelector("." + this.options.classNames.prev) !== null;
+  this.hasNext = this.element.querySelector("." + this.options.classNames.next) !== null;
 
   this.element.setAttribute(this.options.rootAttribute, true);
 
@@ -172,6 +175,12 @@ function Perfundo(dependencies, target) {
       var open = e.target.classList.contains(_this.options.classNames.link) || e.target.parentElement.classList.contains(_this.options.classNames.link);
 
       if (close) _this.close();else if (open) _this.open();else if (e.target.classList.contains(_this.options.classNames.prev)) _this.prev();else if (e.target.classList.contains(_this.options.classNames.next)) _this.next();
+    });
+  }
+
+  if (this.options.keyboard) {
+    this.element.addEventListener("keyup", function (e) {
+      if (_this.hasPrev && e.keyCode === 37) _this.prev();else if (_this.hasNext && e.keyCode === 39) _this.next();
     });
   }
 
@@ -191,6 +200,7 @@ function Perfundo(dependencies, target) {
 }
 
 Perfundo.prototype.open = function open() {
+  this.element.querySelector("." + this.options.classNames.link).focus();
   this.element.querySelector("." + this.options.classNames.overlay).classList.add(this.options.classNames.active);
 };
 
