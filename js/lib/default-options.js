@@ -1,6 +1,7 @@
 export default {
   disableHistory: false,
   swipe: true,
+  keyboard: true,
   rootAttribute: `data-perfundo`,
   classNames: {
     link: `perfundo__link`,

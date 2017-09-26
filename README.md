@@ -54,6 +54,7 @@ perfundo('.perfundo', {
   // This are the default options.
   disableHistory: false,
   swipe: true,
+  keyboard: true,
   classNames: {
     link: 'perfundo__link',
     overlay: 'perfundo__overlay',
