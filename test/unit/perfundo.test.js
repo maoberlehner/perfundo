@@ -46,12 +46,12 @@ test(`Should add and remove active class on overlay element.`, (t) => {
   const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
 
   perfundoInstance.open();
-  let overlayElementHasActiveClass = context.querySelector(`.perfundo__overlay`).classList.contains(`is-active`);
+  let overlayElementHasActiveClass = context.querySelector(`.js-perfundo-overlay`).classList.contains(`is-active`);
 
   t.true(overlayElementHasActiveClass);
 
   perfundoInstance.close();
-  overlayElementHasActiveClass = context.querySelector(`.perfundo__overlay`).classList.contains(`is-active`);
+  overlayElementHasActiveClass = context.querySelector(`.js-perfundo-overlay`).classList.contains(`is-active`);
 
   t.false(overlayElementHasActiveClass);
 });
@@ -69,7 +69,7 @@ test(`Should call \`close()\` on the current, and \`click()\` on the previous ov
   const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
 
   perfundoInstances[1].close = mockClose;
-  context.querySelector(`.perfundo__link`).click = mockClick;
+  context.querySelector(`.js-perfundo-link`).click = mockClick;
   perfundoInstances[1].prev();
 
   t.true(mockCloseCalled);
@@ -89,7 +89,7 @@ test(`Should call \`close()\` on the current, and \`click()\` on the next overla
   const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
 
   perfundoInstances[0].close = mockClose;
-  context.querySelector(`.perfundo + .perfundo .perfundo__link`).click = mockClick;
+  context.querySelector(`.perfundo + .perfundo .js-perfundo-link`).click = mockClick;
   perfundoInstances[0].next();
 
   t.true(mockCloseCalled);
@@ -101,7 +101,7 @@ test(`Should return the elements root Perfundo element.`, (t) => {
   const dependencies = Object.assign({}, defaultDependencies, { context });
   const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
 
-  const actual = perfundoInstance.getRootElement(context.querySelector(`.perfundo__overlay`));
+  const actual = perfundoInstance.getRootElement(context.querySelector(`.js-perfundo-overlay`));
   const expected = context.querySelector(`.perfundo`);
 
   t.deepEqual(actual, expected);
