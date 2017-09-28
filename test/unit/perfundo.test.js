@@ -46,12 +46,12 @@ describe(`Perfundo`, () => {
     const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
 
     perfundoInstance.open();
-    let overlayElementHasActiveClass = context.querySelector(`.perfundo__overlay`).classList.contains(`is-active`);
+    let overlayElementHasActiveClass = context.querySelector(`.js-perfundo-overlay`).classList.contains(`is-active`);
 
     expect(overlayElementHasActiveClass).toBe(true);
 
     perfundoInstance.close();
-    overlayElementHasActiveClass = context.querySelector(`.perfundo__overlay`).classList.contains(`is-active`);
+    overlayElementHasActiveClass = context.querySelector(`.js-perfundo-overlay`).classList.contains(`is-active`);
 
     expect(overlayElementHasActiveClass).toBe(false);
   });
@@ -69,7 +69,7 @@ describe(`Perfundo`, () => {
     const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
 
     perfundoInstances[1].close = mockClose;
-    context.querySelector(`.perfundo__link`).click = mockClick;
+    context.querySelector(`.js-perfundo-link`).click = mockClick;
     perfundoInstances[1].prev();
 
     expect(mockCloseCalled).toBe(true);
@@ -89,7 +89,7 @@ describe(`Perfundo`, () => {
     const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
 
     perfundoInstances[0].close = mockClose;
-    context.querySelector(`.perfundo + .perfundo .perfundo__link`).click = mockClick;
+    context.querySelector(`.perfundo + .perfundo .js-perfundo-link`).click = mockClick;
     perfundoInstances[0].next();
 
     expect(mockCloseCalled).toBe(true);
@@ -101,7 +101,7 @@ describe(`Perfundo`, () => {
     const dependencies = Object.assign({}, defaultDependencies, { context });
     const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
 
-    const actual = perfundoInstance.getRootElement(context.querySelector(`.perfundo__overlay`));
+    const actual = perfundoInstance.getRootElement(context.querySelector(`.js-perfundo-overlay`));
     const expected = context.querySelector(`.perfundo`);
 
     expect(actual).toEqual(expected);
