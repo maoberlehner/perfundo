@@ -30,6 +30,7 @@ website
 vendor
 
 # Files to ignore
+coverage
 demo/dist/*.min.css
 *.css.map
 *.js.map
