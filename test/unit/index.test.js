@@ -1,5 +1,3 @@
-import test from 'ava';
-
 import defaultOptions from '../../js/lib/default-options';
 import createContext from './helper/create-context';
 
@@ -7,15 +5,17 @@ import perfundo from '../../js/index';
 
 const context = createContext(defaultOptions);
 
-test(`Is a function.`, (t) => {
-  t.true(typeof perfundo === `function`);
-});
+describe(`perfundo()`, () => {
+  test(`It is a function.`, () => {
+    expect(typeof perfundo).toBe(`function`);
+  });
 
-test(`Returns a new Perfundo instance.`, (t) => {
-  const perfundoInstance = perfundo(`.perfundo`, {}, context);
+  test(`Returns a new Perfundo instance.`, () => {
+    const perfundoInstance = perfundo(`.perfundo`, {}, context);
 
-  t.true(typeof perfundoInstance === `object`);
-  t.truthy(perfundoInstance.context);
-  t.truthy(perfundoInstance.element);
-  t.truthy(perfundoInstance.options);
+    expect(typeof perfundoInstance).toBe(`object`);
+    expect(perfundoInstance).toHaveProperty(`context`);
+    expect(perfundoInstance).toHaveProperty(`element`);
+    expect(perfundoInstance).toHaveProperty(`options`);
+  });
 });
