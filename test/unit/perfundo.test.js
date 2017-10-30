@@ -1,4 +1,3 @@
-import test from 'ava';
 import swipe from 'vanilla-touchwipe';
 
 import configure from '../../js/lib/configure';
@@ -15,103 +14,105 @@ const defaultDependencies = {
   swipe,
 };
 
-test(`Is a function.`, (t) => {
-  t.true(typeof Perfundo === `function`);
-});
+describe(`Perfundo`, () => {
+  test(`It is a function.`, () => {
+    expect(typeof Perfundo).toBe(`function`);
+  });
 
-test(`Returns an instance of itself if a single target is given.`, (t) => {
-  const context = createContext(defaultOptions, 1);
-  const dependencies = Object.assign({}, defaultDependencies, { context });
-  const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
+  test(`It returns an instance of itself if a single target is given.`, () => {
+    const context = createContext(defaultOptions, 1);
+    const dependencies = Object.assign({}, defaultDependencies, { context });
+    const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
 
-  t.true(typeof perfundoInstance === `object`);
-  t.truthy(perfundoInstance.context);
-  t.truthy(perfundoInstance.element);
-  t.truthy(perfundoInstance.options);
-});
+    expect(typeof perfundoInstance).toBe(`object`);
+    expect(perfundoInstance).toHaveProperty(`context`);
+    expect(perfundoInstance).toHaveProperty(`element`);
+    expect(perfundoInstance).toHaveProperty(`options`);
+  });
 
-test(`Returns an array of Perfundo instances if a multi target is given.`, (t) => {
-  const context = createContext(defaultOptions, 2);
-  const dependencies = Object.assign({}, defaultDependencies, { context });
-  const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
+  test(`It returns an array of Perfundo instances if a multi target is given.`, () => {
+    const context = createContext(defaultOptions, 2);
+    const dependencies = Object.assign({}, defaultDependencies, { context });
+    const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
 
-  t.true(Array.isArray(perfundoInstances));
-  t.true(typeof perfundoInstances[0] === `object`);
-  t.true(typeof perfundoInstances[1] === `object`);
-});
+    expect(Array.isArray(perfundoInstances)).toBe(true);
+    expect(typeof perfundoInstances[0]).toBe(`object`);
+    expect(typeof perfundoInstances[1]).toBe(`object`);
+  });
 
-test(`Should add and remove active class on overlay element.`, (t) => {
-  const context = createContext(defaultOptions, 1);
-  const dependencies = Object.assign({}, defaultDependencies, { context });
-  const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
+  test(`It should add and remove active class on overlay element.`, () => {
+    const context = createContext(defaultOptions, 1);
+    const dependencies = Object.assign({}, defaultDependencies, { context });
+    const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
 
-  perfundoInstance.open();
-  let overlayElementHasActiveClass = context.querySelector(`.perfundo__overlay`).classList.contains(`is-active`);
+    perfundoInstance.open();
+    let overlayElementHasActiveClass = context.querySelector(`.js-perfundo-overlay`).classList.contains(`is-active`);
 
-  t.true(overlayElementHasActiveClass);
+    expect(overlayElementHasActiveClass).toBe(true);
 
-  perfundoInstance.close();
-  overlayElementHasActiveClass = context.querySelector(`.perfundo__overlay`).classList.contains(`is-active`);
+    perfundoInstance.close();
+    overlayElementHasActiveClass = context.querySelector(`.js-perfundo-overlay`).classList.contains(`is-active`);
 
-  t.false(overlayElementHasActiveClass);
-});
+    expect(overlayElementHasActiveClass).toBe(false);
+  });
 
-test(`Should call \`close()\` on the current, and \`click()\` on the previous overlay element.`, (t) => {
-  const context = createContext(defaultOptions, 2);
-  const dependencies = Object.assign({}, defaultDependencies, { context });
+  test(`It should call \`close()\` on the current, and \`click()\` on the previous overlay element.`, () => {
+    const context = createContext(defaultOptions, 2);
+    const dependencies = Object.assign({}, defaultDependencies, { context });
 
-  let mockCloseCalled = false;
-  const mockClose = () => { mockCloseCalled = true; };
+    let mockCloseCalled = false;
+    const mockClose = () => { mockCloseCalled = true; };
 
-  let mockClickCalled = false;
-  const mockClick = () => { mockClickCalled = true; };
+    let mockClickCalled = false;
+    const mockClick = () => { mockClickCalled = true; };
 
-  const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
+    const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
 
-  perfundoInstances[1].close = mockClose;
-  context.querySelector(`.perfundo__link`).click = mockClick;
-  perfundoInstances[1].prev();
+    perfundoInstances[1].close = mockClose;
+    context.querySelector(`.js-perfundo-link`).click = mockClick;
+    perfundoInstances[1].prev();
 
-  t.true(mockCloseCalled);
-  t.true(mockClickCalled);
-});
+    expect(mockCloseCalled).toBe(true);
+    expect(mockClickCalled).toBe(true);
+  });
 
-test(`Should call \`close()\` on the current, and \`click()\` on the next overlay element.`, (t) => {
-  const context = createContext(defaultOptions, 2);
-  const dependencies = Object.assign({}, defaultDependencies, { context });
+  test(`It should call \`close()\` on the current, and \`click()\` on the next overlay element.`, () => {
+    const context = createContext(defaultOptions, 2);
+    const dependencies = Object.assign({}, defaultDependencies, { context });
 
-  let mockCloseCalled = false;
-  const mockClose = () => { mockCloseCalled = true; };
+    let mockCloseCalled = false;
+    const mockClose = () => { mockCloseCalled = true; };
 
-  let mockClickCalled = false;
-  const mockClick = () => { mockClickCalled = true; };
+    let mockClickCalled = false;
+    const mockClick = () => { mockClickCalled = true; };
 
-  const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
+    const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
 
-  perfundoInstances[0].close = mockClose;
-  context.querySelector(`.perfundo + .perfundo .perfundo__link`).click = mockClick;
-  perfundoInstances[0].next();
+    perfundoInstances[0].close = mockClose;
+    context.querySelector(`.perfundo + .perfundo .js-perfundo-link`).click = mockClick;
+    perfundoInstances[0].next();
 
-  t.true(mockCloseCalled);
-  t.true(mockClickCalled);
-});
+    expect(mockCloseCalled).toBe(true);
+    expect(mockClickCalled).toBe(true);
+  });
 
-test(`Should return the elements root Perfundo element.`, (t) => {
-  const context = createContext(defaultOptions, 1);
-  const dependencies = Object.assign({}, defaultDependencies, { context });
-  const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
+  test(`Should return the elements root Perfundo element.`, () => {
+    const context = createContext(defaultOptions, 1);
+    const dependencies = Object.assign({}, defaultDependencies, { context });
+    const perfundoInstance = new Perfundo(dependencies, `.perfundo`);
 
-  const actual = perfundoInstance.getRootElement(context.querySelector(`.perfundo__overlay`));
-  const expected = context.querySelector(`.perfundo`);
+    const actual = perfundoInstance.getRootElement(context.querySelector(`.js-perfundo-overlay`));
+    const expected = context.querySelector(`.perfundo`);
 
-  t.deepEqual(actual, expected);
-});
+    expect(actual).toEqual(expected);
+  });
 
-test(`Should throw an error.`, (t) => {
-  const context = createContext(defaultOptions, 2);
-  const dependencies = Object.assign({}, defaultDependencies, { context });
-  const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
+  test(`Should throw an error.`, () => {
+    const context = createContext(defaultOptions, 2);
+    const dependencies = Object.assign({}, defaultDependencies, { context });
+    const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
 
-  t.throws(() => perfundoInstances[0].prev(), Error);
-  t.throws(() => perfundoInstances[1].next(), Error);
+    expect(() => perfundoInstances[0].prev()).toThrowError();
+    expect(() => perfundoInstances[1].next()).toThrowError();
+  });
 });

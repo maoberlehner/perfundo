@@ -56,20 +56,18 @@ perfundo('.perfundo', {
   swipe: true,
   keyboard: true,
   classNames: {
-    link: 'perfundo__link',
-    overlay: 'perfundo__overlay',
-    content: 'perfundo__content',
-    close: 'perfundo__close',
-    prev: 'perfundo__prev',
-    next: 'perfundo__next',
-    untarget: 'perfundo__untarget',
-    active: 'is-active'
+    link: `js-perfundo-link`,
+    overlay: `js-perfundo-overlay`,
+    close: `js-perfundo-close`,
+    prev: `js-perfundo-prev`,
+    next: `js-perfundo-next`,
+    active: `is-active`
   }
 });
 ```
 
 ### Standalone (without npm)
-Download https://github.com/maoberlehner/perfundo/archive/3.1.1.zip. Add the files to your HTML file like in the following example:
+Download https://github.com/maoberlehner/perfundo/archive/4.0.0.zip. Add the files to your HTML file like in the following example:
 
 ```html
 <!-- Put this inside the <head> section of your HTML. -->
