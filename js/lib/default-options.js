@@ -4,13 +4,11 @@ export default {
   keyboard: true,
   rootAttribute: `data-perfundo`,
   classNames: {
-    link: `perfundo__link`,
-    overlay: `perfundo__overlay`,
-    content: `perfundo__content`,
-    close: `perfundo__close`,
-    prev: `perfundo__prev`,
-    next: `perfundo__next`,
-    untarget: `perfundo__untarget`,
+    link: `js-perfundo-link`,
+    overlay: `js-perfundo-overlay`,
+    close: `js-perfundo-close`,
+    prev: `js-perfundo-prev`,
+    next: `js-perfundo-next`,
     active: `is-active`,
   },
 };
