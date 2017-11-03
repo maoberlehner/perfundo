@@ -33,7 +33,8 @@
     "test:acceptance": "npm run demo && ./test/testcafe.sh",
     "test:acceptance-local": "npm run demo && testcafe chrome test/acceptance/ --app 'http-server demo/ -p 1337 -s'",
     "test": "npm run test:unit && npm run test:acceptance",
-    "deploy": "npm run website && rsync -avz --delete --exclude=/.* --exclude=/error --exclude=/stats --exclude=/google15e4ae9ecda47ac0.html -e ssh website/ vs0.oberlehner.net:/var/www/perfundo.oberlehner.net/web"
+    "deploy": "npm run website && rsync -avz --delete --exclude=/.* --exclude=/error --exclude=/stats --exclude=/google15e4ae9ecda47ac0.html -e ssh website/ vs0.oberlehner.net:/var/www/perfundo.oberlehner.net/web",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "vanilla-touchwipe": "^1.0.0"
