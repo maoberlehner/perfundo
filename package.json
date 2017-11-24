@@ -29,7 +29,7 @@
     "serve-demo": "http-server demo/",
     "website": "npm run demo && cp -R demo/ website && node scripts/website.js",
     "serve-website": "http-server website/",
-    "test:unit": "jest test/unit/",
+    "test:unit": "jest",
     "test:acceptance": "npm run demo && ./test/acceptance/testcafe.sh",
     "test:acceptance-local": "npm run demo && testcafe chrome test/acceptance/ --app 'http-server demo/ -p 1337 -s'",
     "test": "npm run test:unit && npm run test:acceptance",

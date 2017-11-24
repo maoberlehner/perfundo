@@ -1,10 +1,10 @@
 import swipe from 'vanilla-touchwipe';
 
-import configure from '../../js/lib/configure';
-import defaultOptions from '../../js/lib/default-options';
-import createContext from './helper/create-context';
+import configure from './configure';
+import defaultOptions from './default-options';
+import createContext from '../../test/unit/helper/create-context';
 
-import Perfundo from '../../js/lib/perfundo';
+import Perfundo from './perfundo';
 
 const defaultContext = createContext(defaultOptions);
 const defaultDependencies = {

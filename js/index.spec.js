@@ -1,7 +1,7 @@
-import defaultOptions from '../../js/lib/default-options';
-import createContext from './helper/create-context';
+import defaultOptions from './lib/default-options';
+import createContext from '../test/unit/helper/create-context';
 
-import perfundo from '../../js/index';
+import perfundo from './';
 
 const context = createContext(defaultOptions);
 
