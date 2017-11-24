@@ -27,7 +27,11 @@ Thumbs.db
 # Folders to ignore
 node_modules
 website
-vendor
+demo/vendor/animate.css
+demo/vendor/highlight.js
+demo/vendor/perfundo/*
+!demo/vendor/perfundo/perfundo.js
+!demo/vendor/perfundo/perfundo.with-icons.css
 
 # Files to ignore
 coverage
