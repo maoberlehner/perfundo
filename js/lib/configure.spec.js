@@ -1,4 +1,4 @@
-import configure from '../../js/lib/configure';
+import configure from './configure';
 
 describe(`configure()`, () => {
   test(`It is a function.`, () => {

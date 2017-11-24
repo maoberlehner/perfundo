@@ -1,6 +1,6 @@
 {
   "name": "perfundo",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "a pure CSS lightbox",
   "keywords": [
     "lightbox",
@@ -29,11 +29,12 @@
     "serve-demo": "http-server demo/",
     "website": "npm run demo && cp -R demo/ website && node scripts/website.js",
     "serve-website": "http-server website/",
-    "test:unit": "jest test/unit/",
-    "test:acceptance": "npm run demo && ./test/testcafe.sh",
+    "test:unit": "jest",
+    "test:acceptance": "npm run demo && ./test/acceptance/testcafe.sh",
     "test:acceptance-local": "npm run demo && testcafe chrome test/acceptance/ --app 'http-server demo/ -p 1337 -s'",
     "test": "npm run test:unit && npm run test:acceptance",
-    "deploy": "npm run website && rsync -avz --delete --exclude=/.* --exclude=/error --exclude=/stats --exclude=/google15e4ae9ecda47ac0.html -e ssh website/ vs0.oberlehner.net:/var/www/perfundo.oberlehner.net/web"
+    "deploy": "npm run website && rsync -avz --delete --exclude=/.* --exclude=/error --exclude=/stats --exclude=/google15e4ae9ecda47ac0.html -e ssh website/ vs0.oberlehner.net:/var/www/perfundo.oberlehner.net/web",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "vanilla-touchwipe": "^1.0.0"
@@ -57,28 +58,28 @@
     "babel-preset-stage-0": "^6.24.1",
     "clean-css-cli": "^4.1.10",
     "declassify": "^2.0.0",
-    "eslint": "^4.10.0",
-    "eslint-plugin-compat": "^2.0.1",
+    "eslint": "^4.11.0",
+    "eslint-plugin-compat": "^2.1.0",
     "eslint-plugin-import": "^2.8.0",
     "highlight.js": "^9.12.0",
     "html-minifier": "^3.5.6",
     "http-server": "^0.10.0",
     "jest": "^21.2.1",
     "mock-browser": "^0.92.14",
-    "node-sass": "^4.5.3",
-    "node-sass-magic-importer": "^5.0.0-alpha.15",
+    "node-sass": "^4.7.2",
+    "node-sass-magic-importer": "^5.0.0-alpha.17",
     "onchange": "^3.2.1",
     "parallelshell": "^3.0.2",
     "postcss-cli": "^4.1.1",
-    "rollup": "^0.50.0",
+    "rollup": "^0.51.8",
     "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-commonjs": "^8.2.5",
+    "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-node-resolve": "^3.0.0",
     "stylelint": "^8.2.0",
-    "testcafe": "^0.18.2",
+    "testcafe": "^0.18.5",
     "testcafe-browser-provider-browserstack": "^1.1.1",
-    "uglify-js": "^3.1.6",
-    "uncss": "^0.15.0"
+    "uglify-js": "^3.1.10",
+    "uncss": "^0.16.0"
   },
   "main": "dist/perfundo.js",
   "module": "js/index.js",
@@ -93,11 +94,5 @@
   },
   "browserslist": [
     "last 2 versions"
-  ],
-  "ava": {
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
-  }
+  ]
 }
