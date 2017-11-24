@@ -94,11 +94,5 @@
   },
   "browserslist": [
     "last 2 versions"
-  ],
-  "ava": {
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
-  }
+  ]
 }
