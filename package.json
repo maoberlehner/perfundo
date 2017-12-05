@@ -94,5 +94,8 @@
   },
   "browserslist": [
     "last 2 versions"
-  ]
+  ],
+  "jest": {
+    "mapCoverage": true
+  }
 }
