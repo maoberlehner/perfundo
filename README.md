@@ -1,5 +1,6 @@
 # perfundo
 [![Build Status](https://travis-ci.org/maoberlehner/perfundo.svg?branch=master)](https://travis-ci.org/maoberlehner/perfundo)
+[![GitHub stars](https://img.shields.io/github/stars/maoberlehner/perfundo.svg?style=social&label=Star)](https://github.com/maoberlehner/perfundo)
 
 a pure CSS lightbox (https://perfundo.oberlehner.net).
 
