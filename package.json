@@ -68,7 +68,6 @@
     "html-minifier": "^3.5.6",
     "http-server": "^0.10.0",
     "jest": "^21.2.1",
-    "mock-browser": "^0.92.14",
     "node-sass": "^4.7.2",
     "node-sass-magic-importer": "^5.0.0-alpha.17",
     "onchange": "^3.2.1",
