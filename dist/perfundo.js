@@ -102,7 +102,11 @@ function configure(element, userOptions, defaultOptions) {
     var attrValue = element.getAttribute("data-" + key.toLowerCase());
 
     // eslint-disable-next-line no-param-reassign
-    options[key] = attrValue || userOptions[key] || defaultOptions[key];
+    if (attrValue !== null) options[key] = attrValue;
+    // eslint-disable-next-line no-param-reassign
+    else if (key in userOptions) options[key] = userOptions[key];
+      // eslint-disable-next-line no-param-reassign
+      else options[key] = defaultOptions[key];
 
     return options;
   }, {});
@@ -152,10 +156,12 @@ function Perfundo(dependencies, target) {
     this.element.addEventListener("click", function (e) {
       e.preventDefault();
 
-      var close = e.target.classList.contains(_this.options.classNames.close) || e.target.classList.contains(_this.options.classNames.overlay);
       var open = e.target.classList.contains(_this.options.classNames.link) || e.target.parentElement.classList.contains(_this.options.classNames.link);
+      var close = e.target.classList.contains(_this.options.classNames.close) || e.target.classList.contains(_this.options.classNames.overlay);
+      var prev = e.target.classList.contains(_this.options.classNames.prev);
+      var next = e.target.classList.contains(_this.options.classNames.next);
 
-      if (close) _this.close();else if (open) _this.open();else if (e.target.classList.contains(_this.options.classNames.prev)) _this.prev();else if (e.target.classList.contains(_this.options.classNames.next)) _this.next();
+      if (open) _this.open();else if (close) _this.close();else if (prev) _this.prev();else if (next) _this.next();
     });
   }
 
@@ -195,10 +201,8 @@ Perfundo.prototype.prev = function prev() {
     var prevItem = this.context.querySelector("" + prevLink.getAttribute("href"));
     var prevRoot = this.getRootElement(prevItem);
 
-    if (prevRoot) {
-      this.close();
-      prevRoot.querySelector("." + this.options.classNames.link).click();
-    }
+    this.close();
+    prevRoot.querySelector("." + this.options.classNames.link).click();
   } catch (e) {
     throw new Error("Previous item not found.");
   }
@@ -210,10 +214,8 @@ Perfundo.prototype.next = function next() {
     var nextItem = this.context.querySelector("" + nextLink.getAttribute("href"));
     var nextRoot = this.getRootElement(nextItem);
 
-    if (nextRoot) {
-      this.close();
-      nextRoot.querySelector("." + this.options.classNames.link).click();
-    }
+    this.close();
+    nextRoot.querySelector("." + this.options.classNames.link).click();
   } catch (e) {
     throw new Error("Next item not found.");
   }
