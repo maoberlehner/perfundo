@@ -97,6 +97,7 @@
     "last 2 versions"
   ],
   "jest": {
+    "coveragePathIgnorePatterns": ["/node_modules/", "/test/"],
     "mapCoverage": true
   }
 }
