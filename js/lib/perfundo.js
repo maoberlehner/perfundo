@@ -20,15 +20,17 @@ export default function Perfundo(dependencies, target, userOptions = {}) {
     this.element.addEventListener(`click`, (e) => {
       e.preventDefault();
 
-      const close = e.target.classList.contains(this.options.classNames.close)
-        || e.target.classList.contains(this.options.classNames.overlay);
       const open = e.target.classList.contains(this.options.classNames.link)
         || e.target.parentElement.classList.contains(this.options.classNames.link);
+      const close = e.target.classList.contains(this.options.classNames.close)
+        || e.target.classList.contains(this.options.classNames.overlay);
+      const prev = e.target.classList.contains(this.options.classNames.prev);
+      const next = e.target.classList.contains(this.options.classNames.next);
 
-      if (close) this.close();
-      else if (open) this.open();
-      else if (e.target.classList.contains(this.options.classNames.prev)) this.prev();
-      else if (e.target.classList.contains(this.options.classNames.next)) this.next();
+      if (open) this.open();
+      else if (close) this.close();
+      else if (prev) this.prev();
+      else if (next) this.next();
     });
   }
 
@@ -67,10 +69,8 @@ Perfundo.prototype.prev = function prev() {
     const prevItem = this.context.querySelector(`${prevLink.getAttribute(`href`)}`);
     const prevRoot = this.getRootElement(prevItem);
 
-    if (prevRoot) {
-      this.close();
-      prevRoot.querySelector(`.${this.options.classNames.link}`).click();
-    }
+    this.close();
+    prevRoot.querySelector(`.${this.options.classNames.link}`).click();
   } catch (e) {
     throw new Error(`Previous item not found.`);
   }
@@ -82,10 +82,8 @@ Perfundo.prototype.next = function next() {
     const nextItem = this.context.querySelector(`${nextLink.getAttribute(`href`)}`);
     const nextRoot = this.getRootElement(nextItem);
 
-    if (nextRoot) {
-      this.close();
-      nextRoot.querySelector(`.${this.options.classNames.link}`).click();
-    }
+    this.close();
+    nextRoot.querySelector(`.${this.options.classNames.link}`).click();
   } catch (e) {
     throw new Error(`Next item not found.`);
   }
