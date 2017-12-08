@@ -1,6 +1,6 @@
 {
   "name": "perfundo",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "a pure CSS lightbox",
   "keywords": [
     "lightbox",
@@ -97,7 +97,10 @@
     "last 2 versions"
   ],
   "jest": {
-    "coveragePathIgnorePatterns": ["/node_modules/", "/test/"],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ],
     "mapCoverage": true
   }
 }
