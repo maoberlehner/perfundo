@@ -19,7 +19,7 @@ html = html
   .replace(`<link rel="stylesheet" href="dist/index.css">`, `##CSS##`)
   .replace(`<script src="vendor/perfundo/perfundo.js"></script>`, `<script>${perfundoJs}</script>`);
 
-uncss(html, { htmlroot: root, csspath: root, raw: rawCss, ignore: [/is-active/] }, (error, css) => {
+uncss(html, { htmlroot: root, csspath: root, raw: rawCss, ignore: [/is-active/, /:target/] }, (error, css) => {
   if (error) throw error;
 
   const uncssHtml = html.replace(`##CSS##`, `<style>${css}</style>`);

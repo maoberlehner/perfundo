@@ -1,8 +1,4 @@
-import { mocks } from 'mock-browser';
-
 export default function createContext(options = {}, count = 1) {
-  const mockBrowser = new mocks.MockBrowser();
-  const document = mockBrowser.getDocument();
   const context = document.createElement(`div`);
 
   for (let i = 1; i <= count; i += 1) {
