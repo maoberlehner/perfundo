@@ -12,16 +12,19 @@ describe(`configure()`, () => {
     const userOptions = {
       valA: `a`,
       valB: `b`,
+      valD: false,
     };
     const defaultOptions = {
       valA: `default-a`,
       valB: `default-b`,
       valC: `default-c`,
+      valD: true,
     };
     const expected = {
       valA: `a`,
       valB: `b`,
       valC: `default-c`,
+      valD: false,
     };
     const result = configure(elementMock, userOptions, defaultOptions);
 
