@@ -1,34 +1,37 @@
 import configure from './configure';
 
 describe(`configure()`, () => {
-  test(`It is a function.`, () => {
+  test(`It should be a function.`, () => {
     expect(typeof configure).toBe(`function`);
   });
 
-  test(`User options overrule default options.`, () => {
+  test(`It should overrule default options with user options.`, () => {
     const elementMock = {
       getAttribute: () => null,
     };
     const userOptions = {
       valA: `a`,
       valB: `b`,
+      valD: false,
     };
     const defaultOptions = {
       valA: `default-a`,
       valB: `default-b`,
       valC: `default-c`,
+      valD: true,
     };
     const expected = {
       valA: `a`,
       valB: `b`,
       valC: `default-c`,
+      valD: false,
     };
     const result = configure(elementMock, userOptions, defaultOptions);
 
     expect(result).toEqual(expected);
   });
 
-  test(`Attribute options overrule all other options.`, () => {
+  test(`It should overrule all other options with attribute options.`, () => {
     const elementMock = {
       getAttribute: key => (key === `data-vala` ? `overruled-a` : null),
     };

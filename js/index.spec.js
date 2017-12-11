@@ -8,11 +8,11 @@ describe(`perfundo()`, () => {
   const context = createContext(defaultOptions);
   document.body.appendChild(context);
 
-  test(`It is a function.`, () => {
+  test(`It should be a function.`, () => {
     expect(typeof perfundo).toBe(`function`);
   });
 
-  test(`Returns a new \`Perfundo\` instance.`, () => {
+  test(`It should return a new \`Perfundo\` instance.`, () => {
     const perfundoInstance = perfundo(`.perfundo`);
 
     expect(perfundoInstance instanceof Perfundo).toBe(true);
