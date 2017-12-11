@@ -1,11 +1,11 @@
 import configure from './configure';
 
 describe(`configure()`, () => {
-  test(`It is a function.`, () => {
+  test(`It should be a function.`, () => {
     expect(typeof configure).toBe(`function`);
   });
 
-  test(`User options overrule default options.`, () => {
+  test(`It should overrule default options with user options.`, () => {
     const elementMock = {
       getAttribute: () => null,
     };
@@ -31,7 +31,7 @@ describe(`configure()`, () => {
     expect(result).toEqual(expected);
   });
 
-  test(`Attribute options overrule all other options.`, () => {
+  test(`It should overrule all other options with attribute options.`, () => {
     const elementMock = {
       getAttribute: key => (key === `data-vala` ? `overruled-a` : null),
     };

@@ -1,5 +1,5 @@
 import defaultOptions from './default-options';
 
-test(`It is an object.`, () => {
+test(`It should be an object.`, () => {
   expect(typeof defaultOptions).toBe(`object`);
 });

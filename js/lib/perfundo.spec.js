@@ -18,17 +18,17 @@ describe(`Perfundo`, () => {
     };
   });
 
-  test(`It is a function.`, () => {
+  test(`It should be a function.`, () => {
     expect(typeof Perfundo).toBe(`function`);
   });
 
-  test(`It returns an instance of itself if a single target is given.`, () => {
+  test(`It should return an instance of itself if a single target is given.`, () => {
     const perfundoInstance = new Perfundo(defaultDependencies, `.perfundo`);
 
     expect(perfundoInstance instanceof Perfundo).toBe(true);
   });
 
-  test(`It returns an array of \`Perfundo\` instances if a multi target is given.`, () => {
+  test(`It should return an array of \`Perfundo\` instances if a multi target is given.`, () => {
     const context = createContext(defaultOptions, 2);
     const dependencies = Object.assign({}, defaultDependencies, { context });
     const perfundoInstances = new Perfundo(dependencies, `.perfundo`);
