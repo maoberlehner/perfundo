@@ -1,5 +1,10 @@
 export default function Perfundo(dependencies, target, userOptions = {}) {
-  const { configure, context, defaultOptions, swipe } = dependencies;
+  const {
+    configure,
+    context,
+    defaultOptions,
+    swipe,
+  } = dependencies;
   const elements = typeof target === `string`
     ? context.querySelectorAll(target)
     : target;

@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 const fs = require(`fs`);
 const sass = require(`node-sass`);
 const magicImporter = require(`node-sass-magic-importer`);
